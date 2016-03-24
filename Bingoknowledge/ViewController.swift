@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController {
+    var userid = 0
+    
 
     @IBOutlet weak var remain: checkbox!
 //    @IBOutlet weak var check: checkbox!
@@ -20,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var Accounttxt: UITextField!
     @IBOutlet weak var Passwordtxt: UITextField!
     @IBOutlet weak var Login: UIButton!
+    @IBOutlet weak var RegisterBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -36,8 +39,7 @@ class ViewController: UIViewController {
     // login function
     @IBAction func CheckLoginData(sender: AnyObject) {
         //defination
-        
-        var token:Bool = false;
+        var token:Int = 0;
         let alertController = UIAlertController(title: "Error", message: "Please check your account or password again.", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         
@@ -47,8 +49,11 @@ class ViewController: UIViewController {
             ["user":["account": Accounttxt.text!, "password": Passwordtxt.text!]])
             .responseJSON {
                 response in
-                token = response.result.value as! Bool
-                if(token){
+                token = response.result.value as! Int
+                if(token != 0){
+                    //test start
+                    self.userid = token
+                    //test end
                     self.performSegueWithIdentifier("toGameMainView", sender: self)
                     let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("GameMainView")  as! GameMainViewController
                     self.presentViewController(ctrl, animated: true, completion: nil)
@@ -75,23 +80,43 @@ class ViewController: UIViewController {
         return boardsDictionary
     }
     
-    
+    //testBtn
     @IBAction func TestBtn(sender: AnyObject) {
-        var ques:QuestionSet  = QuestionSet()
-        var userdataset = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
-        var testarray:NSArray = NSArray()
+//        var funcA:ProcessJSON = ProcessJSON()
+//        var userdataset = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
+//        var testarray:NSArray = NSArray()
+//        
+//        //use method to process JSON
+//        testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
+//        for(var i = 0; i < 10 ;i++){
+//            userdataset[i].id = testarray[i]["id"] as! Int
+//            userdataset[i].Question = testarray[i]["question"] as! String
+//            userdataset[i].Answer = testarray[i]["answer"] as! String
+//            userdataset[i].Tip = testarray[i]["tips"] as! String
+//            userdataset[i].Print_Data()
+//        }    
+        self.performSegueWithIdentifier("toGameMainView", sender: self)
+        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("GameMainView")  as! GameMainViewController
+        self.presentViewController(ctrl, animated: true, completion: nil)
 
-        testarray = parseJSON(getJSON("http://bingo.villager.website/exams/output"))
-        for(var i = 0; i < 10 ;i++){
-            userdataset[i].id = testarray[i]["id"] as! Int
-            userdataset[i].Question = testarray[i]["question"] as! String
-            userdataset[i].Answer = testarray[i]["answer"] as! String
-            userdataset[i].Tip = testarray[i]["tips"] as! String
-            userdataset[i].Print_Data()
-        }    
     
     }
+    //passing Userid to GameMainView
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toGameMainView" {
+            let destinationController =  segue.destinationViewController as! GameMainViewController
+            destinationController.Userid = self.userid
+            //print(self.value)
+            
+        }
+    }
     
+    @IBAction func RegisterBtn(sender: AnyObject) {
+        self.performSegueWithIdentifier("toRegisterView", sender: self)
+        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterView")  as! RegisterViewController
+        self.presentViewController(ctrl, animated: true, completion: nil)
+    }
+   
 
 }
 

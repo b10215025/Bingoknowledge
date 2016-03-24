@@ -10,10 +10,18 @@ import UIKit
 //import
 
 class GameMainViewController: UIViewController {
+    
+    var Userid = 0
     @IBOutlet weak var back: UIButton!
     
+    @IBOutlet weak var LoadQuestionBtn: UIButton!
+    
+    @IBOutlet weak var NextPageBtn: UIButton!
+    
+    @IBOutlet weak var Testlabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        Testlabel.text = "Userid: \(Userid)"
         // Do any additional setup after loading the view.
     }
 
@@ -23,12 +31,17 @@ class GameMainViewController: UIViewController {
     }
     
     @IBAction func returnBtn_clicked(sender: AnyObject) {
-        //        let Emptyalert = UIAlertController(title: "Warming", message: "Please filled the data.", preferredStyle: UIAlertControllerStyle.Alert)
-        //        Emptyalert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-        self.performSegueWithIdentifier("ReturnLoginView", sender: self)
+        self.performSegueWithIdentifier("returnLoginView", sender: self)
         let ctrl = storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! ViewController
         self.presentViewController(ctrl, animated: true, completion: nil)
         
     }
+    @IBAction func NextPageBtn_clicked(sender: AnyObject) {
+        self.performSegueWithIdentifier("toBingoGameView", sender: self)
+        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
+        self.presentViewController(ctrl, animated: true, completion: nil)
+    }
+   
 
+    
 }

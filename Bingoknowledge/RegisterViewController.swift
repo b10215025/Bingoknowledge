@@ -10,13 +10,14 @@ import UIKit
 import Alamofire
 
 class RegisterViewController: UIViewController {
-
 //    @IBOutlet weak var ClearBtn: UIButton!
     @IBOutlet weak var birthday_txt: UITextField!
     @IBOutlet weak var Passwordagain_txt: UITextField!
     @IBOutlet weak var Password_txt: UITextField!
     @IBOutlet weak var Account_txt: UITextField!
    
+    @IBOutlet weak var back: UIButton!
+
     @IBOutlet weak var Identity_Teacher: checkbox!
     @IBOutlet weak var Identity_Student: checkbox!
     @IBOutlet weak var ClearBtn: UIButton!
@@ -80,7 +81,7 @@ class RegisterViewController: UIViewController {
                     
                     token = response.result.value as! Bool
                     if(token){
-                        self.performSegueWithIdentifier("ToLoginView", sender: self)
+                        self.performSegueWithIdentifier("returnLoginView", sender: self)
                         let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! ViewController
                         self.presentViewController(ctrl, animated: true, completion: nil)
                     }
@@ -112,7 +113,7 @@ class RegisterViewController: UIViewController {
         }
         
     }
-    //Just support function Not important!
+
     @IBAction func TextFieldDone(sender: AnyObject) {
         sender.resignFirstResponder()
     }
@@ -121,6 +122,12 @@ class RegisterViewController: UIViewController {
         Password_txt.resignFirstResponder()
         Passwordagain_txt.resignFirstResponder()
         birthday_txt.resignFirstResponder()
+    }
+    
+    @IBAction func back_clicked(sender: AnyObject) {
+        self.performSegueWithIdentifier("returnLoginView", sender: self)
+        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! ViewController
+        self.presentViewController(ctrl, animated: true, completion: nil)
     }
     
 }

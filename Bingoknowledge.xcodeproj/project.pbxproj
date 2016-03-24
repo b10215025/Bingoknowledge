@@ -13,10 +13,13 @@
 		FB06BF1C1C9A9AC9002F4FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB06BF1B1C9A9AC9002F4FE2 /* Assets.xcassets */; };
 		FB06BF1F1C9A9AC9002F4FE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB06BF1D1C9A9AC9002F4FE2 /* LaunchScreen.storyboard */; };
 		FB06BF271C9A9B71002F4FE2 /* GameMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB06BF261C9A9B71002F4FE2 /* GameMainViewController.swift */; };
+		FB0DC7A61CA451780018CEB5 /* ProcessJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0DC7A51CA451780018CEB5 /* ProcessJSON.swift */; };
+		FB0DC7AE1CA45CF10018CEB5 /* BingoGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */; };
 		FB7050ED1C9D504200A02FB1 /* checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7050EC1C9D504200A02FB1 /* checkbox.swift */; };
 		FB7051561C9E8BFE00A02FB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7051471C9E8BCA00A02FB1 /* Alamofire.framework */; };
 		FB7051581C9E8C2F00A02FB1 /* Alamofire.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = FB7051471C9E8BCA00A02FB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB7051601C9F0D9200A02FB1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */; };
+		FB712F221CA4601E0060F198 /* QuestionPageViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */; };
 		FBF948651CA1423B007D9B35 /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF948641CA1423B007D9B35 /* QuestionSet.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,9 +105,12 @@
 		FB06BF1E1C9A9AC9002F4FE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB06BF201C9A9AC9002F4FE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB06BF261C9A9B71002F4FE2 /* GameMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMainViewController.swift; sourceTree = "<group>"; };
+		FB0DC7A51CA451780018CEB5 /* ProcessJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessJSON.swift; sourceTree = "<group>"; };
+		FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BingoGameViewController.swift; sourceTree = "<group>"; };
 		FB7050EC1C9D504200A02FB1 /* checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkbox.swift; sourceTree = "<group>"; };
 		FB70513C1C9E8BCA00A02FB1 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPageViewContorller.swift; sourceTree = "<group>"; };
 		FBF948641CA1423B007D9B35 /* QuestionSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +155,10 @@
 				FB06BF261C9A9B71002F4FE2 /* GameMainViewController.swift */,
 				FB7050EC1C9D504200A02FB1 /* checkbox.swift */,
 				FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */,
+				FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */,
+				FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */,
 				FBF948641CA1423B007D9B35 /* QuestionSet.swift */,
+				FB0DC7A51CA451780018CEB5 /* ProcessJSON.swift */,
 			);
 			path = Bingoknowledge;
 			sourceTree = "<group>";
@@ -301,8 +310,11 @@
 			files = (
 				FB7050ED1C9D504200A02FB1 /* checkbox.swift in Sources */,
 				FB7051601C9F0D9200A02FB1 /* RegisterViewController.swift in Sources */,
+				FB712F221CA4601E0060F198 /* QuestionPageViewContorller.swift in Sources */,
+				FB0DC7AE1CA45CF10018CEB5 /* BingoGameViewController.swift in Sources */,
 				FBF948651CA1423B007D9B35 /* QuestionSet.swift in Sources */,
 				FB06BF171C9A9AC9002F4FE2 /* ViewController.swift in Sources */,
+				FB0DC7A61CA451780018CEB5 /* ProcessJSON.swift in Sources */,
 				FB06BF271C9A9B71002F4FE2 /* GameMainViewController.swift in Sources */,
 				FB06BF151C9A9AC9002F4FE2 /* AppDelegate.swift in Sources */,
 			);
