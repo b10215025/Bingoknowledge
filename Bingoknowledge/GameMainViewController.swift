@@ -37,8 +37,8 @@ class GameMainViewController: UIViewController {
         
     }
     @IBAction func NextPageBtn_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("toBingoGameView", sender: self)
-        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
+        self.performSegueWithIdentifier("toGameView", sender: self)
+        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
         self.presentViewController(ctrl, animated: true, completion: nil)
     }
    

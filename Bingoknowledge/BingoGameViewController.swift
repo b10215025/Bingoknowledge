@@ -63,8 +63,8 @@ class BingoGameViewContorller: UIViewController {
     }
 
     @IBAction func backBtn_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("returnGameMainView", sender: self)
-        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameMainView")  as! GameMainViewController
+        self.performSegueWithIdentifier("returnGameView", sender: self)
+        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
         self.presentViewController(ctrl, animated: true, completion: nil)
 
     }
