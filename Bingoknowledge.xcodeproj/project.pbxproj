@@ -154,11 +154,11 @@
 				FB06BF1B1C9A9AC9002F4FE2 /* Assets.xcassets */,
 				FB06BF1D1C9A9AC9002F4FE2 /* LaunchScreen.storyboard */,
 				FB06BF201C9A9AC9002F4FE2 /* Info.plist */,
-				FB06BF261C9A9B71002F4FE2 /* GameMainViewController.swift */,
 				FB7050EC1C9D504200A02FB1 /* checkbox.swift */,
 				FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */,
-				FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */,
+				FB06BF261C9A9B71002F4FE2 /* GameMainViewController.swift */,
 				FBEE640E1CA51090002D621D /* GameViewController.swift */,
+				FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */,
 				FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */,
 				FBF948641CA1423B007D9B35 /* QuestionSet.swift */,
 				FB0DC7A51CA451780018CEB5 /* ProcessJSON.swift */,
@@ -441,6 +441,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Bingoknowledge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ntustcsie.Bingo-ver1";
@@ -452,6 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Bingoknowledge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ntustcsie.Bingo-ver1";

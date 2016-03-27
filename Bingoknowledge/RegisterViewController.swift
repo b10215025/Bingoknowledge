@@ -11,6 +11,8 @@ import Alamofire
 
 class RegisterViewController: UIViewController {
 //    @IBOutlet weak var ClearBtn: UIButton!
+    //    var testset:QuestionSet = QuestionSet.init()
+    
     @IBOutlet weak var birthday_txt: UITextField!
     @IBOutlet weak var Passwordagain_txt: UITextField!
     @IBOutlet weak var Password_txt: UITextField!
@@ -76,7 +78,7 @@ class RegisterViewController: UIViewController {
         //adding account to Database
         if(qualified){
             Alamofire.request(.POST, "http://bingo.villager.website/users", parameters:
-                ["user":["account": Account_txt.text!  , "password": Password_txt.text! , "birthday": birthday_txt.text! , "identity": Identity]])
+                ["user":["account": Account_txt.text! , "password": Password_txt.text! , "birthday": birthday_txt.text! , "identity": Identity]])
                 .responseJSON { response in
                     
                     token = response.result.value as! Bool

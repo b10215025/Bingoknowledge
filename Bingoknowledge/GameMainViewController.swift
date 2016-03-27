@@ -22,6 +22,7 @@ class GameMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Testlabel.text = "Userid: \(Userid)"
+        
         // Do any additional setup after loading the view.
     }
 

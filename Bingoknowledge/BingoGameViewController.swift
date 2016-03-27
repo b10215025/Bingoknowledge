@@ -9,8 +9,9 @@
 import UIKit
 
 class BingoGameViewContorller: UIViewController {
-    var UserQuestionArray = [QuestionSet]()
-    
+//    var UserQuestionArray1 = [QuestionSet]()
+    var UserQuestionSet:QuestionSet = QuestionSet.init()
+    var token = 0
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var QuestionBtn1: UIButton!
     @IBOutlet weak var QuestionBtn2: UIButton!
@@ -18,20 +19,21 @@ class BingoGameViewContorller: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(UserQuestionSet.id[0])
         //--test load question from server
-        var funcA:ProcessJSON = ProcessJSON()
-        var userdataset = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
-        var testarray:NSArray = NSArray()
-        
-        //use method to process JSON
-        testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
-        for(var i = 0; i < 10 ;i++){
-            userdataset[i].id = testarray[i]["id"] as! Int
-            userdataset[i].Question = testarray[i]["question"] as! String
-            userdataset[i].Answer = testarray[i]["answer"] as! String
-            userdataset[i].Tip = testarray[i]["tips"] as! String
-        }
-        self.UserQuestionArray = userdataset
+//        var funcA:ProcessJSON = ProcessJSON()
+//        var userdataset = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
+//        var testarray:NSArray = NSArray()
+//        
+//        //use method to process JSON
+//        testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
+//        for(var i = 0; i < 10 ;i++){
+//            userdataset[i].id = testarray[i]["id"] as! Int
+//            userdataset[i].Question = testarray[i]["question"] as! String
+//            userdataset[i].Answer = testarray[i]["answer"] as! String
+//            userdataset[i].Tip = testarray[i]["tips"] as! String
+//        }
+//        self.UserQuestionArray = userdataset
         //--test end
     }
     
@@ -39,34 +41,43 @@ class BingoGameViewContorller: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+
     }
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
-        for(var i=0;i<self.UserQuestionArray.count;i++){
-            self.UserQuestionArray[i].Print_Data()
+        
+        for(var i=0;i < 25;i++){
+            print("id: \(self.UserQuestionSet.id[i])")
         }
         
     }
     //Question Clicked
     @IBAction func QuestionBtn_clicked(sender: AnyObject) {
-        var token = sender.tag
-
-        switch(token){
-            case 1:
-                self.performSegueWithIdentifier("toQuestionPageView", sender: self)
-                let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("QuestionPageView")  as! QuestionPageViewContorller
-                self.presentViewController(ctrl, animated: true, completion: nil)
-            default:
-                print("error message!")
+//        print(UserQuestionArray1.count)
+                    self.token = sender.tag
+                if(self.token < 25 && self.token > 0){
+                    self.performSegueWithIdentifier("toQuestionPageView", sender: self)
+                    let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("QuestionPageView")  as! QuestionPageViewContorller
+                    self.presentViewController(ctrl, animated: true, completion: nil)
         }
-    
     }
+    
 
     @IBAction func backBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("returnGameView", sender: self)
         let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
         self.presentViewController(ctrl, animated: true, completion: nil)
-
     }
-  
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "toQuestionPageView" {
+            var number:String = String(token)
+            let destinationController =  segue.destinationViewController as! QuestionPageViewContorller
+            destinationController.QuestionArray = self.UserQuestionSet
+            destinationController.QuestionNumber = token
+            //print(self.value)
+        
+        }
+    }
+
 }

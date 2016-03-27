@@ -9,6 +9,9 @@
 import UIKit
 
 class GameViewController: UIViewController {
+//    var UserQuestionArray = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
+    //test class 3/28
+    var UserQuestionArray:QuestionSet = QuestionSet.init()
 
     @IBOutlet weak var SingleGameBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
@@ -16,6 +19,21 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // --test load question from server
+                var funcA:ProcessJSON = ProcessJSON()
+                var userdataset:QuestionSet = QuestionSet.init()
+                var testarray:NSArray = NSArray()
+        
+                //use method to process JSON
+                testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
+                for(var i = 0; i < 10 ;i++){
+                    userdataset.id[i] = testarray[i]["id"] as! Int
+                    userdataset.Question[i] = testarray[i]["question"] as! String
+                    userdataset.Answer[i] = testarray[i]["answer"] as! String
+                    userdataset.Tip[i] = testarray[i]["tips"] as! String
+                }
+                self.UserQuestionArray = userdataset
+        //--test end
 
         // Do any additional setup after loading the view.
     }
@@ -26,15 +44,6 @@ class GameViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func backBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("returnGameMainView", sender: self)
         let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("GameMainView")  as! GameMainViewController
@@ -45,6 +54,15 @@ class GameViewController: UIViewController {
         self.performSegueWithIdentifier("toBingoGameView", sender: self)
         let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
         self.presentViewController(ctrl, animated: true, completion: nil)
+    }
+  
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "toBingoGameView" {
+            let destinationController =  segue.destinationViewController as! BingoGameViewContorller
+            // test 3/28
+            destinationController.UserQuestionSet = self.UserQuestionArray
+//            destinationController.UserQuestionArray1 = self.UserQuestionArray
+        }
     }
 
 }
