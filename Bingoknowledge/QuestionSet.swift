@@ -18,7 +18,7 @@ struct QuestionSet {
     
     init(){
         id = [Int](count: 25, repeatedValue: 123)
-        Question = [String](count: 25, repeatedValue: "")
+        Question = [String](count: 25, repeatedValue: "222")
         Answer = [String](count: 25, repeatedValue: "")
         Tip = [String](count: 25, repeatedValue: "")
         level = [Int](count: 25, repeatedValue: 0)

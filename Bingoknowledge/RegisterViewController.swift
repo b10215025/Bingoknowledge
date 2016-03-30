@@ -11,7 +11,7 @@ import Alamofire
 
 class RegisterViewController: UIViewController {
 //    @IBOutlet weak var ClearBtn: UIButton!
-    //    var testset:QuestionSet = QuestionSet.init()
+        var testset:QuestionSet = QuestionSet.init()
     
     @IBOutlet weak var birthday_txt: UITextField!
     @IBOutlet weak var Passwordagain_txt: UITextField!
@@ -80,11 +80,11 @@ class RegisterViewController: UIViewController {
             Alamofire.request(.POST, "http://bingo.villager.website/users", parameters:
                 ["user":["account": Account_txt.text! , "password": Password_txt.text! , "birthday": birthday_txt.text! , "identity": Identity]])
                 .responseJSON { response in
-                    
+                    print(token)
                     token = response.result.value as! Bool
                     if(token){
                         self.performSegueWithIdentifier("returnLoginView", sender: self)
-                        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! ViewController
+                        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
                         self.presentViewController(ctrl, animated: true, completion: nil)
                     }
                     self.presentViewController(RegisterAlert, animated: true, completion: nil)
@@ -128,7 +128,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func back_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("returnLoginView", sender: self)
-        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! ViewController
+        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
         self.presentViewController(ctrl, animated: true, completion: nil)
     }
     

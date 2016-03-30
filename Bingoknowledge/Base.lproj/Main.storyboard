@@ -1,111 +1,127 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8Nt-7T-pJV">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="Qw0-0y-zC2">
+            <objects>
+                <navigationController id="8Nt-7T-pJV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ifk-Gq-LnA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="UMX-AE-ayi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w35-VH-pdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-937.5" y="274.64788732394362"/>
+        </scene>
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginView" id="BYZ-38-t0r" customClass="ViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginView" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="cY4-Ot-Ovv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wv7-On-PMs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y2d-T9-Q3C">
-                                <rect key="frame" x="155" y="203" width="97" height="30"/>
+                                <rect key="frame" x="160" y="201" width="97" height="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pur-Ec-hDS">
-                                <rect key="frame" x="155" y="275" width="97" height="30"/>
+                                <rect key="frame" x="160" y="273" width="97" height="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3M-IS-63V">
-                                <rect key="frame" x="43" y="207" width="64" height="21"/>
+                                <rect key="frame" x="48" y="205" width="64" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mAK-Ig-Oi8">
-                                <rect key="frame" x="43" y="278" width="74" height="21"/>
+                                <rect key="frame" x="48" y="276" width="74" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl7-id-Vvm" customClass="checkbox" customModule="Bingoknowledge" customModuleProvider="target">
-                                <rect key="frame" x="43" y="329" width="128" height="33"/>
+                                <rect key="frame" x="48" y="327" width="128" height="33"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="保持登入">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4Q-Kg-8eo">
-                                <rect key="frame" x="195" y="388" width="43" height="30"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.80392156859999997" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="CheckLoginData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="piM-ih-Ys5"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bingo智慧王" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCX-HB-55R">
-                                <rect key="frame" x="43" y="83" width="225" height="50"/>
+                                <rect key="frame" x="48" y="81" width="225" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kdN-u9-Wco">
-                                <rect key="frame" x="164" y="459" width="46" height="30"/>
+                                <rect key="frame" x="169" y="457" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="TestBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F75-Hd-Ed0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cp8-Xv-KfU">
-                                <rect key="frame" x="65" y="388" width="30" height="30"/>
+                                <rect key="frame" x="70" y="386" width="30" height="30"/>
                                 <state key="normal" title="註冊"/>
                                 <connections>
                                     <action selector="RegisterBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="995-Al-KiG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N4Q-Kg-8eo">
+                                <rect key="frame" x="200" y="386" width="43" height="30"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.80392156859999997" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="CheckLoginData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o10-z0-30K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.31764705879999999" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ArA-Vu-Ti7"/>
                     <connections>
-                        <outlet property="Account" destination="T3M-IS-63V" id="l3P-OS-WXy"/>
-                        <outlet property="Accounttxt" destination="y2d-T9-Q3C" id="xeH-r4-8tl"/>
-                        <outlet property="Login" destination="N4Q-Kg-8eo" id="opO-bT-78T"/>
-                        <outlet property="Password" destination="mAK-Ig-Oi8" id="hQ1-6W-6xF"/>
-                        <outlet property="Passwordtxt" destination="pur-Ec-hDS" id="dFJ-Z3-blg"/>
-                        <outlet property="remain" destination="Cl7-id-Vvm" id="FJk-4s-YQs"/>
-                        <segue destination="YIh-er-4ff" kind="modal" identifier="toRegisterView" id="mcj-6w-0Ho"/>
-                        <segue destination="N6e-xs-NNq" kind="modal" identifier="toGameMainView" id="nGZ-U5-0hg"/>
+                        <outlet property="Account" destination="T3M-IS-63V" id="lHX-VW-gEc"/>
+                        <outlet property="Accounttxt" destination="y2d-T9-Q3C" id="Ly7-E8-6VC"/>
+                        <outlet property="Password" destination="mAK-Ig-Oi8" id="3En-cv-ah0"/>
+                        <outlet property="Passwordtxt" destination="pur-Ec-hDS" id="5yR-Ll-4Jv"/>
+                        <outlet property="remain" destination="Cl7-id-Vvm" id="TSz-Jf-MGN"/>
+                        <segue destination="N6e-xs-NNq" kind="modal" identifier="toGameMainView" id="YBV-KU-QTM"/>
+                        <segue destination="YIh-er-4ff" kind="modal" identifier="toRegisterView" id="hBj-ek-nIz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8" y="228"/>
+            <point key="canvasLocation" x="-49" y="274.99999999999994"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="ceh-Sb-tqw">
             <objects>
                 <viewController storyboardIdentifier="RegisterView" id="YIh-er-4ff" customClass="RegisterViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wz0-Ef-0aU"/>
-                        <viewControllerLayoutGuide type="bottom" id="yOP-8o-9Xd"/>
+                        <viewControllerLayoutGuide type="top" id="Iyf-LE-GbU"/>
+                        <viewControllerLayoutGuide type="bottom" id="aQ5-Js-eaW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="fkz-6V-U2a">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帳號:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gs-HL-D2O">
@@ -138,15 +154,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5tj-Yg-w8h">
-                                <rect key="frame" x="80" y="195" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="TextFieldDone:" destination="YIh-er-4ff" eventType="editingDidEndOnExit" id="B1p-It-ujh"/>
-                                    <action selector="backgroundtap:" destination="YIh-er-4ff" eventType="touchDown" id="dpZ-gW-mEW"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ErQ-C7-WAF">
                                 <rect key="frame" x="83" y="145" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -221,6 +228,15 @@
                                     <action selector="backgroundtap:" destination="YIh-er-4ff" eventType="touchDown" id="O6S-ex-Z7x"/>
                                 </connections>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5tj-Yg-w8h">
+                                <rect key="frame" x="80" y="195" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="TextFieldDone:" destination="YIh-er-4ff" eventType="editingDidEndOnExit" id="B1p-It-ujh"/>
+                                    <action selector="backgroundtap:" destination="YIh-er-4ff" eventType="touchDown" id="dpZ-gW-mEW"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.86666666670000003" green="0.31764705879999999" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -233,23 +249,23 @@
                         <outlet property="Passwordagain_txt" destination="ErQ-C7-WAF" id="m0H-1x-cZr"/>
                         <outlet property="back" destination="I3P-dn-DVV" id="mbJ-HW-Ks1"/>
                         <outlet property="birthday_txt" destination="5tj-Yg-w8h" id="7kl-sm-ogC"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="returnLoginView" id="jvk-i0-twU"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="returnLoginView" id="jvk-i0-twU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVJ-oR-TcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="1071"/>
+            <point key="canvasLocation" x="-60" y="1131.338028169014"/>
         </scene>
         <!--Game Main View Controller-->
         <scene sceneID="kdb-sn-82r">
             <objects>
                 <viewController storyboardIdentifier="GameMainView" id="N6e-xs-NNq" customClass="GameMainViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KZc-as-9mu"/>
-                        <viewControllerLayoutGuide type="bottom" id="2QF-Wb-mQo"/>
+                        <viewControllerLayoutGuide type="top" id="cGw-so-BYt"/>
+                        <viewControllerLayoutGuide type="bottom" id="MFm-Gs-KlL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oht-5o-0QQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFj-9X-t23">
@@ -259,52 +275,91 @@
                                     <action selector="returnBtn_clicked:" destination="N6e-xs-NNq" eventType="touchUpInside" id="yIn-Qw-cbb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yd3-cv-lmf">
-                                <rect key="frame" x="236" y="507" width="30" height="30"/>
-                                <state key="normal" title="next"/>
-                                <connections>
-                                    <action selector="NextPageBtn_clicked:" destination="N6e-xs-NNq" eventType="touchUpInside" id="A4o-Gh-DSI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOy-0t-MrG">
-                                <rect key="frame" x="155" y="451" width="30" height="30"/>
-                                <state key="normal" title="load"/>
-                                <connections>
-                                    <action selector="LoadQuestionBtn_clicked:" destination="N6e-xs-NNq" eventType="touchUpInside" id="7cQ-j5-sjR"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xO6-EP-pVo">
                                 <rect key="frame" x="77" y="71" width="108" height="59"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqo-H3-gEr">
+                                <rect key="frame" x="215" y="478" width="46" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="NextPageBtn_clicked:" destination="N6e-xs-NNq" eventType="touchUpInside" id="1dF-HF-gA6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="rxU-DC-R4F"/>
                     <connections>
-                        <outlet property="LoadQuestionBtn" destination="MOy-0t-MrG" id="6ZD-a9-D8R"/>
-                        <outlet property="NextPageBtn" destination="Yd3-cv-lmf" id="n4Q-Xz-MmH"/>
+                        <outlet property="NextPageBtn" destination="rqo-H3-gEr" id="NpP-Nr-dxR"/>
                         <outlet property="Testlabel" destination="xO6-EP-pVo" id="KEf-e4-odD"/>
                         <outlet property="back" destination="xFj-9X-t23" id="hcW-FI-bnR"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="returnLoginView" id="wv3-tz-zKy"/>
-                        <segue destination="h58-JA-2Iz" kind="modal" identifier="toGameView" id="gVQ-t5-zhC"/>
+                        <segue destination="BYZ-38-t0r" kind="modal" identifier="returnLoginView" id="RlM-IF-hA1"/>
+                        <segue destination="qpD-yn-NaG" kind="modal" identifier="toGameView" id="IVP-gQ-SP2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVA-5F-cUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="256"/>
+            <point key="canvasLocation" x="712.5" y="274.64788732394362"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="Z4l-YK-Py1">
+            <objects>
+                <viewController storyboardIdentifier="GameView" id="qpD-yn-NaG" customClass="GameViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wYC-zI-i0x"/>
+                        <viewControllerLayoutGuide type="bottom" id="OVM-lq-ew6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aFC-vX-mtB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMN-aE-vIr">
+                                <rect key="frame" x="52" y="82" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4g-Op-yQr">
+                                <rect key="frame" x="130" y="148" width="60" height="30"/>
+                                <state key="normal" title="單人遊戲"/>
+                                <connections>
+                                    <action selector="SingleGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="1tq-H2-ec8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pqT-9t-5pK">
+                                <rect key="frame" x="26" y="36" width="34" height="30"/>
+                                <state key="normal" title="back"/>
+                                <connections>
+                                    <action selector="backBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="whd-UP-E7s"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="SingleGameBtn" destination="b4g-Op-yQr" id="06p-eg-O6H"/>
+                        <outlet property="Userid_label" destination="BMN-aE-vIr" id="eQf-DB-8hN"/>
+                        <segue destination="N6e-xs-NNq" kind="presentation" identifier="returnGameMainView" id="d3m-GK-WG1"/>
+                        <segue destination="oPP-Hp-Fe0" kind="modal" identifier="toBingoGameView" id="fP7-Q0-7xt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cuK-iI-Acf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1426.875" y="274.64788732394362"/>
         </scene>
         <!--Bingo Game View Contorller-->
         <scene sceneID="nQO-Jm-oSh">
             <objects>
                 <viewController storyboardIdentifier="BingoGameView" id="oPP-Hp-Fe0" customClass="BingoGameViewContorller" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bQs-Ah-HSa"/>
-                        <viewControllerLayoutGuide type="bottom" id="KiT-l4-4It"/>
+                        <viewControllerLayoutGuide type="top" id="1Ke-8u-egN"/>
+                        <viewControllerLayoutGuide type="bottom" id="QWh-mj-K5t"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yVR-gK-PWa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Q1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSH-Rj-YET">
@@ -539,79 +594,39 @@
                                     <action selector="QuestionBtn_clicked:" destination="oPP-Hp-Fe0" eventType="touchUpInside" id="PYq-9A-suU"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiH-4J-zpl">
+                                <rect key="frame" x="16" y="49" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="QuestionBtn1" destination="SSH-Rj-YET" id="LVU-AI-Zme"/>
                         <outlet property="QuestionBtn2" destination="ia0-tl-PAk" id="lJt-li-akL"/>
+                        <outlet property="Userid_Label" destination="eiH-4J-zpl" id="bij-Ru-oDq"/>
                         <outlet property="backBtn" destination="xRu-DZ-Pal" id="gFB-MU-Smp"/>
                         <outlet property="testBtn" destination="iFO-ni-JFn" id="FMl-ha-D0Y"/>
-                        <segue destination="DIz-yJ-Uvl" kind="modal" identifier="toQuestionPageView" id="tbj-bm-D4b"/>
-                        <segue destination="h58-JA-2Iz" kind="modal" identifier="returnGameView" id="Mij-Ov-Kg6"/>
+                        <segue destination="qpD-yn-NaG" kind="presentation" identifier="returnGameView" id="nD4-Fs-HW9"/>
+                        <segue destination="DIz-yJ-Uvl" kind="modal" identifier="toQuestionPageView" id="sR2-f9-wDr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLI-ba-APy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="288"/>
-        </scene>
-        <!--Game View Controller-->
-        <scene sceneID="P1y-z5-F9e">
-            <objects>
-                <viewController storyboardIdentifier="GameView" id="h58-JA-2Iz" customClass="GameViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tq7-Rw-7D9"/>
-                        <viewControllerLayoutGuide type="bottom" id="PrV-C4-rUD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yhb-G8-mJK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vG7-IS-0BO">
-                                <rect key="frame" x="26" y="20" width="34" height="30"/>
-                                <state key="normal" title="back"/>
-                                <connections>
-                                    <action selector="backBtn_clicked:" destination="h58-JA-2Iz" eventType="touchUpInside" id="LPU-t8-D6V"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRe-DX-zay">
-                                <rect key="frame" x="77" y="101" width="150" height="87"/>
-                                <state key="normal" title="單人遊戲"/>
-                                <connections>
-                                    <action selector="SingleGameBtn_clicked:" destination="h58-JA-2Iz" eventType="touchUpInside" id="zLl-c9-fds"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnN-ts-rex">
-                                <rect key="frame" x="93" y="215" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="ttt:" destination="h58-JA-2Iz" eventType="touchUpInside" id="KMs-3m-CVY"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <connections>
-                        <outlet property="SingleGameBtn" destination="LRe-DX-zay" id="sxB-0L-GdL"/>
-                        <outlet property="backBtn" destination="vG7-IS-0BO" id="nVx-7i-I5e"/>
-                        <segue destination="N6e-xs-NNq" kind="modal" identifier="returnGameMainView" id="h9P-8h-Ie2"/>
-                        <segue destination="oPP-Hp-Fe0" kind="modal" identifier="toBingoGameView" id="HSu-gx-Uce"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kl3-AC-Rl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1304" y="275"/>
+            <point key="canvasLocation" x="2167.5" y="274.64788732394362"/>
         </scene>
         <!--Question Page View Contorller-->
         <scene sceneID="WbY-Lf-nSI">
             <objects>
                 <viewController storyboardIdentifier="QuestionPageView" id="DIz-yJ-Uvl" customClass="QuestionPageViewContorller" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CAK-Vs-jSN"/>
-                        <viewControllerLayoutGuide type="bottom" id="bP8-pJ-ARp"/>
+                        <viewControllerLayoutGuide type="top" id="8pJ-Fx-oXI"/>
+                        <viewControllerLayoutGuide type="bottom" id="3d3-q5-5Zs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="230-6F-INC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="題目：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="woY-Jf-Phm">
@@ -632,13 +647,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4S-rY-wJe">
-                                <rect key="frame" x="26" y="10" width="34" height="30"/>
-                                <state key="normal" title="back"/>
-                                <connections>
-                                    <action selector="backBtn_clicked:" destination="DIz-yJ-Uvl" eventType="touchUpInside" id="BZB-v1-fRD"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPp-TK-bYG">
                                 <rect key="frame" x="253" y="518" width="47" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -675,6 +683,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4S-rY-wJe">
+                                <rect key="frame" x="20" y="12" width="34" height="30"/>
+                                <state key="normal" title="back"/>
+                                <connections>
+                                    <action selector="backBtn_clicked:" destination="DIz-yJ-Uvl" eventType="touchUpInside" id="BZB-v1-fRD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.3899874713" green="1" blue="0.51216985039999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -688,18 +703,18 @@
                         <outlet property="Tip_Label" destination="ams-3b-lyN" id="3LH-Xn-YNe"/>
                         <outlet property="Tip_txt" destination="rIq-JR-3zk" id="tqS-jV-n2O"/>
                         <outlet property="backBtn" destination="A4S-rY-wJe" id="0un-cB-OEY"/>
-                        <segue destination="oPP-Hp-Fe0" kind="modal" identifier="returnBingoGameView" id="gnl-FT-jN3"/>
+                        <segue destination="oPP-Hp-Fe0" kind="modal" identifier="returnBingoGameView" id="yUq-I9-qPP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0d-ki-wvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2245" y="261"/>
+            <point key="canvasLocation" x="2971" y="274"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Mij-Ov-Kg6"/>
-        <segue reference="gnl-FT-jN3"/>
+        <segue reference="nD4-Fs-HW9"/>
+        <segue reference="yUq-I9-qPP"/>
         <segue reference="jvk-i0-twU"/>
-        <segue reference="nGZ-U5-0hg"/>
+        <segue reference="YBV-KU-QTM"/>
     </inferredMetricsTieBreakers>
 </document>

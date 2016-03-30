@@ -14,11 +14,12 @@ class GameMainViewController: UIViewController {
     var Userid = 0
     @IBOutlet weak var back: UIButton!
     
-    @IBOutlet weak var LoadQuestionBtn: UIButton!
+  
     
     @IBOutlet weak var NextPageBtn: UIButton!
     
     @IBOutlet weak var Testlabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Testlabel.text = "Userid: \(Userid)"
@@ -33,7 +34,7 @@ class GameMainViewController: UIViewController {
     
     @IBAction func returnBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("returnLoginView", sender: self)
-        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! ViewController
+        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
         self.presentViewController(ctrl, animated: true, completion: nil)
         
     }
@@ -44,5 +45,12 @@ class GameMainViewController: UIViewController {
     }
    
 
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toGameView" {
+            let destinationController =  segue.destinationViewController as! GameViewController
+            destinationController.Userid = self.Userid
+            //print(self.value)
+            
+        }
+    }
 }

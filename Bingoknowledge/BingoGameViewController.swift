@@ -12,6 +12,9 @@ class BingoGameViewContorller: UIViewController {
 //    var UserQuestionArray1 = [QuestionSet]()
     var UserQuestionSet:QuestionSet = QuestionSet.init()
     var token = 0
+    var Userid = 0
+    
+    @IBOutlet weak var Userid_Label: UILabel!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var QuestionBtn1: UIButton!
     @IBOutlet weak var QuestionBtn2: UIButton!
@@ -20,21 +23,7 @@ class BingoGameViewContorller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(UserQuestionSet.id[0])
-        //--test load question from server
-//        var funcA:ProcessJSON = ProcessJSON()
-//        var userdataset = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
-//        var testarray:NSArray = NSArray()
-//        
-//        //use method to process JSON
-//        testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
-//        for(var i = 0; i < 10 ;i++){
-//            userdataset[i].id = testarray[i]["id"] as! Int
-//            userdataset[i].Question = testarray[i]["question"] as! String
-//            userdataset[i].Answer = testarray[i]["answer"] as! String
-//            userdataset[i].Tip = testarray[i]["tips"] as! String
-//        }
-//        self.UserQuestionArray = userdataset
-        //--test end
+        Userid_Label.text = String(self.Userid)
     }
     
  
@@ -53,12 +42,13 @@ class BingoGameViewContorller: UIViewController {
     }
     //Question Clicked
     @IBAction func QuestionBtn_clicked(sender: AnyObject) {
-//        print(UserQuestionArray1.count)
-                    self.token = sender.tag
-                if(self.token < 25 && self.token > 0){
-                    self.performSegueWithIdentifier("toQuestionPageView", sender: self)
-                    let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("QuestionPageView")  as! QuestionPageViewContorller
-                    self.presentViewController(ctrl, animated: true, completion: nil)
+        self.token = sender.tag
+//        print("1")
+        if(self.token < 25 && self.token > 0){
+            self.performSegueWithIdentifier("toQuestionPageView", sender: self)
+            let ctrl = storyboard?.instantiateViewControllerWithIdentifier("QuestionPageView")as! QuestionPageViewContorller
+            self.navigationController?.pushViewController(ctrl,  animated: true)
+//            print("3")
         }
     }
     
@@ -71,12 +61,9 @@ class BingoGameViewContorller: UIViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toQuestionPageView" {
-            var number:String = String(token)
             let destinationController =  segue.destinationViewController as! QuestionPageViewContorller
             destinationController.QuestionArray = self.UserQuestionSet
-            destinationController.QuestionNumber = token
-            //print(self.value)
-        
+            destinationController.QuestionNumber = self.token
         }
     }
 

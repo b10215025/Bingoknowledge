@@ -12,10 +12,10 @@ class QuestionPageViewContorller: UIViewController {
 
     var QuestionArray:QuestionSet = QuestionSet.init()
     var QuestionNumber = 0
+    
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var Question_Label: UILabel!
     @IBOutlet weak var SubmitBtn: UIButton!
- 
     @IBOutlet weak var Qnumber: UILabel!
     @IBOutlet weak var Question_txt: UITextView!
     @IBOutlet weak var Tip_txt: UITextView!
@@ -25,7 +25,7 @@ class QuestionPageViewContorller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//         Do any additional setup after loading the view.
+//      Do any additional setup after loading the view.
         Question_txt.text = QuestionArray.Question[QuestionNumber]
         Tip_txt.text = QuestionArray.Tip[QuestionNumber]
         Qnumber.text = "\(QuestionNumber)"
@@ -38,7 +38,6 @@ class QuestionPageViewContorller: UIViewController {
     }
     // compare UserAnswer is same with QuestionAnswer
     @IBAction func SubmitBtn_clicked(sender: AnyObject) {
-
         if(QuestionArray.Answer[QuestionNumber] == Answer_txt.text){
             self.performSegueWithIdentifier("returnBingoGameView", sender: self)
             let ctrl = storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
@@ -48,6 +47,8 @@ class QuestionPageViewContorller: UIViewController {
     @IBAction func backBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("returnBingoGameView", sender: self)
         let ctrl = storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
+        
+        self.navigationController?.popViewControllerAnimated(true)
         self.presentViewController(ctrl, animated: true, completion: nil)
     }
     

@@ -12,13 +12,14 @@ class GameViewController: UIViewController {
 //    var UserQuestionArray = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
     //test class 3/28
     var UserQuestionArray:QuestionSet = QuestionSet.init()
-
+    var Userid = 0
+    
     @IBOutlet weak var SingleGameBtn: UIButton!
-    @IBOutlet weak var backBtn: UIButton!
- 
+    @IBOutlet weak var Userid_label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Userid_label.text = String(self.Userid)
         // --test load question from server
                 var funcA:ProcessJSON = ProcessJSON()
                 var userdataset:QuestionSet = QuestionSet.init()
@@ -34,7 +35,7 @@ class GameViewController: UIViewController {
                 }
                 self.UserQuestionArray = userdataset
         //--test end
-
+        print(UserQuestionArray.id[2])
         // Do any additional setup after loading the view.
     }
 
@@ -61,7 +62,7 @@ class GameViewController: UIViewController {
             let destinationController =  segue.destinationViewController as! BingoGameViewContorller
             // test 3/28
             destinationController.UserQuestionSet = self.UserQuestionArray
-//            destinationController.UserQuestionArray1 = self.UserQuestionArray
+            destinationController.Userid = self.Userid
         }
     }
 
