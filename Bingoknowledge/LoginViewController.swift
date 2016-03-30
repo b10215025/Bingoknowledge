@@ -58,12 +58,18 @@ class LoginViewController: UIViewController {
                     //test start
                     self.Userid = token
                     //test end
+                //                    let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("GameMainView")  as! GameMainViewController
+//                    self.presentViewController(ctrl, animated: true, completion: nil)
                     self.performSegueWithIdentifier("toGameMainView", sender: self)
-                    let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("GameMainView")  as! GameMainViewController
-                    self.presentViewController(ctrl, animated: true, completion: nil)
+
+                    let VController = self.storyboard?.instantiateViewControllerWithIdentifier("GameMainView")
+                    
+                    self.navigationController?.pushViewController(VController!, animated: true)
                     
                 }
+                else{
                 self.presentViewController(alertController, animated: true, completion: nil)
+                }
         }
         
     }
@@ -108,9 +114,10 @@ class LoginViewController: UIViewController {
     //passing Userid to GameMainView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toGameMainView" {
-            let destinationController =  segue.destinationViewController as! GameMainViewController
-            destinationController.Userid = self.Userid
-            //print(self.value)
+//            let destinationController =  segue.destinationViewController as! GameMainViewController
+//            var DestViewController = segue.destinationViewController as! UINavigationController
+//            let targetController = DestViewController.topViewController as! GameMainViewController
+//            targetController.Userid = self.Userid
             
         }
     }

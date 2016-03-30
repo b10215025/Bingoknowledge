@@ -104,8 +104,8 @@
                         <outlet property="Password" destination="mAK-Ig-Oi8" id="3En-cv-ah0"/>
                         <outlet property="Passwordtxt" destination="pur-Ec-hDS" id="5yR-Ll-4Jv"/>
                         <outlet property="remain" destination="Cl7-id-Vvm" id="TSz-Jf-MGN"/>
-                        <segue destination="N6e-xs-NNq" kind="modal" identifier="toGameMainView" id="YBV-KU-QTM"/>
                         <segue destination="YIh-er-4ff" kind="modal" identifier="toRegisterView" id="hBj-ek-nIz"/>
+                        <segue destination="Xr0-MC-nXg" kind="show" identifier="toGameMainView" id="q7Q-3O-DA3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -257,52 +257,41 @@
             <point key="canvasLocation" x="-60" y="1131.338028169014"/>
         </scene>
         <!--Game Main View Controller-->
-        <scene sceneID="kdb-sn-82r">
+        <scene sceneID="gwJ-8C-HDy">
             <objects>
-                <viewController storyboardIdentifier="GameMainView" id="N6e-xs-NNq" customClass="GameMainViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameMainView" id="Xr0-MC-nXg" customClass="GameMainViewController" customModule="Bingoknowledge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cGw-so-BYt"/>
-                        <viewControllerLayoutGuide type="bottom" id="MFm-Gs-KlL"/>
+                        <viewControllerLayoutGuide type="top" id="Ved-8A-yRn"/>
+                        <viewControllerLayoutGuide type="bottom" id="RUa-iQ-0sy"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oht-5o-0QQ">
+                    <view key="view" contentMode="scaleToFill" id="fCA-1q-glR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFj-9X-t23">
-                                <rect key="frame" x="46" y="11" width="34" height="30"/>
-                                <state key="normal" title="back"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1n-T5-Sbd">
+                                <rect key="frame" x="217" y="133" width="60" height="30"/>
+                                <state key="normal" title="開始遊戲"/>
                                 <connections>
-                                    <action selector="returnBtn_clicked:" destination="N6e-xs-NNq" eventType="touchUpInside" id="yIn-Qw-cbb"/>
+                                    <action selector="NextPageBtn_clicked:" destination="Xr0-MC-nXg" eventType="touchUpInside" id="u0G-OJ-uQq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xO6-EP-pVo">
-                                <rect key="frame" x="77" y="71" width="108" height="59"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVB-vd-3UQ">
+                                <rect key="frame" x="20" y="65" width="100" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqo-H3-gEr">
-                                <rect key="frame" x="215" y="478" width="46" height="43"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="NextPageBtn_clicked:" destination="N6e-xs-NNq" eventType="touchUpInside" id="1dF-HF-gA6"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rxU-DC-R4F"/>
                     <connections>
-                        <outlet property="NextPageBtn" destination="rqo-H3-gEr" id="NpP-Nr-dxR"/>
-                        <outlet property="Testlabel" destination="xO6-EP-pVo" id="KEf-e4-odD"/>
-                        <outlet property="back" destination="xFj-9X-t23" id="hcW-FI-bnR"/>
-                        <segue destination="BYZ-38-t0r" kind="modal" identifier="returnLoginView" id="RlM-IF-hA1"/>
-                        <segue destination="qpD-yn-NaG" kind="modal" identifier="toGameView" id="IVP-gQ-SP2"/>
+                        <outlet property="Testlabel" destination="SVB-vd-3UQ" id="lZw-5d-ix7"/>
+                        <segue destination="qpD-yn-NaG" kind="show" id="cZO-dz-YZf"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iVA-5F-cUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfn-Mw-8AD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712.5" y="274.64788732394362"/>
+            <point key="canvasLocation" x="670" y="274"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="Z4l-YK-Py1">
@@ -339,16 +328,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="hco-v4-aR4"/>
                     <connections>
                         <outlet property="SingleGameBtn" destination="b4g-Op-yQr" id="06p-eg-O6H"/>
                         <outlet property="Userid_label" destination="BMN-aE-vIr" id="eQf-DB-8hN"/>
-                        <segue destination="N6e-xs-NNq" kind="presentation" identifier="returnGameMainView" id="d3m-GK-WG1"/>
-                        <segue destination="oPP-Hp-Fe0" kind="modal" identifier="toBingoGameView" id="fP7-Q0-7xt"/>
+                        <segue destination="oPP-Hp-Fe0" kind="show" identifier="toBingoGameView" id="fP7-Q0-7xt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cuK-iI-Acf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1426.875" y="274.64788732394362"/>
+            <point key="canvasLocation" x="1316" y="274"/>
         </scene>
         <!--Bingo Game View Contorller-->
         <scene sceneID="nQO-Jm-oSh">
@@ -603,6 +592,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gxh-Vx-7Lj"/>
                     <connections>
                         <outlet property="QuestionBtn1" destination="SSH-Rj-YET" id="LVU-AI-Zme"/>
                         <outlet property="QuestionBtn2" destination="ia0-tl-PAk" id="lJt-li-akL"/>
@@ -610,7 +600,7 @@
                         <outlet property="backBtn" destination="xRu-DZ-Pal" id="gFB-MU-Smp"/>
                         <outlet property="testBtn" destination="iFO-ni-JFn" id="FMl-ha-D0Y"/>
                         <segue destination="qpD-yn-NaG" kind="presentation" identifier="returnGameView" id="nD4-Fs-HW9"/>
-                        <segue destination="DIz-yJ-Uvl" kind="modal" identifier="toQuestionPageView" id="sR2-f9-wDr"/>
+                        <segue destination="DIz-yJ-Uvl" kind="show" identifier="toQuestionPageView" id="sR2-f9-wDr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLI-ba-APy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -684,7 +674,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4S-rY-wJe">
-                                <rect key="frame" x="20" y="12" width="34" height="30"/>
+                                <rect key="frame" x="14" y="19" width="38" height="30"/>
                                 <state key="normal" title="back"/>
                                 <connections>
                                     <action selector="backBtn_clicked:" destination="DIz-yJ-Uvl" eventType="touchUpInside" id="BZB-v1-fRD"/>
@@ -712,9 +702,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nD4-Fs-HW9"/>
-        <segue reference="yUq-I9-qPP"/>
+        <segue reference="cZO-dz-YZf"/>
         <segue reference="jvk-i0-twU"/>
-        <segue reference="YBV-KU-QTM"/>
+        <segue reference="fP7-Q0-7xt"/>
     </inferredMetricsTieBreakers>
 </document>
