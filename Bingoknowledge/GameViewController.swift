@@ -53,14 +53,11 @@ class GameViewController: UIViewController {
 
     @IBAction func SingleGameBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("toBingoGameView", sender: self)
-        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
-        self.presentViewController(ctrl, animated: true, completion: nil)
     }
   
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toBingoGameView" {
             let destinationController =  segue.destinationViewController as! BingoGameViewContorller
-            // test 3/28
             destinationController.UserQuestionSet = self.UserQuestionArray
             destinationController.Userid = self.Userid
         }

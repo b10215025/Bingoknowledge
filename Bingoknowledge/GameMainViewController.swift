@@ -40,17 +40,13 @@ class GameMainViewController: UIViewController {
     }
     @IBAction func NextPageBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("toGameView", sender: self)
-        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
-        self.presentViewController(ctrl, animated: true, completion: nil)
-    }
+  }
    
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toGameView" {
             let destinationController =  segue.destinationViewController as! GameViewController
-            destinationController.Userid = self.Userid
-            //print(self.value)
-            
+            destinationController.Userid = self.Userid            
         }
     }
 }

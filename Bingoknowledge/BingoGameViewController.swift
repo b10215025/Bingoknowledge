@@ -32,6 +32,7 @@ class BingoGameViewContorller: UIViewController {
         // Dispose of any resources that can be recreated.
 
     }
+    
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
         
@@ -43,12 +44,9 @@ class BingoGameViewContorller: UIViewController {
     //Question Clicked
     @IBAction func QuestionBtn_clicked(sender: AnyObject) {
         self.token = sender.tag
-//        print("1")
+        
         if(self.token < 25 && self.token > 0){
             self.performSegueWithIdentifier("toQuestionPageView", sender: self)
-            let ctrl = storyboard?.instantiateViewControllerWithIdentifier("QuestionPageView")as! QuestionPageViewContorller
-            self.navigationController?.pushViewController(ctrl,  animated: true)
-//            print("3")
         }
     }
     

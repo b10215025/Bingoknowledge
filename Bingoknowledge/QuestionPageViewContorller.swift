@@ -8,10 +8,14 @@
 
 import UIKit
 
+
+
+
 class QuestionPageViewContorller: UIViewController {
 
     var QuestionArray:QuestionSet = QuestionSet.init()
     var QuestionNumber = 0
+    var myBoolVar = false
     
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var Question_Label: UILabel!
@@ -31,27 +35,32 @@ class QuestionPageViewContorller: UIViewController {
         Qnumber.text = "\(QuestionNumber)"
     }
     
-    
+   
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     // compare UserAnswer is same with QuestionAnswer
     @IBAction func SubmitBtn_clicked(sender: AnyObject) {
-        if(QuestionArray.Answer[QuestionNumber] == Answer_txt.text){
-            self.performSegueWithIdentifier("returnBingoGameView", sender: self)
-            let ctrl = storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
-            self.presentViewController(ctrl, animated: true, completion: nil)
-        }
-    }
-    @IBAction func backBtn_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("returnBingoGameView", sender: self)
-        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
         
-        self.navigationController?.popViewControllerAnimated(true)
-        self.presentViewController(ctrl, animated: true, completion: nil)
+        if(QuestionArray.Answer[QuestionNumber] == Answer_txt.text){
+//            if let navController = self.navigationController {
+//                navController.popViewControllerAnimated(true)
+//                delegate.didFinishSecondVC(self)
+//            }
+        }
+        
+
     }
-    
+//    @IBAction func backBtn_clicked(sender: AnyObject) {
+//        self.performSegueWithIdentifier("returnBingoGameView", sender: self)
+//        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
+//        
+//        self.navigationController?.popViewControllerAnimated(true)
+//        self.presentViewController(ctrl, animated: true, completion: nil)
+//    }
+//    
     
     @IBAction func TextFieldDone(sender: AnyObject) {
         sender.resignFirstResponder()
@@ -68,6 +77,10 @@ class QuestionPageViewContorller: UIViewController {
             destinationController.UserQuestionSet = self.QuestionArray
         }
     }
-    
+    func didFinishSecondVC(controller: QuestionPageViewContorller) {
+        self.myBoolVar = true
+        controller.navigationController?.popViewControllerAnimated(true)
+    }
+
   
 }
