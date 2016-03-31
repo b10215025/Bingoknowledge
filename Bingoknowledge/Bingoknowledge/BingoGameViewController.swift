@@ -24,10 +24,6 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         super.viewDidLoad()
         print(UserQuestionSet.id[0])
         Userid_Label.text = String(self.Userid)
-        for index in 0..<UserQuestionSet.isAnswered.count {
-            UserQuestionSet.isAnswered[index] = true
-        }
-        
     }
     
  
@@ -40,14 +36,8 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
         
-<<<<<<< 30f350c34a655dec3fbc4c42a262dec5e3781bf7
         for(var i = 0; i < 25;i++){
             print("Questionnumber: \(self.UserQuestionSet.id[i])    \(self.UserQuestionSet.isAnswered[i])")
-=======
-        for(var i=0;i < 25;i++){
-            print("id: \(self.UserQuestionSet.id[i])")
-            print("FUCK========== \(UserQuestionSet.isAnswered[i])")
->>>>>>> none
         }
         
     }
@@ -59,18 +49,6 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         }
     }
     
-    
-    @IBAction func isBingo(sender: UIButton) -> Bool {
-        if UserQuestionSet.isAnswered[0] == true{
-            print("BINGOOOOO")
-            return true
-        }
-        else{
-            return false
-
-        }
-        
-    }
 
     @IBAction func backBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("returnGameView", sender: self)

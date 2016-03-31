@@ -220,7 +220,7 @@
 				TargetAttributes = {
 					FB06BF101C9A9AC9002F4FE2 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 83XE9BDRQ7;
+						DevelopmentTeam = 6WYQM4646X;
 					};
 				};
 			};
@@ -453,9 +453,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Bingoknowledge/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hs.bingo;
+				PRODUCT_BUNDLE_IDENTIFIER = "ntustcsie.Bingo-ver1";
 				PRODUCT_NAME = Bingoknowledge;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -469,9 +468,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Bingoknowledge/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = hs.bingo;
+				PRODUCT_BUNDLE_IDENTIFIER = "ntustcsie.Bingo-ver1";
 				PRODUCT_NAME = Bingoknowledge;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
