@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol Myprotocol {
+    func PassDataBack(viewUrl:QuestionSet)
+}
 
 
 
@@ -16,7 +19,8 @@ class QuestionPageViewContorller: UIViewController {
     var QuestionArray:QuestionSet = QuestionSet.init()
     var QuestionNumber = 0
     var myBoolVar = false
-    
+    var delegate : Myprotocol?
+     
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var Question_Label: UILabel!
     @IBOutlet weak var SubmitBtn: UIButton!
@@ -41,27 +45,18 @@ class QuestionPageViewContorller: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     // compare UserAnswer is same with QuestionAnswer
     @IBAction func SubmitBtn_clicked(sender: AnyObject) {
         
         if(QuestionArray.Answer[QuestionNumber] == Answer_txt.text){
-//            if let navController = self.navigationController {
-//                navController.popViewControllerAnimated(true)
-//                delegate.didFinishSecondVC(self)
-//            }
+            QuestionArray.isAnswered[QuestionNumber] = true
+            self.delegate?.PassDataBack(QuestionArray)
+            if let navController = self.navigationController {
+                navController.popViewControllerAnimated(true)
+            }
         }
-        
-
     }
-//    @IBAction func backBtn_clicked(sender: AnyObject) {
-//        self.performSegueWithIdentifier("returnBingoGameView", sender: self)
-//        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("BingoGameView")  as! BingoGameViewContorller
-//        
-//        self.navigationController?.popViewControllerAnimated(true)
-//        self.presentViewController(ctrl, animated: true, completion: nil)
-//    }
-//    
-    
     @IBAction func TextFieldDone(sender: AnyObject) {
         sender.resignFirstResponder()
     }
@@ -70,17 +65,12 @@ class QuestionPageViewContorller: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let checkedImage = UIImage(named: "checked_checkbox")
         if segue.identifier == "toBingiGameView" {
             let destinationController =  segue.destinationViewController as! BingoGameViewContorller
-//            destinationController.UserQuestionArray = self.QuestionArray
             destinationController.UserQuestionSet = self.QuestionArray
         }
     }
-    func didFinishSecondVC(controller: QuestionPageViewContorller) {
-        self.myBoolVar = true
-        controller.navigationController?.popViewControllerAnimated(true)
-    }
+
 
   
 }

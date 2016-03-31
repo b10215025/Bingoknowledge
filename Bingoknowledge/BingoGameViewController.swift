@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BingoGameViewContorller: UIViewController {
+class BingoGameViewContorller: UIViewController ,Myprotocol{
 //    var UserQuestionArray1 = [QuestionSet]()
     var UserQuestionSet:QuestionSet = QuestionSet.init()
     var token = 0
@@ -36,16 +36,15 @@ class BingoGameViewContorller: UIViewController {
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
         
-        for(var i=0;i < 25;i++){
-            print("id: \(self.UserQuestionSet.id[i])")
+        for(var i = 0; i < 25;i++){
+            print("Questionnumber: \(self.UserQuestionSet.id[i])    \(self.UserQuestionSet.isAnswered[i])")
         }
         
     }
     //Question Clicked
     @IBAction func QuestionBtn_clicked(sender: AnyObject) {
         self.token = sender.tag
-        
-        if(self.token < 25 && self.token > 0){
+        if(self.token < 25 && self.token >= 0){
             self.performSegueWithIdentifier("toQuestionPageView", sender: self)
         }
     }
@@ -62,7 +61,10 @@ class BingoGameViewContorller: UIViewController {
             let destinationController =  segue.destinationViewController as! QuestionPageViewContorller
             destinationController.QuestionArray = self.UserQuestionSet
             destinationController.QuestionNumber = self.token
+            destinationController.delegate = self
         }
     }
-
+    func PassDataBack(data:QuestionSet){
+        self.UserQuestionSet = data
+    }
 }

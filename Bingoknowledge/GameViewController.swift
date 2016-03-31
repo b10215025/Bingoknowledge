@@ -27,6 +27,7 @@ class GameViewController: UIViewController {
         
                 //use method to process JSON
                 testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
+        
                 for(var i = 0; i < 10 ;i++){
                     userdataset.id[i] = testarray[i]["id"] as! Int
                     userdataset.Question[i] = testarray[i]["question"] as! String
@@ -35,7 +36,6 @@ class GameViewController: UIViewController {
                 }
                 self.UserQuestionArray = userdataset
         //--test end
-        print(UserQuestionArray.id[2])
         // Do any additional setup after loading the view.
     }
 

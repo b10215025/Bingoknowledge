@@ -17,10 +17,10 @@ struct QuestionSet {
     var isAnswered = [Bool]()
     
     init(){
-        id = [Int](count: 25, repeatedValue: 123)
-        Question = [String](count: 25, repeatedValue: "222")
-        Answer = [String](count: 25, repeatedValue: "")
-        Tip = [String](count: 25, repeatedValue: "")
+        id = [Int](count: 25, repeatedValue: 0)
+        Question = [String](count: 25, repeatedValue: "empty")
+        Answer = [String](count: 25, repeatedValue: "empty")
+        Tip = [String](count: 25, repeatedValue: "empty")
         level = [Int](count: 25, repeatedValue: 0)
         isAnswered = [Bool](count: 25, repeatedValue: false)
     }
