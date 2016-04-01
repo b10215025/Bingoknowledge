@@ -15,13 +15,12 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     var Userid = 0
     
     @IBOutlet weak var Userid_Label: UILabel!
-    @IBOutlet weak var backBtn: UIButton!
-    @IBOutlet weak var QuestionBtn1: UIButton!
-    @IBOutlet weak var QuestionBtn2: UIButton!
     @IBOutlet weak var testBtn: UIButton!
+    @IBOutlet var QuestionBtnArray: [UIButton]!
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(QuestionBtnArray.count)
         print(UserQuestionSet.id[0])
         Userid_Label.text = String(self.Userid)
     }
@@ -48,14 +47,15 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             self.performSegueWithIdentifier("toQuestionPageView", sender: self)
         }
     }
-    
+//    
+//    
+//    @IBAction func backBtn_clicked(sender: AnyObject) {
+//        self.performSegueWithIdentifier("returnGameView", sender: self)
+//        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
+//        self.presentViewController(ctrl, animated: true, completion: nil)
+//    }
 
-    @IBAction func backBtn_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("returnGameView", sender: self)
-        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
-        self.presentViewController(ctrl, animated: true, completion: nil)
-    }
-
+    //pass data to QuestionPage
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toQuestionPageView" {
             let destinationController =  segue.destinationViewController as! QuestionPageViewContorller
@@ -64,7 +64,12 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             destinationController.delegate = self
         }
     }
-    func PassDataBack(data:QuestionSet){
-        self.UserQuestionSet = data
+    //pass data back from QuestionPage
+    func PassDataBack(UserQuestionArray:QuestionSet,QuestionNum:Int){
+        self.UserQuestionSet = UserQuestionArray
+        let checkedImage = UIImage(named: "checked_checkbox")
+        self.QuestionBtnArray[QuestionNum].setImage(checkedImage, forState: .Normal)
+        self.QuestionBtnArray[QuestionNum].enabled = false
     }
+    
 }

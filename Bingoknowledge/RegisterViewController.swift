@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-   
+    // Register Action
     @IBAction func RegisterBtn_clicked(sender: AnyObject) {
         var token:Bool = false
         var Identity:String = ""
