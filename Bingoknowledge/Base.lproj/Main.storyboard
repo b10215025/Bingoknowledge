@@ -595,13 +595,6 @@
                                     <action selector="QuestionBtn_clicked:" destination="oPP-Hp-Fe0" eventType="touchUpInside" id="NcH-BZ-yHR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N88-15-ww2">
-                                <rect key="frame" x="167" y="436" width="40" height="30"/>
-                                <state key="normal" title="Bingo"/>
-                                <connections>
-                                    <action selector="bingoBtnClicked:" destination="oPP-Hp-Fe0" eventType="touchUpInside" id="MdW-Ad-1up"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
