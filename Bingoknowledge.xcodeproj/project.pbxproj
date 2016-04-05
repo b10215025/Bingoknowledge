@@ -15,9 +15,10 @@
 		FB0D34A81CA9382A00D3FBDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0D34A61CA9382A00D3FBDB /* Main.storyboard */; };
 		FB0DC7A61CA451780018CEB5 /* ProcessJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0DC7A51CA451780018CEB5 /* ProcessJSON.swift */; };
 		FB0DC7AE1CA45CF10018CEB5 /* BingoGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */; };
+		FB1785361CB20EE000A7E77B /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1785351CB20EE000A7E77B /* SetThemeViewController.swift */; };
 		FB4B18351CAA202A0082B9CA /* preView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B18341CAA202A0082B9CA /* preView.swift */; };
 		FB7050ED1C9D504200A02FB1 /* checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7050EC1C9D504200A02FB1 /* checkbox.swift */; };
-		FB7051561C9E8BFE00A02FB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7051471C9E8BCA00A02FB1 /* Alamofire.framework */; };
+		FB7051561C9E8BFE00A02FB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7051471C9E8BCA00A02FB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB7051581C9E8C2F00A02FB1 /* Alamofire.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = FB7051471C9E8BCA00A02FB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB7051601C9F0D9200A02FB1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */; };
 		FB712F221CA4601E0060F198 /* QuestionPageViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */; };
@@ -110,6 +111,7 @@
 		FB0D34A71CA9382A00D3FBDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB0DC7A51CA451780018CEB5 /* ProcessJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessJSON.swift; sourceTree = "<group>"; };
 		FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BingoGameViewController.swift; sourceTree = "<group>"; };
+		FB1785351CB20EE000A7E77B /* SetThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
 		FB4B18341CAA202A0082B9CA /* preView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = preView.swift; sourceTree = "<group>"; };
 		FB7050EC1C9D504200A02FB1 /* checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkbox.swift; sourceTree = "<group>"; };
 		FB70513C1C9E8BCA00A02FB1 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				FBD927221CA900EC004A806A /* LoginViewController.swift */,
 				FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */,
 				FB06BF261C9A9B71002F4FE2 /* GameMainViewController.swift */,
+				FB1785351CB20EE000A7E77B /* SetThemeViewController.swift */,
 				FBEE640E1CA51090002D621D /* GameViewController.swift */,
 				FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */,
 				FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */,
@@ -320,6 +323,7 @@
 			files = (
 				FBEE640F1CA51090002D621D /* GameViewController.swift in Sources */,
 				FB7050ED1C9D504200A02FB1 /* checkbox.swift in Sources */,
+				FB1785361CB20EE000A7E77B /* SetThemeViewController.swift in Sources */,
 				FB4B18351CAA202A0082B9CA /* preView.swift in Sources */,
 				FB7051601C9F0D9200A02FB1 /* RegisterViewController.swift in Sources */,
 				FB712F221CA4601E0060F198 /* QuestionPageViewContorller.swift in Sources */,
@@ -452,9 +456,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Bingoknowledge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ntustcsie.Bingo-ver1";
+				PRODUCT_BUNDLE_IDENTIFIER = ntustcsie.Bingoknowledge;
 				PRODUCT_NAME = Bingoknowledge;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -467,9 +473,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Bingoknowledge/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ntustcsie.Bingo-ver1";
+				PRODUCT_BUNDLE_IDENTIFIER = ntustcsie.Bingoknowledge;
 				PRODUCT_NAME = Bingoknowledge;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+
 //import
 
 class GameMainViewController: UIViewController {
@@ -14,6 +16,7 @@ class GameMainViewController: UIViewController {
     var Userid = 0
     @IBOutlet weak var back: UIButton!
     
+    @IBOutlet weak var TeacherSetTheme: UIButton!
   
     
     @IBOutlet weak var NextPageBtn: UIButton!
@@ -40,13 +43,24 @@ class GameMainViewController: UIViewController {
     }
     @IBAction func NextPageBtn_clicked(sender: AnyObject) {
         self.performSegueWithIdentifier("toGameView", sender: self)
-  }
-   
+    }
+    
+    @IBAction func TeacherSetTheme_clicked(sender: AnyObject) {
+        self.performSegueWithIdentifier("toSetThemeView", sender: self)
+    }
+
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toGameView" {
             let destinationController =  segue.destinationViewController as! GameViewController
             destinationController.Userid = self.Userid            
         }
+        if segue.identifier == "toSetThemeView" {
+            let destinationController =  segue.destinationViewController as! SetThemeViewController
+            destinationController.Userid = self.Userid
+        }
+        
+    }
+    @IBAction func testBtn_clicked(sender: AnyObject) {
     }
 }

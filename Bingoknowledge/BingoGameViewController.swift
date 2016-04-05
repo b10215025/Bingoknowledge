@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BingoGameViewContorller: UIViewController ,Myprotocol{
 //    var UserQuestionArray1 = [QuestionSet]()
@@ -72,4 +73,8 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         self.QuestionBtnArray[QuestionNum].enabled = false
     }
     
+    @IBAction func Test_upload(sender: AnyObject) {
+
+      
+    }
 }

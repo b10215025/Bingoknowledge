@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
         }
 
     }
-    
+   
     //passing Userid to GameMainView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toGameMainView" {
@@ -77,6 +77,10 @@ class LoginViewController: UIViewController {
         let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterView")  as! RegisterViewController
         self.presentViewController(ctrl, animated: true, completion: nil)
         
+    }
+    
+    @IBAction func test(sender: AnyObject) {
+        self.performSegueWithIdentifier("toGameMainView", sender: self)
     }
     
     

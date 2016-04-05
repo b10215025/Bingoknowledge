@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Alamofire
 class GameViewController: UIViewController {
     //    var UserQuestionArray = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
     //test class 3/28
@@ -15,7 +15,9 @@ class GameViewController: UIViewController {
     var Userid = 0
     
     @IBOutlet weak var SingleGameBtn: UIButton!
+    @IBOutlet weak var OnlineGameBtn: UIButton!
     @IBOutlet weak var Userid_label: UILabel!
+    @IBOutlet weak var SearchBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class GameViewController: UIViewController {
         
         //use method to process JSON
         testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
+        
         //read data 
         for var i in 0..<10 {
             userdataset.id[i] = testarray[i]["id"] as! Int
@@ -36,6 +39,8 @@ class GameViewController: UIViewController {
         }
         self.UserQuestionArray = userdataset
         //--end
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -55,5 +60,9 @@ class GameViewController: UIViewController {
             destinationController.Userid = self.Userid
         }
     }
-    
+    //--test search function
+    @IBAction func SearchBtn_clicked(sender: AnyObject) {
+  
+    }
+    //--end
 }
