@@ -32,6 +32,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         // Dispose of any resources that can be recreated.
 
     }
+
     
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
@@ -77,4 +78,6 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
 
       
     }
+ 
+    
 }
