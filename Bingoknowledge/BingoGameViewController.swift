@@ -37,6 +37,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
 
     }
 
+<<<<<<< HEAD
     
     @IBAction func bingoBtnClicked(sender: UIButton) {
         var  BingoAlert:UIAlertController = UIAlertController(title: "訊息", message: "您還未達成連線，加油！", preferredStyle: UIAlertControllerStyle.Alert)
@@ -55,6 +56,8 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         }
     }
     
+=======
+>>>>>>> 32970a07124f136791cf0efc568329e4fc9ef3e5
     
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
@@ -103,6 +106,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
 =======
 >>>>>>> algorithm
     }
+<<<<<<< HEAD
     
  
 //<<<<<<< HEAD
@@ -162,5 +166,8 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         return false
     }
 //>>>>>>> 016ea1341e39e6d235f25b6d3457fdb4526ffcb2
+=======
+ 
+>>>>>>> 32970a07124f136791cf0efc568329e4fc9ef3e5
     
 }
