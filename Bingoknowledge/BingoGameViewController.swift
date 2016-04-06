@@ -18,6 +18,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     @IBOutlet weak var Userid_Label: UILabel!
     @IBOutlet weak var testBtn: UIButton!
     @IBOutlet var QuestionBtnArray: [UIButton]!
+    @IBOutlet weak var BingocheckBtn: UIButton!
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,14 +36,19 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
 
     
     @IBAction func bingoBtnClicked(sender: UIButton) {
+        var  BingoAlert:UIAlertController = UIAlertController(title: "訊息", message: "您還未達成連線，加油！", preferredStyle: UIAlertControllerStyle.Alert)
+        BingoAlert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         
-        if isBingo(UserQuestionSet){
+
+        if !isBingo(UserQuestionSet) {
             //do sth
-            print("bingo")
+            self.performSegueWithIdentifier("toResultView", sender: self)
+                  
+
         }
         else{
             //do sth else
-            print("Failed")
+             self.presentViewController(BingoAlert, animated: true, completion: nil)
         }
     }
     
@@ -87,10 +93,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         self.QuestionBtnArray[QuestionNum].enabled = false
     }
     
-    @IBAction func Test_upload(sender: AnyObject) {
-
-      
-    }
+ 
 //<<<<<<< HEAD
 // 
 //=======

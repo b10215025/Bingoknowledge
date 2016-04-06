@@ -83,9 +83,12 @@ class RegisterViewController: UIViewController {
                     print(token)
                     token = response.result.value as! Bool
                     if(token){
-                        self.performSegueWithIdentifier("returnLoginView", sender: self)
-                        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
-                        self.presentViewController(ctrl, animated: true, completion: nil)
+//                        self.performSegueWithIdentifier("returnLoginView", sender: self)
+//                        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
+//                        self.presentViewController(ctrl, animated: true, completion: nil)
+                        if let navController = self.navigationController {
+                            navController.popViewControllerAnimated(true)
+                        }
                     }
                     self.presentViewController(RegisterAlert, animated: true, completion: nil)
             }
@@ -126,10 +129,10 @@ class RegisterViewController: UIViewController {
         birthday_txt.resignFirstResponder()
     }
     
-    @IBAction func back_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("returnLoginView", sender: self)
-        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
-        self.presentViewController(ctrl, animated: true, completion: nil)
-    }
-    
+//    @IBAction func back_clicked(sender: AnyObject) {
+//        self.performSegueWithIdentifier("returnLoginView", sender: self)
+//        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
+//        self.presentViewController(ctrl, animated: true, completion: nil)
+//    }
+//    
 }

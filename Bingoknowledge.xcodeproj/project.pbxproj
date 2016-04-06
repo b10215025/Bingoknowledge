@@ -17,6 +17,7 @@
 		FB0DC7AE1CA45CF10018CEB5 /* BingoGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */; };
 		FB1785361CB20EE000A7E77B /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1785351CB20EE000A7E77B /* SetThemeViewController.swift */; };
 		FB4B18351CAA202A0082B9CA /* preView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4B18341CAA202A0082B9CA /* preView.swift */; };
+		FB5ABC0F1CB49C9F000424E0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5ABC0E1CB49C9F000424E0 /* ResultViewController.swift */; };
 		FB7050ED1C9D504200A02FB1 /* checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7050EC1C9D504200A02FB1 /* checkbox.swift */; };
 		FB7051561C9E8BFE00A02FB1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7051471C9E8BCA00A02FB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB7051581C9E8C2F00A02FB1 /* Alamofire.framework in Copy Framework */ = {isa = PBXBuildFile; fileRef = FB7051471C9E8BCA00A02FB1 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -113,6 +114,7 @@
 		FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BingoGameViewController.swift; sourceTree = "<group>"; };
 		FB1785351CB20EE000A7E77B /* SetThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
 		FB4B18341CAA202A0082B9CA /* preView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = preView.swift; sourceTree = "<group>"; };
+		FB5ABC0E1CB49C9F000424E0 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		FB7050EC1C9D504200A02FB1 /* checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkbox.swift; sourceTree = "<group>"; };
 		FB70513C1C9E8BCA00A02FB1 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				FBEE640E1CA51090002D621D /* GameViewController.swift */,
 				FB0DC7AD1CA45CF10018CEB5 /* BingoGameViewController.swift */,
 				FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */,
+				FB5ABC0E1CB49C9F000424E0 /* ResultViewController.swift */,
 				FB0DC7A51CA451780018CEB5 /* ProcessJSON.swift */,
 				FBF948641CA1423B007D9B35 /* QuestionSet.swift */,
 				FB7050EC1C9D504200A02FB1 /* checkbox.swift */,
@@ -330,6 +333,7 @@
 				FB0DC7AE1CA45CF10018CEB5 /* BingoGameViewController.swift in Sources */,
 				FBF948651CA1423B007D9B35 /* QuestionSet.swift in Sources */,
 				FB06BF171C9A9AC9002F4FE2 /* ViewController.swift in Sources */,
+				FB5ABC0F1CB49C9F000424E0 /* ResultViewController.swift in Sources */,
 				FB0DC7A61CA451780018CEB5 /* ProcessJSON.swift in Sources */,
 				FB06BF271C9A9B71002F4FE2 /* GameMainViewController.swift in Sources */,
 				FB06BF151C9A9AC9002F4FE2 /* AppDelegate.swift in Sources */,

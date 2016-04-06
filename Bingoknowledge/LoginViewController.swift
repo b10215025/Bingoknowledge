@@ -74,8 +74,8 @@ class LoginViewController: UIViewController {
     // Register function
     @IBAction func RegisterBtn(sender: AnyObject) {
         self.performSegueWithIdentifier("toRegisterView", sender: self)
-        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterView")  as! RegisterViewController
-        self.presentViewController(ctrl, animated: true, completion: nil)
+//        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterView")  as! RegisterViewController
+//        self.presentViewController(ctrl, animated: true, completion: nil)
         
     }
     
