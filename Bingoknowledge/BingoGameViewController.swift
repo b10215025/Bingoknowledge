@@ -34,6 +34,19 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     }
 
     
+    @IBAction func bingoBtnClicked(sender: UIButton) {
+        
+        if isBingo(UserQuestionSet){
+            //do sth
+            print("bingo")
+        }
+        else{
+            //do sth else
+            print("Failed")
+        }
+    }
+    
+    
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
         
@@ -78,6 +91,62 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
 
       
     }
- 
+//<<<<<<< HEAD
+// 
+//=======
+//    
+    func isBingo(set: QuestionSet) -> Bool{
+        
+        let n = Int(sqrt(Double(set.isAnswered.count)))
+        var bingoCount = 0, secBingoCount = 0
+        
+        for var i in 0..<n {
+            if set.isAnswered[n * i + i] == true{
+                bingoCount += 1
+            }
+            
+            if set.isAnswered[n * i + n - i - 1] == true{
+                secBingoCount += 1
+            }
+            
+        }
+        
+        if bingoCount == 0 || secBingoCount == 0{
+            return false
+        }
+        else if bingoCount == n || secBingoCount == n {
+            return true
+        }
+            
+            //checking vert＆hori bingo
+        else{
+            bingoCount = 0
+            secBingoCount = 0
+            
+            for var i in 0..<n {
+                for var j in 0..<n{
+                    if set.isAnswered[j + i * n] == true {
+                        bingoCount += 1
+                    }
+                    if set.isAnswered[i + j * n] == true {
+                        secBingoCount += 1
+                    }
+                    
+                }
+                
+                if bingoCount == n || secBingoCount == n{
+                    return true
+                }
+                else{
+                    bingoCount = 0
+                    secBingoCount = 0
+                }
+                
+            }
+            
+        }
+        return false
+    }
+//>>>>>>> 016ea1341e39e6d235f25b6d3457fdb4526ffcb2
     
 }

@@ -741,6 +741,13 @@
                                     <action selector="Test_upload:" destination="oPP-Hp-Fe0" eventType="touchUpInside" id="d35-UO-V4c"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJI-uT-aH4">
+                                <rect key="frame" x="167" y="441" width="40" height="30"/>
+                                <state key="normal" title="Bingo"/>
+                                <connections>
+                                    <action selector="bingoBtnClicked:" destination="oPP-Hp-Fe0" eventType="touchUpInside" id="K71-gS-bhD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
