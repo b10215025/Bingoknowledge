@@ -61,12 +61,15 @@ class GameViewController: UIViewController {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     //--test search function
     @IBAction func SearchBtn_clicked(sender: AnyObject) {
   
     }
     //--end
 =======
+=======
+>>>>>>> algorithm
     @IBAction func OnlineGameBtn_clicked(sender: AnyObject) {
         var room_id = 9
         var TestQuestionSet:QuestionSet = QuestionSet.init()
@@ -97,6 +100,40 @@ class GameViewController: UIViewController {
         var idstr : String = ""
         
         var SearchAlert:UIAlertController = UIAlertController(title: "查詢頁面", message:"請輸入教師ID" , preferredStyle: UIAlertControllerStyle.Alert)
+<<<<<<< HEAD
+
+        
+        SearchAlert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "教師ＩＤ"
+        }
+        let submit = UIAlertAction(title: "查詢", style: UIAlertActionStyle.Default , handler: { action in
+                      idstr = (SearchAlert.textFields!.first! as UITextField).text!
+//                    idstr = input.text as! String!
+            
+        })
+        SearchAlert.addAction(submit)
+     
+        presentViewController(SearchAlert, animated: true, completion: nil)
+        //request data from database
+        Alamofire.request(.GET, "http://bingo.villager.website/exams/search", parameters:
+            ["user_id": Teacher_id ])
+            .responseJSON {
+                response in
+                var result = response.result.value
+                var n = Int((result?.count)!)
+                for var i in 0..<n {
+                    idstr += String("\(result![i]) ")
+                }
+                print(idstr)
+        }
+        
+    }
+
+        
+        
+>>>>>>> algorithm
+=======
 
         
         SearchAlert.addTextFieldWithConfigurationHandler {

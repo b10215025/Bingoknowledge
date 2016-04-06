@@ -19,6 +19,10 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     @IBOutlet weak var testBtn: UIButton!
     @IBOutlet var QuestionBtnArray: [UIButton]!
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    @IBOutlet weak var BingocheckBtn: UIButton!
+>>>>>>> algorithm
 =======
     @IBOutlet weak var BingocheckBtn: UIButton!
 >>>>>>> algorithm
@@ -38,6 +42,9 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> algorithm
     
     @IBAction func bingoBtnClicked(sender: UIButton) {
         var  BingoAlert:UIAlertController = UIAlertController(title: "訊息", message: "您還未達成連線，加油！", preferredStyle: UIAlertControllerStyle.Alert)
@@ -56,8 +63,11 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         }
     }
     
+<<<<<<< HEAD
 =======
 >>>>>>> 32970a07124f136791cf0efc568329e4fc9ef3e5
+=======
+>>>>>>> algorithm
     
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
@@ -98,6 +108,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         self.QuestionBtnArray[QuestionNum].setImage(checkedImage, forState: .Normal)
         self.QuestionBtnArray[QuestionNum].enabled = false
 <<<<<<< HEAD
+<<<<<<< HEAD
     }
     
     @IBAction func Test_upload(sender: AnyObject) {
@@ -108,6 +119,10 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     }
 <<<<<<< HEAD
     
+=======
+    }
+    
+>>>>>>> algorithm
  
 //<<<<<<< HEAD
 // 
@@ -166,8 +181,11 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         return false
     }
 //>>>>>>> 016ea1341e39e6d235f25b6d3457fdb4526ffcb2
+<<<<<<< HEAD
 =======
  
 >>>>>>> 32970a07124f136791cf0efc568329e4fc9ef3e5
+=======
+>>>>>>> algorithm
     
 }

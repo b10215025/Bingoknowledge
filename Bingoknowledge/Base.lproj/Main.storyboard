@@ -443,6 +443,12 @@
                                 <rect key="frame" x="130" y="202" width="60" height="30"/>
                                 <state key="normal" title="線上遊戲"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                                <connections>
+                                    <action selector="OnlineGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="nHW-fP-Ap4"/>
+                                </connections>
+>>>>>>> algorithm
 =======
                                 <connections>
                                     <action selector="OnlineGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="nHW-fP-Ap4"/>
@@ -770,7 +776,11 @@
                                 </state>
                             </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sh-he-eRe">
+=======
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sh-he-eRe">
+>>>>>>> algorithm
 =======
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sh-he-eRe">
 >>>>>>> algorithm
@@ -781,7 +791,10 @@
                                 </connections>
                             </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> algorithm
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJI-uT-aH4">
                                 <rect key="frame" x="160" y="452" width="40" height="30"/>
                                 <state key="normal" title="Bingo"/>
@@ -789,6 +802,9 @@
                                     <action selector="bingoBtnClicked:" destination="oPP-Hp-Fe0" eventType="touchUpInside" id="K71-gS-bhD"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
+>>>>>>> algorithm
+=======
 >>>>>>> algorithm
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -802,6 +818,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                        <outlet property="BingocheckBtn" destination="oJI-uT-aH4" id="KYh-Yx-zdp"/>
+>>>>>>> algorithm
 =======
                         <outlet property="BingocheckBtn" destination="oJI-uT-aH4" id="KYh-Yx-zdp"/>
 >>>>>>> algorithm
@@ -935,7 +955,11 @@
     </scenes>
     <inferredMetricsTieBreakers>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <segue reference="jvk-i0-twU"/>
+=======
+        <segue reference="496-cS-Fej"/>
+>>>>>>> algorithm
 =======
         <segue reference="496-cS-Fej"/>
 >>>>>>> algorithm
