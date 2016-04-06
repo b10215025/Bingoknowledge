@@ -84,43 +84,45 @@ class GameViewController: UIViewController {
         
         
     }
-    //--test search function
+    //Search function
     @IBAction func SearchBtn_clicked(sender: AnyObject) {
-        var Teacher_id :Int = 23
-        var idstr : String = ""
-        
+        var QuestionSetNum : String = ""
+        // user enter teacherID to search QuestionSetNum
         var SearchAlert:UIAlertController = UIAlertController(title: "查詢頁面", message:"請輸入教師ID" , preferredStyle: UIAlertControllerStyle.Alert)
-
-        
         SearchAlert.addTextFieldWithConfigurationHandler {
             (textField: UITextField!) -> Void in
-            textField.placeholder = "教師ＩＤ"
+            textField.placeholder = "教師ID"
         }
-        let submit = UIAlertAction(title: "查詢", style: UIAlertActionStyle.Default , handler: { action in
-                      idstr = (SearchAlert.textFields!.first! as UITextField).text!
-//                    idstr = input.text as! String!
-            
+        //request sever and show result after user enter teacherID
+        let submit = UIAlertAction(title: "查詢", style: UIAlertActionStyle.Default , handler: {
+            action in
+                //read user enter userid
+                let Teacher_id = (SearchAlert.textFields!.first! as UITextField).text!
+                //request sever
+                Alamofire.request(.GET, "http://bingo.villager.website/exams/search",parameters:["user_id": Teacher_id ]).responseJSON {response in
+                        var result = response.result.value
+                        //use UIAlertcontroller show result
+                        if(result != nil && result?.count != 0){
+                            for var i in 0..<Int((result?.count)!) {
+                                QuestionSetNum += String("\(result![i])，")
+                            }
+                            var ShowAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "教師編號:\(Teacher_id) \n 所有題組編號：\n{ \(QuestionSetNum)}" , preferredStyle: UIAlertControllerStyle.Alert)
+                            ShowAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(ShowAlert, animated: true, completion: nil)
+                        }
+                        else{
+                            var errorAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "您所查詢之ID尚未創建任何題組" , preferredStyle: UIAlertControllerStyle.Alert)
+                            errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(errorAlert, animated: true, completion: nil)
+                        }
+                }
         })
         SearchAlert.addAction(submit)
-     
         presentViewController(SearchAlert, animated: true, completion: nil)
-        //request data from database
-        Alamofire.request(.GET, "http://bingo.villager.website/exams/search", parameters:
-            ["user_id": Teacher_id ])
-            .responseJSON {
-                response in
-                var result = response.result.value
-                var n = Int((result?.count)!)
-                for var i in 0..<n {
-                    idstr += String("\(result![i]) ")
-                }
-                print(idstr)
-        }
-        
     }
 
         
         
 }
-    //--end
+
 

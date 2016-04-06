@@ -263,13 +263,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="出題系統" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4d-lH-Pjp">
-                                <rect key="frame" x="39" y="54" width="280" height="54"/>
+                                <rect key="frame" x="39" y="64" width="280" height="54"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第幾題" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUp-n3-k3u">
-                                <rect key="frame" x="154" y="116" width="108" height="21"/>
+                                <rect key="frame" x="154" y="126" width="108" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -332,7 +332,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNU-kv-W77">
-                                <rect key="frame" x="34" y="70" width="42" height="21"/>
+                                <rect key="frame" x="34" y="80" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -432,16 +432,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4g-Op-yQr">
-                                <rect key="frame" x="130" y="148" width="60" height="30"/>
-                                <state key="normal" title="單人遊戲"/>
-                                <connections>
-                                    <action selector="SingleGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="1tq-H2-ec8"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-MZ-FQo">
                                 <rect key="frame" x="130" y="202" width="60" height="30"/>
-                                <state key="normal" title="線上遊戲"/>
+                                <state key="normal" title="線上模式"/>
                                 <connections>
                                     <action selector="OnlineGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="nHW-fP-Ap4"/>
                                 </connections>
@@ -451,6 +444,13 @@
                                 <state key="normal" title="查詢題組"/>
                                 <connections>
                                     <action selector="SearchBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="hhj-mw-9hc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4g-Op-yQr">
+                                <rect key="frame" x="130" y="148" width="60" height="30"/>
+                                <state key="normal" title="預設模式"/>
+                                <connections>
+                                    <action selector="SingleGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="1tq-H2-ec8"/>
                                 </connections>
                             </button>
                         </subviews>
