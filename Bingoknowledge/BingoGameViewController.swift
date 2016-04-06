@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class BingoGameViewContorller: UIViewController ,Myprotocol{
 //    var UserQuestionArray1 = [QuestionSet]()
@@ -15,13 +16,16 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     var Userid = 0
     
     @IBOutlet weak var Userid_Label: UILabel!
-    @IBOutlet weak var backBtn: UIButton!
-    @IBOutlet weak var QuestionBtn1: UIButton!
-    @IBOutlet weak var QuestionBtn2: UIButton!
     @IBOutlet weak var testBtn: UIButton!
+    @IBOutlet var QuestionBtnArray: [UIButton]!
+<<<<<<< HEAD
+=======
+    @IBOutlet weak var BingocheckBtn: UIButton!
+>>>>>>> algorithm
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(QuestionBtnArray.count)
         print(UserQuestionSet.id[0])
         Userid_Label.text = String(self.Userid)
     }
@@ -32,6 +36,25 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         // Dispose of any resources that can be recreated.
 
     }
+
+    
+    @IBAction func bingoBtnClicked(sender: UIButton) {
+        var  BingoAlert:UIAlertController = UIAlertController(title: "訊息", message: "您還未達成連線，加油！", preferredStyle: UIAlertControllerStyle.Alert)
+        BingoAlert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        
+
+        if !isBingo(UserQuestionSet) {
+            //do sth
+            self.performSegueWithIdentifier("toResultView", sender: self)
+                  
+
+        }
+        else{
+            //do sth else
+             self.presentViewController(BingoAlert, animated: true, completion: nil)
+        }
+    }
+    
     
     //testbtn action
     @IBAction func testBtn_clicked(sender: AnyObject) {
@@ -48,14 +71,15 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             self.performSegueWithIdentifier("toQuestionPageView", sender: self)
         }
     }
-    
+//    
+//    
+//    @IBAction func backBtn_clicked(sender: AnyObject) {
+//        self.performSegueWithIdentifier("returnGameView", sender: self)
+//        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
+//        self.presentViewController(ctrl, animated: true, completion: nil)
+//    }
 
-    @IBAction func backBtn_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("returnGameView", sender: self)
-        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
-        self.presentViewController(ctrl, animated: true, completion: nil)
-    }
-
+    //pass data to QuestionPage
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toQuestionPageView" {
             let destinationController =  segue.destinationViewController as! QuestionPageViewContorller
@@ -64,7 +88,79 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             destinationController.delegate = self
         }
     }
-    func PassDataBack(data:QuestionSet){
-        self.UserQuestionSet = data
+    //pass data back from QuestionPage
+    func PassDataBack(UserQuestionArray:QuestionSet,QuestionNum:Int){
+        self.UserQuestionSet = UserQuestionArray
+        let checkedImage = UIImage(named: "checked_checkbox")
+        self.QuestionBtnArray[QuestionNum].setImage(checkedImage, forState: .Normal)
+        self.QuestionBtnArray[QuestionNum].enabled = false
+<<<<<<< HEAD
     }
+    
+    @IBAction func Test_upload(sender: AnyObject) {
+
+      
+=======
+>>>>>>> algorithm
+    }
+    
+ 
+//<<<<<<< HEAD
+// 
+//=======
+//    
+    func isBingo(set: QuestionSet) -> Bool{
+        
+        let n = Int(sqrt(Double(set.isAnswered.count)))
+        var bingoCount = 0, secBingoCount = 0
+        
+        for var i in 0..<n {
+            if set.isAnswered[n * i + i] == true{
+                bingoCount += 1
+            }
+            
+            if set.isAnswered[n * i + n - i - 1] == true{
+                secBingoCount += 1
+            }
+            
+        }
+        
+        if bingoCount == 0 || secBingoCount == 0{
+            return false
+        }
+        else if bingoCount == n || secBingoCount == n {
+            return true
+        }
+            
+            //checking vert＆hori bingo
+        else{
+            bingoCount = 0
+            secBingoCount = 0
+            
+            for var i in 0..<n {
+                for var j in 0..<n{
+                    if set.isAnswered[j + i * n] == true {
+                        bingoCount += 1
+                    }
+                    if set.isAnswered[i + j * n] == true {
+                        secBingoCount += 1
+                    }
+                    
+                }
+                
+                if bingoCount == n || secBingoCount == n{
+                    return true
+                }
+                else{
+                    bingoCount = 0
+                    secBingoCount = 0
+                }
+                
+            }
+            
+        }
+        return false
+    }
+//>>>>>>> 016ea1341e39e6d235f25b6d3457fdb4526ffcb2
+    
 }

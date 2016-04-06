@@ -18,9 +18,9 @@ struct QuestionSet {
     
     init(){
         id = [Int](count: 25, repeatedValue: 0)
-        Question = [String](count: 25, repeatedValue: "empty")
-        Answer = [String](count: 25, repeatedValue: "empty")
-        Tip = [String](count: 25, repeatedValue: "empty")
+        Question = [String](count: 25, repeatedValue: "")
+        Answer = [String](count: 25, repeatedValue: "")
+        Tip = [String](count: 25, repeatedValue: "")
         level = [Int](count: 25, repeatedValue: 0)
         isAnswered = [Bool](count: 25, repeatedValue: false)
     }
