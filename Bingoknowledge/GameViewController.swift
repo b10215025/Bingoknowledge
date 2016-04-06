@@ -60,9 +60,67 @@ class GameViewController: UIViewController {
             destinationController.Userid = self.Userid
         }
     }
+    @IBAction func OnlineGameBtn_clicked(sender: AnyObject) {
+        var room_id = 9
+        var TestQuestionSet:QuestionSet = QuestionSet.init()
+        Alamofire.request(.GET, "http://bingo.villager.website/exams/print_exam_set", parameters:
+            ["exam_set_id": room_id ])
+            .responseJSON {
+                response in
+                var result = response.result.value
+                var n = Int((result?.count)!)
+                
+                for var i in 0..<25{
+                    TestQuestionSet.Question[i] = result!["question"]!![i] as!  String
+                    TestQuestionSet.Answer[i] = result!["answer"]!![i] as!  String
+                    TestQuestionSet.Tip[i] = result!["tips"]!![i] as!  String
+                    
+                }
+            print(TestQuestionSet.Question)
+            print(TestQuestionSet.Tip)
+            print(TestQuestionSet.Answer)
+                
+        }
+        
+        
+    }
     //--test search function
     @IBAction func SearchBtn_clicked(sender: AnyObject) {
-  
+        var Teacher_id :Int = 23
+        var idstr : String = ""
+        
+        var SearchAlert:UIAlertController = UIAlertController(title: "查詢頁面", message:"請輸入教師ID" , preferredStyle: UIAlertControllerStyle.Alert)
+
+        
+        SearchAlert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "教師ＩＤ"
+        }
+        let submit = UIAlertAction(title: "查詢", style: UIAlertActionStyle.Default , handler: { action in
+                      idstr = (SearchAlert.textFields!.first! as UITextField).text!
+//                    idstr = input.text as! String!
+            
+        })
+        SearchAlert.addAction(submit)
+     
+        presentViewController(SearchAlert, animated: true, completion: nil)
+        //request data from database
+        Alamofire.request(.GET, "http://bingo.villager.website/exams/search", parameters:
+            ["user_id": Teacher_id ])
+            .responseJSON {
+                response in
+                var result = response.result.value
+                var n = Int((result?.count)!)
+                for var i in 0..<n {
+                    idstr += String("\(result![i]) ")
+                }
+                print(idstr)
+        }
+        
     }
-    //--end
+
+        
+        
 }
+    //--end
+

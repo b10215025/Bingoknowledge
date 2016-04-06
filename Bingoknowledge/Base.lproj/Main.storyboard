@@ -442,6 +442,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-MZ-FQo">
                                 <rect key="frame" x="130" y="202" width="60" height="30"/>
                                 <state key="normal" title="線上遊戲"/>
+                                <connections>
+                                    <action selector="OnlineGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="nHW-fP-Ap4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-NV-CRc">
                                 <rect key="frame" x="130" y="262" width="60" height="30"/>
