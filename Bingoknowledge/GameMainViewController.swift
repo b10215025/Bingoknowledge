@@ -12,8 +12,9 @@ import Alamofire
 //import
 
 class GameMainViewController: UIViewController {
-    
     var Userid = 0
+    var Identity:String = ""
+    
     @IBOutlet weak var back: UIButton!
     
     @IBOutlet weak var TeacherSetTheme: UIButton!
@@ -46,7 +47,16 @@ class GameMainViewController: UIViewController {
     }
     
     @IBAction func TeacherSetTheme_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("toSetThemeView", sender: self)
+        let errorAlert = UIAlertController(title: "警告", message: "您的權限不足，無法進入", preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+        if(self.Identity == "teacher"){
+            self.performSegueWithIdentifier("toSetThemeView", sender: self)
+        }
+        else{
+            let alertController = UIAlertController(title: "Error", message: "Please check your account or password again.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(errorAlert, animated: true, completion: nil)
+        }
     }
 
 
@@ -55,9 +65,10 @@ class GameMainViewController: UIViewController {
             let destinationController =  segue.destinationViewController as! GameViewController
             destinationController.Userid = self.Userid            
         }
+        
         if segue.identifier == "toSetThemeView" {
-            let destinationController =  segue.destinationViewController as! SetThemeViewController
-            destinationController.Userid = self.Userid
+                let destinationController =  segue.destinationViewController as! SetThemeViewController
+                destinationController.Userid = self.Userid
         }
         
     }

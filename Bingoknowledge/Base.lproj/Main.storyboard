@@ -331,12 +331,6 @@
                                     <action selector="SubmitBtn_clicked:" destination="L8U-9k-FEg" eventType="touchUpInside" id="lfn-5B-jOi"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNU-kv-W77">
-                                <rect key="frame" x="34" y="80" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.3899874713" green="1" blue="0.51216985039999996" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -353,7 +347,6 @@
                         <outlet property="Tip_label" destination="Ei5-f0-Opd" id="PfL-oQ-x7w"/>
                         <outlet property="Tip_txt" destination="7IR-4v-ivI" id="xZp-mD-W1t"/>
                         <outlet property="Title_label" destination="S4d-lH-Pjp" id="e4n-b4-wgp"/>
-                        <outlet property="userid_label" destination="cNU-kv-W77" id="Y1p-o9-UsK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0D-GG-ViD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,21 +426,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-MZ-FQo">
-                                <rect key="frame" x="130" y="202" width="60" height="30"/>
+                                <rect key="frame" x="134" y="239" width="60" height="30"/>
                                 <state key="normal" title="線上模式"/>
                                 <connections>
                                     <action selector="OnlineGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="nHW-fP-Ap4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-NV-CRc">
-                                <rect key="frame" x="130" y="262" width="60" height="30"/>
+                                <rect key="frame" x="134" y="299" width="60" height="30"/>
                                 <state key="normal" title="查詢題組"/>
                                 <connections>
                                     <action selector="SearchBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="hhj-mw-9hc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4g-Op-yQr">
-                                <rect key="frame" x="130" y="148" width="60" height="30"/>
+                                <rect key="frame" x="134" y="185" width="60" height="30"/>
                                 <state key="normal" title="預設模式"/>
                                 <connections>
                                     <action selector="SingleGameBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="1tq-H2-ec8"/>
@@ -951,10 +944,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0d-ki-wvQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1857" y="240"/>
+            <point key="canvasLocation" x="2023.5" y="249.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="M8L-Pr-TZT"/>
+        <segue reference="496-cS-Fej"/>
     </inferredMetricsTieBreakers>
 </document>

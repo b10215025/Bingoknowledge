@@ -13,6 +13,7 @@ import Alamofire
 
 class LoginViewController: UIViewController {
     var Userid = 0
+    var Identity:String = ""
     
     
     @IBOutlet weak var remain: checkbox!
@@ -51,11 +52,12 @@ class LoginViewController: UIViewController {
             ["user":["account": Accounttxt.text!, "password": Passwordtxt.text!]])
             .responseJSON {
                 response in
-                token = response.result.value as! Int
-                if(token != 0){
-                    self.Userid = token
+                var token = response.result.value
+                print(token)
+                self.Userid = token?.objectForKey("user_id") as! Int
+                if(self.Userid != 0){
+                    self.Identity = token!["identity"] as! String
                     self.performSegueWithIdentifier("toGameMainView", sender: self)
-     
                 }
                 else{
                     self.presentViewController(alertController, animated: true, completion: nil)
@@ -69,6 +71,7 @@ class LoginViewController: UIViewController {
         if segue.identifier == "toGameMainView" {
             let destinationController =  segue.destinationViewController as! GameMainViewController
             destinationController.Userid = self.Userid
+            destinationController.Identity = self.Identity
         }
     }
     // Register function

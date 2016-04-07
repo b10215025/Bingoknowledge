@@ -11,7 +11,7 @@ import Alamofire
 
 class RegisterViewController: UIViewController {
 //    @IBOutlet weak var ClearBtn: UIButton!
-        var testset:QuestionSet = QuestionSet.init()
+    var testset:QuestionSet = QuestionSet.init()
     
     @IBOutlet weak var birthday_txt: UITextField!
     @IBOutlet weak var Passwordagain_txt: UITextField!
@@ -121,6 +121,7 @@ class RegisterViewController: UIViewController {
 
     @IBAction func TextFieldDone(sender: AnyObject) {
         sender.resignFirstResponder()
+
     }
     @IBAction func backgroundtap(sender: AnyObject) {
         Account_txt.resignFirstResponder()

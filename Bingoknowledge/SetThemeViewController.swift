@@ -28,7 +28,7 @@ class SetThemeViewController: UIViewController {
     @IBOutlet weak var ForwardBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        userid_label.text = ("\(Userid)")
+//        userid_label.text = ("\(Userid)")
         QuestionNumber_label.text = "第 \(QuestionNumber + 1) 題"
         
         // Do any additional setup after loading the view.
