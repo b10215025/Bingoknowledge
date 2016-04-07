@@ -22,24 +22,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Userid_label.text = String(self.Userid)
-        // --load Question from server
-        var funcA:ProcessJSON = ProcessJSON()
-        var userdataset:QuestionSet = QuestionSet.init()
-        var testarray:NSArray = NSArray()
-        
-        //use method to process JSON
-        testarray = funcA.parseJSON(funcA.getJSON("http://bingo.villager.website/exams/output"))
-        
-        //read data 
-        for var i in 0..<10 {
-            userdataset.id[i] = testarray[i]["id"] as! Int
-            userdataset.Question[i] = testarray[i]["question"] as! String
-            userdataset.Answer[i] = testarray[i]["answer"] as! String
-            userdataset.Tip[i] = testarray[i]["tips"] as! String
-        }
-        self.UserQuestionArray = userdataset
-        //--end
-        
         
         // Do any additional setup after loading the view.
     }
@@ -50,45 +32,85 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func SingleGameBtn_clicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("toBingoGameView", sender: self)
-    }
-    // pass Question data to BingoGame
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if segue.identifier == "toBingoGameView" {
-            let destinationController =  segue.destinationViewController as! BingoGameViewContorller
-            destinationController.UserQuestionSet = self.UserQuestionArray
-            destinationController.Userid = self.Userid
-        }
-    }
-    @IBAction func OnlineGameBtn_clicked(sender: AnyObject) {
-        var room_id = 9
-        var TestQuestionSet:QuestionSet = QuestionSet.init()
-        Alamofire.request(.GET, "http://bingo.villager.website/exams/print_exam_set", parameters:
-            ["exam_set_id": room_id ])
-            .responseJSON {
-                response in
-                var result = response.result.value
-                var n = Int((result?.count)!)
-                
-                for var i in 0..<25{
-                    TestQuestionSet.Question[i] = result!["question"]!![i] as!  String
-                    TestQuestionSet.Answer[i] = result!["answer"]!![i] as!  String
-                    TestQuestionSet.Tip[i] = result!["tips"]!![i] as!  String
-                    
+        // --load Question from server
+        var userdataset:QuestionSet = QuestionSet.init()
+        
+        //use method to process JSON
+        Alamofire.request(.GET, "http://bingo.villager.website/exams/output").responseJSON {response in
+            var result = response.result.value
+            if (result != nil){
+                for var i in 0..<result!.count{
+                    userdataset.Question[i] = result![i]["question"] as! String
+                    userdataset.Answer[i] = result![i]["answer"] as! String
+                    userdataset.Tip[i] = result![i]["tips"] as! String
                 }
-            print(TestQuestionSet.Question)
-            print(TestQuestionSet.Tip)
-            print(TestQuestionSet.Answer)
-                
+                self.UserQuestionArray = userdataset;
+//                print(self.UserQuestionArray)
+            
+                self.performSegueWithIdentifier("toBingoGameView", sender: self)
+            }
+            else{
+                var errorAlert:UIAlertController = UIAlertController(title: "Error", message:  "系統忙碌中" , preferredStyle: UIAlertControllerStyle.Alert)
+                errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(errorAlert, animated: true, completion: nil)
+            }
         }
+    }
+
+    //Online function
+    @IBAction func OnlineGameBtn_clicked(sender: AnyObject) {
+//        var room_id = 0
+        var TestQuestionSet:QuestionSet = QuestionSet.init()
         
+        var SearchAlert:UIAlertController = UIAlertController(title: "線上模式", message:"請輸入題組代號" , preferredStyle: UIAlertControllerStyle.Alert)
+        SearchAlert.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "題組代號"
+        }
+        let submit = UIAlertAction(title: "查詢", style: UIAlertActionStyle.Default , handler: {
+            action in
+            //read user enter userid
+            let room_id = (SearchAlert.textFields!.first! as UITextField).text!
+            //request sever
+            Alamofire.request(.GET, "http://bingo.villager.website/exams/print_exam_set",parameters:["exam_set_id": room_id ]).responseJSON {response in
+                
+                var result = response.result.value
+                //use UIAlertcontroller show result
+                
+                if(result != nil && result?.count != 0){
+                    var QuestionArray = [String]()
+                    var AnswerArray = [String]()
+                    var TipArray = [String]()
+                    QuestionArray = (result?.objectForKey("question"))! as! [String]
+                    AnswerArray = (result?.objectForKey("answer"))! as! [String]
+                    TipArray = (result?.objectForKey("tips"))! as! [String]
+                    for var i in 0..<25{
+                        TestQuestionSet.Question[i] = QuestionArray[i]
+                        TestQuestionSet.Answer[i] = AnswerArray[i]
+                        TestQuestionSet.Tip[i] = TipArray[i]
+                    }
+                    self.UserQuestionArray = TestQuestionSet
+                    print(self.UserQuestionArray)
+                    self.performSegueWithIdentifier("toBingoGameView", sender: self)
+                }
+                else{
+                    var errorAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "系統查無此題組" , preferredStyle: UIAlertControllerStyle.Alert)
+                    errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(errorAlert, animated: true, completion: nil)
+                }
+            }
+        })
+    
+        
+        SearchAlert.addAction(submit)
+        presentViewController(SearchAlert, animated: true, completion: nil)
         
     }
-    //Search function
+//    //Search QuestionSetNumber function
     @IBAction func SearchBtn_clicked(sender: AnyObject) {
         var QuestionSetNum : String = ""
         // user enter teacherID to search QuestionSetNum
-        var SearchAlert:UIAlertController = UIAlertController(title: "查詢頁面", message:"請輸入教師ID" , preferredStyle: UIAlertControllerStyle.Alert)
+        var SearchAlert:UIAlertController = UIAlertController(title: "查詢頁面", message:"請輸入教師編號" , preferredStyle: UIAlertControllerStyle.Alert)
         SearchAlert.addTextFieldWithConfigurationHandler {
             (textField: UITextField!) -> Void in
             textField.placeholder = "教師ID"
@@ -101,17 +123,22 @@ class GameViewController: UIViewController {
                 //request sever
                 Alamofire.request(.GET, "http://bingo.villager.website/exams/search",parameters:["user_id": Teacher_id ]).responseJSON {response in
                         var result = response.result.value
+                    
                         //use UIAlertcontroller show result
                         if(result != nil && result?.count != 0){
+                            var room = result as! [Int]
+//                            var strroom :String = ""
+//                            strroom = String(room[0]))
+                            
                             for var i in 0..<Int((result?.count)!) {
-                                QuestionSetNum += String("\(result![i])，")
+                                QuestionSetNum += String("\(room[i])，")
                             }
-                            var ShowAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "教師編號:\(Teacher_id) \n 所有題組編號：\n{ \(QuestionSetNum)}" , preferredStyle: UIAlertControllerStyle.Alert)
+                            var ShowAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "教師編號:\(Teacher_id) \n 所有題組代號：\n{ \(QuestionSetNum)}" , preferredStyle: UIAlertControllerStyle.Alert)
                             ShowAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(ShowAlert, animated: true, completion: nil)
                         }
                         else{
-                            var errorAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "您所查詢之ID尚未創建任何題組" , preferredStyle: UIAlertControllerStyle.Alert)
+                            var errorAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "您所查詢之教師尚未創建任何題組或系統內無此教師資訊" , preferredStyle: UIAlertControllerStyle.Alert)
                             errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(errorAlert, animated: true, completion: nil)
                         }
@@ -121,8 +148,15 @@ class GameViewController: UIViewController {
         presentViewController(SearchAlert, animated: true, completion: nil)
     }
 
-        
-        
+    // pass Question data to BingoGame
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "toBingoGameView" {
+            let destinationController =  segue.destinationViewController as! BingoGameViewContorller
+            destinationController.UserQuestionSet = self.UserQuestionArray
+            destinationController.Userid = self.Userid
+        }
+    }
+    
 }
 
 

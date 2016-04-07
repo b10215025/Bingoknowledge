@@ -40,7 +40,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         BingoAlert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         
 
-        if !isBingo(UserQuestionSet) {
+        if isBingo(UserQuestionSet) {
             //do sth
             self.performSegueWithIdentifier("toResultView", sender: self)
                   
@@ -50,16 +50,6 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             //do sth else
              self.presentViewController(BingoAlert, animated: true, completion: nil)
         }
-    }
-    
-    
-    //testbtn action
-    @IBAction func testBtn_clicked(sender: AnyObject) {
-        
-        for(var i = 0; i < 25;i++){
-            print("Questionnumber: \(self.UserQuestionSet.id[i])    \(self.UserQuestionSet.isAnswered[i])")
-        }
-        
     }
     //Question Clicked
     @IBAction func QuestionBtn_clicked(sender: AnyObject) {
