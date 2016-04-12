@@ -11,9 +11,14 @@ import Alamofire
 
 class BingoGameViewContorller: UIViewController ,Myprotocol{
 //    var UserQuestionArray1 = [QuestionSet]()
+    @IBOutlet weak var bingo_background: UIImageView!
+    var gameModel:Int = 0
     var UserQuestionSet:QuestionSet = QuestionSet.init()
     var token = 0
     var Userid = 0
+    var score:Int = 0
+    var totolscore:Int = 0
+    
     
     @IBOutlet weak var Userid_Label: UILabel!
     @IBOutlet weak var testBtn: UIButton!
@@ -22,9 +27,12 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(QuestionBtnArray.count)
-        print(UserQuestionSet.id[0])
+        view.sendSubviewToBack(bingo_background)
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Bordered, target: self, action: "back:")
+        self.navigationItem.leftBarButtonItem = newBackButton;
         Userid_Label.text = String(self.Userid)
+        
     }
     
  
@@ -39,12 +47,19 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         var  BingoAlert:UIAlertController = UIAlertController(title: "訊息", message: "您還未達成連線，加油！", preferredStyle: UIAlertControllerStyle.Alert)
         BingoAlert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         
-
+        // if bingo then addscore and to ResultviewPage
         if isBingo(UserQuestionSet) {
             //do sth
-            self.performSegueWithIdentifier("toResultView", sender: self)
-                  
-
+            self.score  = 15
+            Alamofire.request(.POST , "http://bingo.villager.website/users/add_score", parameters:["user": ["user_id" : self.Userid, "score" : score]])
+                .responseJSON {
+                    response in
+                    var result = response.result.value
+                    print(result)
+                    self.totolscore = result!["score"] as! Int
+                    print(self.totolscore)
+                    self.performSegueWithIdentifier("toResultView", sender: self)
+            }
         }
         else{
             //do sth else
@@ -54,17 +69,10 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     //Question Clicked
     @IBAction func QuestionBtn_clicked(sender: AnyObject) {
         self.token = sender.tag
-        if(self.token < 25 && self.token >= 0){
+        if(self.token < 25 && self.token >= 0 && !UserQuestionSet.isAnswered[sender.tag]){
             self.performSegueWithIdentifier("toQuestionPageView", sender: self)
         }
     }
-//    
-//    
-//    @IBAction func backBtn_clicked(sender: AnyObject) {
-//        self.performSegueWithIdentifier("returnGameView", sender: self)
-//        let ctrl = storyboard?.instantiateViewControllerWithIdentifier("GameView")  as! GameViewController
-//        self.presentViewController(ctrl, animated: true, completion: nil)
-//    }
 
     //pass data to QuestionPage
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
@@ -74,17 +82,26 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             destinationController.QuestionNumber = self.token
             destinationController.delegate = self
         }
+        else if segue.identifier == "toResultView" {
+            let destinationController =  segue.destinationViewController as! ResultViewController
+            destinationController.score = self.score
+            destinationController.totalscore = self.totolscore
+        }
     }
     //pass data back from QuestionPage
     func PassDataBack(UserQuestionArray:QuestionSet,QuestionNum:Int){
         self.UserQuestionSet = UserQuestionArray
-        let checkedImage = UIImage(named: "checked_checkbox")
-        self.QuestionBtnArray[QuestionNum].setImage(checkedImage, forState: .Normal)
-        self.QuestionBtnArray[QuestionNum].enabled = false
+        if(QuestionNum % 2 == 0){
+            self.QuestionBtnArray[QuestionNum].setImage(UIImage(named: "shot_pink"), forState: .Normal)
+        }
+        else{
+            self.QuestionBtnArray[QuestionNum].setImage(UIImage(named: "shot_yellow"), forState: .Normal)
+
+        }
     }
     
  
-//<<<<<<< HEAD
+
 // 
 //=======
 //    
@@ -101,21 +118,17 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             if set.isAnswered[n * i + n - i - 1] == true{
                 secBingoCount += 1
             }
-            
         }
-        
         if bingoCount == 0 || secBingoCount == 0{
             return false
         }
         else if bingoCount == n || secBingoCount == n {
             return true
         }
-            
-            //checking vert＆hori bingo
+        //checking vert＆hori bingo
         else{
             bingoCount = 0
             secBingoCount = 0
-            
             for var i in 0..<n {
                 for var j in 0..<n{
                     if set.isAnswered[j + i * n] == true {
@@ -124,9 +137,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
                     if set.isAnswered[i + j * n] == true {
                         secBingoCount += 1
                     }
-                    
                 }
-                
                 if bingoCount == n || secBingoCount == n{
                     return true
                 }
@@ -134,12 +145,52 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
                     bingoCount = 0
                     secBingoCount = 0
                 }
-                
             }
-            
         }
         return false
     }
-//>>>>>>> 016ea1341e39e6d235f25b6d3457fdb4526ffcb2
+    //back action singlegame provide save fuction but onlinegame
+    func back(sender: UIBarButtonItem) {
+        var backAlert:UIAlertController = UIAlertController(title: "離開當前頁面", message:"是否存檔" , preferredStyle: UIAlertControllerStyle.Alert)
+        let SaveAction = UIAlertAction(title: "存檔", style: .Destructive, handler: {
+            action in
+            Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
+                ["game_record": [ "exam" : self.UserQuestionSet.id ,"situation" : self.UserQuestionSet.isAnswered , "user_id" : self.Userid ]])
+                .responseJSON {
+                    response in
+                    var result = response.result.value
+                    if(result != nil){
+                         self.navigationController?.popViewControllerAnimated(true)
+                    }
+            }
+        })
+        let ExitAction = UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: { action in
+            Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
+                ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
+                .responseJSON {
+                    response in
+                    var result = response.result.value
+            
+                    if(result != nil){
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }
+                    
+            }
+
+        })
+        backAlert.addAction(SaveAction)
+        backAlert.addAction(ExitAction)
+
+        //***singlegame provide save fuction but onlinegame
+        if(gameModel == 0){
+            presentViewController(backAlert, animated: true, completion: nil)
+        }
+        else{
+            if let navController = self.navigationController {
+                navController.popViewControllerAnimated(true)
+            }
+        }
+    }
+
     
 }

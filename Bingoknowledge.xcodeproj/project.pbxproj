@@ -23,6 +23,7 @@
 		FB7051601C9F0D9200A02FB1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */; };
 		FB712F221CA4601E0060F198 /* QuestionPageViewContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */; };
 		FBA348301CB6405200A0ABFD /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB5ABCD71CB58779000424E0 /* Alamofire.framework */; };
+		FBA378831CBA491000A113B2 /* checkbox_student.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA378821CBA491000A113B2 /* checkbox_student.swift */; };
 		FBD927231CA900EC004A806A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD927221CA900EC004A806A /* LoginViewController.swift */; };
 		FBEE640F1CA51090002D621D /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEE640E1CA51090002D621D /* GameViewController.swift */; };
 		FBF948651CA1423B007D9B35 /* QuestionSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF948641CA1423B007D9B35 /* QuestionSet.swift */; };
@@ -119,6 +120,7 @@
 		FB7050EC1C9D504200A02FB1 /* checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkbox.swift; sourceTree = "<group>"; };
 		FB70515F1C9F0D9200A02FB1 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FB712F211CA4601E0060F198 /* QuestionPageViewContorller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionPageViewContorller.swift; sourceTree = "<group>"; };
+		FBA378821CBA491000A113B2 /* checkbox_student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkbox_student.swift; sourceTree = "<group>"; };
 		FBD927221CA900EC004A806A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FBEE640E1CA51090002D621D /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		FBF948641CA1423B007D9B35 /* QuestionSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionSet.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				FBF948641CA1423B007D9B35 /* QuestionSet.swift */,
 				FB7050EC1C9D504200A02FB1 /* checkbox.swift */,
 				FB4B18341CAA202A0082B9CA /* preView.swift */,
+				FBA378821CBA491000A113B2 /* checkbox_student.swift */,
 			);
 			path = Bingoknowledge;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				FBEE640F1CA51090002D621D /* GameViewController.swift in Sources */,
 				FB7050ED1C9D504200A02FB1 /* checkbox.swift in Sources */,
 				FB1785361CB20EE000A7E77B /* SetThemeViewController.swift in Sources */,
+				FBA378831CBA491000A113B2 /* checkbox_student.swift in Sources */,
 				FB4B18351CAA202A0082B9CA /* preView.swift in Sources */,
 				FB7051601C9F0D9200A02FB1 /* RegisterViewController.swift in Sources */,
 				FB712F221CA4601E0060F198 /* QuestionPageViewContorller.swift in Sources */,

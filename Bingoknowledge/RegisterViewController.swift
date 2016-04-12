@@ -10,23 +10,33 @@ import UIKit
 import Alamofire
 
 class RegisterViewController: UIViewController {
-//    @IBOutlet weak var ClearBtn: UIButton!
+
     var testset:QuestionSet = QuestionSet.init()
+    
     
     @IBOutlet weak var birthday_txt: UITextField!
     @IBOutlet weak var Passwordagain_txt: UITextField!
     @IBOutlet weak var Password_txt: UITextField!
     @IBOutlet weak var Account_txt: UITextField!
    
-    @IBOutlet weak var back: UIButton!
+    
+    @IBOutlet weak var register_background: UIImageView!
 
     @IBOutlet weak var Identity_Teacher: checkbox!
-    @IBOutlet weak var Identity_Student: checkbox!
+    @IBOutlet weak var Identity_Student: checkbox_student!
     @IBOutlet weak var ClearBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.sendSubviewToBack(register_background)
+        Account_txt.layer.cornerRadius = CGFloat(Float(15.0))
+        Password_txt.layer.cornerRadius = CGFloat(Float(15.0))
+        Passwordagain_txt.layer.cornerRadius = CGFloat(Float(15.0))
+        birthday_txt.layer.cornerRadius = CGFloat(Float(15.0))
+        
         // Do any additional setup after loading the view.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,7 +131,6 @@ class RegisterViewController: UIViewController {
 
     @IBAction func TextFieldDone(sender: AnyObject) {
         sender.resignFirstResponder()
-
     }
     @IBAction func backgroundtap(sender: AnyObject) {
         Account_txt.resignFirstResponder()
@@ -129,11 +138,10 @@ class RegisterViewController: UIViewController {
         Passwordagain_txt.resignFirstResponder()
         birthday_txt.resignFirstResponder()
     }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     
-//    @IBAction func back_clicked(sender: AnyObject) {
-//        self.performSegueWithIdentifier("returnLoginView", sender: self)
-//        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
-//        self.presentViewController(ctrl, animated: true, completion: nil)
-//    }
-//    
 }

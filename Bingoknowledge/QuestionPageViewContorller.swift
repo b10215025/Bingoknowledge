@@ -16,6 +16,7 @@ protocol Myprotocol {
 
 class QuestionPageViewContorller: UIViewController {
     
+    @IBOutlet weak var Question_background: UIImageView!
     var QuestionArray:QuestionSet = QuestionSet.init()
     var QuestionNumber = 0
     var myBoolVar = false
@@ -25,6 +26,7 @@ class QuestionPageViewContorller: UIViewController {
     @IBOutlet weak var Question_Label: UILabel!
     @IBOutlet weak var SubmitBtn: UIButton!
     @IBOutlet weak var Qnumber: UILabel!
+    @IBOutlet weak var HintBtn: UIButton!
     @IBOutlet weak var Question_txt: UITextView!
     @IBOutlet weak var Tip_txt: UITextView!
     @IBOutlet weak var Answer_txt: UITextView!
@@ -34,8 +36,11 @@ class QuestionPageViewContorller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //      Do any additional setup after loading the view.
+        view.sendSubviewToBack(Question_background)
+        
         Question_txt.text = QuestionArray.Question[QuestionNumber]
-        Tip_txt.text = QuestionArray.Tip[QuestionNumber]
+        Question_txt.textColor = UIColor.orangeColor()
+        Question_txt.layer.cornerRadius = CGFloat(Float(15.0))
         Qnumber.text = "\(QuestionNumber)"
     }
     
@@ -75,6 +80,12 @@ class QuestionPageViewContorller: UIViewController {
             let destinationController =  segue.destinationViewController as! BingoGameViewContorller
             destinationController.UserQuestionSet = self.QuestionArray
         }
+    }
+    @IBAction func HintBtn_clicked(sender: AnyObject) {
+        let HintAlert = UIAlertController(title: "提示", message: "\(self.QuestionArray.Tip[QuestionNumber])", preferredStyle: UIAlertControllerStyle.Alert)
+        HintAlert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(HintAlert, animated: true, completion: nil)
+
     }
     
     

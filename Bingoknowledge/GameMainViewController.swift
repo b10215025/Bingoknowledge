@@ -19,6 +19,7 @@ class GameMainViewController: UIViewController {
     
     @IBOutlet weak var TeacherSetTheme: UIButton!
   
+    @IBOutlet weak var gamemainview_background: UIImageView!
     
     @IBOutlet weak var NextPageBtn: UIButton!
     
@@ -26,6 +27,7 @@ class GameMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+           view.sendSubviewToBack(gamemainview_background)
         Testlabel.text = "Userid: \(Userid)"
         
         // Do any additional setup after loading the view.

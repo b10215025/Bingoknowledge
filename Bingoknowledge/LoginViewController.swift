@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     var Identity:String = ""
     
     
+    @IBOutlet weak var background_image: UIImageView!
     @IBOutlet weak var remain: checkbox!
     //    @IBOutlet weak var check: checkbox!
     @IBOutlet weak var testtxt: UITextView!
@@ -27,10 +28,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var Login: UIButton!
     @IBOutlet weak var RegisterBtn: UIButton!
     
-    @IBOutlet weak var test: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.sendSubviewToBack(background_image)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -42,7 +46,7 @@ class LoginViewController: UIViewController {
     // login function
     @IBAction func CheckLoginData(sender: AnyObject) {
         //defination
-        var token:Int = 0;
+        
         let alertController = UIAlertController(title: "Error", message: "Please check your account or password again.", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         
@@ -53,14 +57,19 @@ class LoginViewController: UIViewController {
             .responseJSON {
                 response in
                 var token = response.result.value
-                print(token)
-                self.Userid = token?.objectForKey("user_id") as! Int
-                if(self.Userid != 0){
-                    self.Identity = token!["identity"] as! String
-                    self.performSegueWithIdentifier("toGameMainView", sender: self)
-                }
-                else{
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                if((token) != nil ){
+                    self.Userid = token?.objectForKey("user_id") as! Int
+                    if(self.Userid != 0){
+                        self.Identity = token!["identity"] as! String
+                        self.performSegueWithIdentifier("toGameMainView", sender: self)
+                    }
+                    else{
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+                }else{
+                    let connecttdController = UIAlertController(title: "連線失敗", message: "請確認網路是否已連線", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "確定", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(connecttdController, animated: true, completion: nil)
                 }
         }
 
@@ -77,14 +86,16 @@ class LoginViewController: UIViewController {
     // Register function
     @IBAction func RegisterBtn(sender: AnyObject) {
         self.performSegueWithIdentifier("toRegisterView", sender: self)
-//        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterView")  as! RegisterViewController
-//        self.presentViewController(ctrl, animated: true, completion: nil)
-        
     }
+  
     
-    @IBAction func test(sender: AnyObject) {
-        self.performSegueWithIdentifier("toGameMainView", sender: self)
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
+
+    @IBAction func TextFieldDone(sender: AnyObject) {
     
-    
+        sender.resignFirstResponder()
+    }
 }

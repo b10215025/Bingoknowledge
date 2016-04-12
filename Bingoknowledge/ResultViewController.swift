@@ -10,10 +10,27 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
+    @IBOutlet weak var totalscore_label: UILabel!
+    @IBOutlet weak var score_label: UILabel!
+    @IBOutlet weak var result_background: UIImageView!
+//    @IBOutlet weak var iconbackground: UITextView!
+//    @IBOutlet weak var resulttxt: UITextView!
     @IBOutlet weak var returnGameMainView: UIButton!
+    var score : Int = 0
+    var totalscore:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(totalscore)
+        print(score)
+        score_label.text = "\(score)"
+        totalscore_label.text = "\(totalscore)"
+          view.sendSubviewToBack(result_background)
+        self.navigationItem.hidesBackButton = true
 
+//        resulttxt.layer.cornerRadius = CGFloat(Float(15.0))
+//        iconbackground.layer.cornerRadius = CGFloat(Float(15.0))
+        
         // Do any additional setup after loading the view.
     }
 

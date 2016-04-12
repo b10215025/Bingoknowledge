@@ -12,17 +12,21 @@ class GameViewController: UIViewController {
     //    var UserQuestionArray = [QuestionSet](count: 10, repeatedValue: QuestionSet.init())
     //test class 3/28
     var UserQuestionArray:QuestionSet = QuestionSet.init()
+    //gamemodel is used to identity singlegame or onlinegame
+    var Gamemodel:Int = 0
     var Userid = 0
     
+    @IBOutlet weak var Gameview_background: UIImageView!
     @IBOutlet weak var SingleGameBtn: UIButton!
     @IBOutlet weak var OnlineGameBtn: UIButton!
     @IBOutlet weak var Userid_label: UILabel!
     @IBOutlet weak var SearchBtn: UIButton!
     
-    override func viewDidLoad() {
+    @IBOutlet weak var SearchRankBtn: UIButton!
+       override func viewDidLoad() {
         super.viewDidLoad()
         Userid_label.text = String(self.Userid)
-        
+          view.sendSubviewToBack(Gameview_background)
         // Do any additional setup after loading the view.
     }
     
@@ -35,31 +39,57 @@ class GameViewController: UIViewController {
         // --load Question from server
         var userdataset:QuestionSet = QuestionSet.init()
         
-        //use method to process JSON
-        Alamofire.request(.GET, "http://bingo.villager.website/exams/output").responseJSON {response in
-            var result = response.result.value
-            if (result != nil){
-                for var i in 0..<result!.count{
-                    userdataset.Question[i] = result![i]["question"] as! String
-                    userdataset.Answer[i] = result![i]["answer"] as! String
-                    userdataset.Tip[i] = result![i]["tips"] as! String
+        Alamofire.request(.GET, "http://bingo.villager.website/game_records/print_record",parameters: ["user_id" : self.Userid] ).responseJSON {response in
+                var result = response.result.value
+                if((result) != nil){
+                    var tmpary = result!["exam"] as! NSArray
+//                    var tmpary1 = tmpary[0]
+                    print(tmpary[0]["question"])
+//                    print(tmpary)
+//                    print(result["exam"][])
+//                    for var i in 0..<result!.count{
+//                            userdataset.id[i] = result![i]["id"] as! Int
+//                            userdataset.Question[i] = result![i]["question"] as! String
+//                            userdataset.Answer[i] = result![i]["answer"] as! String
+//                            userdataset.Tip[i] = result![i]["tips"] as! String
+//                        }
+//                        self.UserQuestionArray = userdataset;
+//                        self.performSegueWithIdentifier("toBingoGameView", sender: self)
+//                    }
+//            
                 }
-                self.UserQuestionArray = userdataset;
-//                print(self.UserQuestionArray)
+                else{
+                    Alamofire.request(.GET, "http://bingo.villager.website/exams/output").responseJSON {response in
+                        var result = response.result.value
+                        if (result != nil){
+                            for var i in 0..<result!.count{
+                                userdataset.id[i] = result![i]["id"] as! Int
+                                userdataset.Question[i] = result![i]["question"] as! String
+                                userdataset.Answer[i] = result![i]["answer"] as! String
+                                userdataset.Tip[i] = result![i]["tips"] as! String
+                       
+                            }
+                        
+                            self.UserQuestionArray = userdataset;
+                        
+                            self.performSegueWithIdentifier("toBingoGameView", sender: self)
+                        }
+                        else{
+                            var errorAlert:UIAlertController = UIAlertController(title: "Error", message:  "系統忙碌中" , preferredStyle: UIAlertControllerStyle.Alert)
+                            errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(errorAlert, animated: true, completion: nil)
+                        }
+                    }
+
+                }
             
-                self.performSegueWithIdentifier("toBingoGameView", sender: self)
-            }
-            else{
-                var errorAlert:UIAlertController = UIAlertController(title: "Error", message:  "系統忙碌中" , preferredStyle: UIAlertControllerStyle.Alert)
-                errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(errorAlert, animated: true, completion: nil)
-            }
         }
     }
 
     //Online function
     @IBAction func OnlineGameBtn_clicked(sender: AnyObject) {
 //        var room_id = 0
+        self.Gamemodel = 1
         var TestQuestionSet:QuestionSet = QuestionSet.init()
         
         var SearchAlert:UIAlertController = UIAlertController(title: "線上模式", message:"請輸入題組代號" , preferredStyle: UIAlertControllerStyle.Alert)
@@ -67,7 +97,7 @@ class GameViewController: UIViewController {
             (textField: UITextField!) -> Void in
             textField.placeholder = "題組代號"
         }
-        let submit = UIAlertAction(title: "查詢", style: UIAlertActionStyle.Default , handler: {
+        let submit = UIAlertAction(title: "進入", style: UIAlertActionStyle.Default , handler: {
             action in
             //read user enter userid
             let room_id = (SearchAlert.textFields!.first! as UITextField).text!
@@ -76,14 +106,17 @@ class GameViewController: UIViewController {
                 
                 var result = response.result.value
                 //use UIAlertcontroller show result
-                
+                print(result)
                 if(result != nil && result?.count != 0){
                     var QuestionArray = [String]()
                     var AnswerArray = [String]()
                     var TipArray = [String]()
+                    var idArray = [String]()
+                    print(result)
                     QuestionArray = (result?.objectForKey("question"))! as! [String]
                     AnswerArray = (result?.objectForKey("answer"))! as! [String]
                     TipArray = (result?.objectForKey("tips"))! as! [String]
+//                    idArray = (result?.objectForKey("id")
                     for var i in 0..<25{
                         TestQuestionSet.Question[i] = QuestionArray[i]
                         TestQuestionSet.Answer[i] = AnswerArray[i]
@@ -108,11 +141,13 @@ class GameViewController: UIViewController {
     }
 //    //Search QuestionSetNumber function
     @IBAction func SearchBtn_clicked(sender: AnyObject) {
-        var QuestionSetNum : String = ""
+        var result_print:String = ""
+        var RoomidArray = [Int]()
+        var RoomnameArray = [String]()
         // user enter teacherID to search QuestionSetNum
         var SearchAlert:UIAlertController = UIAlertController(title: "查詢頁面", message:"請輸入教師編號" , preferredStyle: UIAlertControllerStyle.Alert)
         SearchAlert.addTextFieldWithConfigurationHandler {
-            (textField: UITextField!) -> Void in
+            (textField: UITextField! ) -> Void in
             textField.placeholder = "教師ID"
         }
         //request sever and show result after user enter teacherID
@@ -123,22 +158,20 @@ class GameViewController: UIViewController {
                 //request sever
                 Alamofire.request(.GET, "http://bingo.villager.website/exams/search",parameters:["user_id": Teacher_id ]).responseJSON {response in
                         var result = response.result.value
-                    
                         //use UIAlertcontroller show result
-                        if(result != nil && result?.count != 0){
-                            var room = result as! [Int]
-//                            var strroom :String = ""
-//                            strroom = String(room[0]))
-                            
-                            for var i in 0..<Int((result?.count)!) {
-                                QuestionSetNum += String("\(room[i])，")
+                        print()
+                        if(result != nil && result!["id"]!!.count != 0){
+                            RoomidArray = result?.objectForKey("id") as! [Int]
+                            RoomnameArray = result?.objectForKey("name") as! [String]
+                            for var i in 0..<Int(RoomidArray.count) {
+                                result_print = result_print + "題組代號:\(RoomidArray[i]) 主題:\(RoomnameArray[i])\n"
                             }
-                            var ShowAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "教師編號:\(Teacher_id) \n 所有題組代號：\n{ \(QuestionSetNum)}" , preferredStyle: UIAlertControllerStyle.Alert)
+                            var ShowAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "教師編號:\(Teacher_id)已創建\(Int((result!["id"]?!.count)!))組題組\n\(result_print)如想進入題組請記下題組代號\n前往線上模式輸入編號即可進入！" , preferredStyle: UIAlertControllerStyle.Alert)
                             ShowAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(ShowAlert, animated: true, completion: nil)
                         }
                         else{
-                            var errorAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "您所查詢之教師尚未創建任何題組或系統內無此教師資訊" , preferredStyle: UIAlertControllerStyle.Alert)
+                            var errorAlert:UIAlertController = UIAlertController(title: "查無匹配結果", message:  "該位教師尚未創建任何題組或系統內無此教師資訊" , preferredStyle: UIAlertControllerStyle.Alert)
                             errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(errorAlert, animated: true, completion: nil)
                         }
@@ -147,16 +180,81 @@ class GameViewController: UIViewController {
         SearchAlert.addAction(submit)
         presentViewController(SearchAlert, animated: true, completion: nil)
     }
+    //SearchRank function
+    @IBAction func SearchRankBtn_clicked(sender: AnyObject) {
+        var Account = [String]()
+        var Score = [Int]()
+        var print_result : String = "------top 20------\n"
 
+        Alamofire.request(.GET, "http://bingo.villager.website/users/ranking" ).responseJSON {response in
+            var result = response.result.value
+
+            if((result ) != nil){
+                Account = [String](count: (result!.count) as! Int , repeatedValue: "")
+                Score = [Int](count: (result!.count) as! Int , repeatedValue: 0)
+                
+                for var i in 0 ..< Int(result!.count) {
+                    Account[i] = result![i]["account"] as! String
+                    Score[i] = result![i]["score"] as! Int
+                    print_result = print_result + "  第\(i+1)名 帳號ID:\(Account[i])總積分：\(Score[i])\n"
+                }
+                var RankAlert:UIAlertController = UIAlertController(title: "排行榜", message:"\(print_result)" , preferredStyle: UIAlertControllerStyle.Alert)
+                RankAlert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
+                self.presentViewController(RankAlert, animated: true, completion: nil)
+                
+            }
+            
+        }
+    
+        
+    }
+    
+    
+    
+    
     // pass Question data to BingoGame
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "toBingoGameView" {
             let destinationController =  segue.destinationViewController as! BingoGameViewContorller
             destinationController.UserQuestionSet = self.UserQuestionArray
             destinationController.Userid = self.Userid
+            destinationController.gameModel = self.Gamemodel
         }
     }
     
+    @IBAction func testBtn(sender: AnyObject) {
+//        print(self.Userid)
+////        讀存檔題目ＯＫ
+//        Alamofire.request(.GET , "http://bingo.villager.website/game_records/print_record", parameters:["user_id": self.Userid])
+//            .responseJSON {
+//                response in
+//                var token = response.result.value
+//                print("start")
+//                print(token!["exam"])
+//                
+//                print("end")
+//                print(token!["exam"]!![0]["question"])
+//        }
+////        ==家分數ＯＫ
+//        var score:Int = 20
+//        Alamofire.request(.POST , "http://bingo.villager.website/users/add_score", parameters:["user": ["user_id" : self.Userid, "score" : score]])
+//            .responseJSON {
+//                response in
+//                var token = response.result.value
+//                print(token)
+//                print("end")
+//                
+//       }
+//        var score:Int = 20
+//        Alamofire.request(.GET , "http://bingo.villager.website/users/check_score", parameters:["user": ["user_id" : self.Userid ]])
+//            .responseJSON {
+//                response in
+//                var token = response.result.value
+//                print(token)
+//                print("end")
+//        }
+
+    }
 }
 
 

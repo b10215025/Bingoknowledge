@@ -12,6 +12,7 @@ class SetThemeViewController: UIViewController {
     var UserQuestionSet:QuestionSet = QuestionSet.init()
     var QuestionNumber:Int = 0
     var Userid = 0
+    @IBOutlet weak var Settheme_background: UIImageView!
     @IBOutlet weak var Title_label: UILabel!
     @IBOutlet weak var userid_label: UILabel!
     @IBOutlet weak var QuestionNumber_label: UILabel!
@@ -28,9 +29,12 @@ class SetThemeViewController: UIViewController {
     @IBOutlet weak var ForwardBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        userid_label.text = ("\(Userid)")
-        QuestionNumber_label.text = "第 \(QuestionNumber + 1) 題"
+        view.sendSubviewToBack(Settheme_background)
         
+
+        QuestionNumber_label.text = "第 \(QuestionNumber + 1) 題"
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         // Do any additional setup after loading the view.
     }
 
@@ -82,28 +86,42 @@ class SetThemeViewController: UIViewController {
         UserQuestionSet.Tip[QuestionNumber] = Tip_txt.text
         UserQuestionSet.Answer[QuestionNumber] = Answer_txt.text
 
-        let alertController = UIAlertController(title: "Error", message: "Please check your Question again.", preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        let alertController = UIAlertController(title: "確認視窗", message: "為了日後更方便區分\n請為您的題組取一個名稱", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addTextFieldWithConfigurationHandler {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "題組名稱"
+        }
+        alertController.addAction(UIAlertAction(title: "確認", style: .Destructive ,handler: {action in
+            let QuestionSet_name = (alertController.textFields!.first! as UITextField).text!
+            print(QuestionSet_name)
+            Alamofire.request(.POST, "http://bingo.villager.website/exams", parameters:
+                ["exam_set":["question": self.UserQuestionSet.Question,"tips":self.UserQuestionSet.Tip,"answer": self.UserQuestionSet.Answer ,"user_id":self.Userid , "name" : QuestionSet_name]])
+                .responseJSON {
+                    response in
+                    var value = response.result.value as! Int
+                    print(value)
+                    if(value != 0){
+                        if let navController = self.navigationController {
+                            navController.popViewControllerAnimated(true)
+                        }
+                    }
+                    else{
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                    }
+            }
+        }))
+        alertController.addAction(UIAlertAction(title: "返回", style: UIAlertActionStyle.Default , handler: nil))
         
         //testing upload
-        Alamofire.request(.POST, "http://bingo.villager.website/exams", parameters:
-            ["exam_set":["question": UserQuestionSet.Question,"tips":UserQuestionSet.Tip,"answer":UserQuestionSet.Answer ,"user_id":Userid]])
-            .responseJSON {
-                response in
-                var value = response.result.value as! Int
-                print(value)
-                if(value != 0){
-                    if let navController = self.navigationController {
-                        navController.popViewControllerAnimated(true)
-                    }
-                }
-                else{
-                    self.presentViewController(alertController, animated: true, completion: nil)
-                }
-        }
+        
 
         //end
-        
+        self.presentViewController(alertController, animated: true, completion: nil)
+
+    }
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
 }
