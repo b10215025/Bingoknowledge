@@ -21,8 +21,7 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(totalscore)
-        print(score)
+
         score_label.text = "\(score)"
         totalscore_label.text = "\(totalscore)"
           view.sendSubviewToBack(result_background)
@@ -41,11 +40,11 @@ class ResultViewController: UIViewController {
     
 
     @IBAction func returnGameMainViewBtn_clicked(sender: AnyObject) {
-//        self.performSegueWithIdentifier("toGameMainView", sender: self)
-        print(self.navigationController?.viewControllers.count)
+
+        
         if let navController = self.navigationController {
             navController.popToViewController(navController.viewControllers[1] as UIViewController, animated: true)
-//            navController.popToRootViewControllerAnimated(true)
+
         }
     }
     

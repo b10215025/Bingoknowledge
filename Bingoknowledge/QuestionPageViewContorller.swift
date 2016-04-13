@@ -42,6 +42,10 @@ class QuestionPageViewContorller: UIViewController {
         Question_txt.textColor = UIColor.orangeColor()
         Question_txt.layer.cornerRadius = CGFloat(Float(15.0))
         Qnumber.text = "\(QuestionNumber)"
+        //if tap background then dismisskeyboard
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+
     }
     
     
@@ -89,5 +93,8 @@ class QuestionPageViewContorller: UIViewController {
     }
     
     
-    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 }

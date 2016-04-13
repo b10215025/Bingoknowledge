@@ -50,16 +50,16 @@ class RegisterViewController: UIViewController {
         var qualified:Bool = true
         
         //Define AlertController
-        let RegisterAlert = UIAlertController(title: "Warming", message: "Please change a new account.", preferredStyle: UIAlertControllerStyle.Alert)
-        RegisterAlert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        let RegisterAlert = UIAlertController(title: "警告", message: "帳號已有人使用", preferredStyle: UIAlertControllerStyle.Alert)
+        RegisterAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
         
-        let Emptyalert = UIAlertController(title: "Warming", message: "Please filled the data.", preferredStyle: UIAlertControllerStyle.Alert)
-        Emptyalert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
-        let IdentityAlert = UIAlertController(title: "Warming", message: "Please chose your identity.", preferredStyle: UIAlertControllerStyle.Alert)
-        IdentityAlert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        let Emptyalert = UIAlertController(title: "警告", message: "資料未填寫確實", preferredStyle: UIAlertControllerStyle.Alert)
+        Emptyalert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+        let IdentityAlert = UIAlertController(title: "警告", message: "尚未選取您的身份", preferredStyle: UIAlertControllerStyle.Alert)
+        IdentityAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
         
-        let NotTheSamealert = UIAlertController(title: "Warming", message: "Please checked password again.", preferredStyle: UIAlertControllerStyle.Alert)
-        NotTheSamealert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
+        let NotTheSamealert = UIAlertController(title: "警告", message: "請確認您的密碼和確認密碼是否相同", preferredStyle: UIAlertControllerStyle.Alert)
+        NotTheSamealert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
         
         //check for empty textfield
         if( Account_txt.text == ""  || Password_txt.text == "" || Passwordagain_txt.text == "" || birthday_txt.text == "" || (Identity_Student.isChecked == false && Identity_Teacher == false) ){
@@ -84,7 +84,7 @@ class RegisterViewController: UIViewController {
         else{
             Identity = "student";
         }
-        print("id:  \(Identity)")
+        
         //adding account to Database
         if(qualified){
             Alamofire.request(.POST, "http://bingo.villager.website/users", parameters:

@@ -47,7 +47,7 @@ class LoginViewController: UIViewController {
     @IBAction func CheckLoginData(sender: AnyObject) {
         //defination
         
-        let alertController = UIAlertController(title: "Error", message: "Please check your account or password again.", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "登入失敗", message: "請確認您的帳密是否有輸入錯誤", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         
         //implement login
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
                     }
                 }else{
                     let connecttdController = UIAlertController(title: "連線失敗", message: "請確認網路是否已連線", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: "確定", style: UIAlertActionStyle.Default, handler: nil))
+                    connecttdController.addAction(UIAlertAction(title: "確定", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(connecttdController, animated: true, completion: nil)
                 }
         }

@@ -32,6 +32,20 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Bordered, target: self, action: "back:")
         self.navigationItem.leftBarButtonItem = newBackButton;
         Userid_Label.text = String(self.Userid)
+        //for have single game history record set isanswered image
+        if(gameModel == 0 ){
+            for var i in 0..<UserQuestionSet.id.count{
+                if(UserQuestionSet.isAnswered[i] == true){
+                    if(i % 2 == 0){
+                        self.QuestionBtnArray[i].setImage(UIImage(named: "shot_pink"), forState: .Normal)
+                    }
+                    else{
+                        self.QuestionBtnArray[i].setImage(UIImage(named: "shot_yellow"), forState: .Normal)
+                        
+                    }
+                }
+            }
+        }
         
     }
     
@@ -55,10 +69,25 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
                 .responseJSON {
                     response in
                     var result = response.result.value
-                    print(result)
+                    
                     self.totolscore = result!["score"] as! Int
-                    print(self.totolscore)
-                    self.performSegueWithIdentifier("toResultView", sender: self)
+                    
+                    Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
+                        ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
+                        .responseJSON {
+                            response in
+                            var result = response.result.value
+                            
+                            if(result != nil){
+                                self.performSegueWithIdentifier("toResultView", sender: self)
+                                
+                            }
+                            else{
+                                var ErrorAddScoreAlert:UIAlertController = UIAlertController(title: "連線失敗", message:"請確認您已連上線" , preferredStyle: UIAlertControllerStyle.Alert)
+                                ErrorAddScoreAlert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
+                                self.presentViewController(ErrorAddScoreAlert, animated: true, completion: nil)
+                            }
+                    }
             }
         }
         else{

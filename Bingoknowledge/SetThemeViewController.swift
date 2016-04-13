@@ -93,13 +93,12 @@ class SetThemeViewController: UIViewController {
         }
         alertController.addAction(UIAlertAction(title: "確認", style: .Destructive ,handler: {action in
             let QuestionSet_name = (alertController.textFields!.first! as UITextField).text!
-            print(QuestionSet_name)
-            Alamofire.request(.POST, "http://bingo.villager.website/exams", parameters:
+                   Alamofire.request(.POST, "http://bingo.villager.website/exams", parameters:
                 ["exam_set":["question": self.UserQuestionSet.Question,"tips":self.UserQuestionSet.Tip,"answer": self.UserQuestionSet.Answer ,"user_id":self.Userid , "name" : QuestionSet_name]])
                 .responseJSON {
                     response in
                     var value = response.result.value as! Int
-                    print(value)
+              
                     if(value != 0){
                         if let navController = self.navigationController {
                             navController.popViewControllerAnimated(true)

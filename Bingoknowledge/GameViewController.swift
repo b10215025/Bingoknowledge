@@ -38,51 +38,109 @@ class GameViewController: UIViewController {
     @IBAction func SingleGameBtn_clicked(sender: AnyObject) {
         // --load Question from server
         var userdataset:QuestionSet = QuestionSet.init()
+        var errorAlert:UIAlertController = UIAlertController(title: "Error", message:  "系統忙碌中" , preferredStyle: UIAlertControllerStyle.Alert)
+        errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
         
         Alamofire.request(.GET, "http://bingo.villager.website/game_records/print_record",parameters: ["user_id" : self.Userid] ).responseJSON {response in
                 var result = response.result.value
+            
                 if((result) != nil){
-                    var tmpary = result!["exam"] as! NSArray
-//                    var tmpary1 = tmpary[0]
-                    print(tmpary[0]["question"])
-//                    print(tmpary)
-//                    print(result["exam"][])
-//                    for var i in 0..<result!.count{
-//                            userdataset.id[i] = result![i]["id"] as! Int
-//                            userdataset.Question[i] = result![i]["question"] as! String
-//                            userdataset.Answer[i] = result![i]["answer"] as! String
-//                            userdataset.Tip[i] = result![i]["tips"] as! String
-//                        }
-//                        self.UserQuestionArray = userdataset;
-//                        self.performSegueWithIdentifier("toBingoGameView", sender: self)
-//                    }
-//            
+                    var questiondata = result!["exam"] as! NSArray
+                    var answered  = result!["situation"] as! NSArray
+                    
+                    var  savaAlert:UIAlertController = UIAlertController(title: "系統訊息", message: "系統內有您的存檔紀錄，是否讀取存檔？", preferredStyle: UIAlertControllerStyle.Alert)
+                    let readrecord = UIAlertAction(title: "是", style: UIAlertActionStyle.Default , handler: {
+                        action in
+                        for var i in 0..<questiondata.count{
+                            userdataset.id[i] = questiondata[i]["id"] as! Int
+                            userdataset.Question[i] = questiondata[i]["question"] as! String
+                            userdataset.Answer[i] = questiondata[i]["answer"] as! String
+                            userdataset.Tip[i] = questiondata[i]["tips"] as! String
+                            if(answered[i] as! String == "0"){
+                                userdataset.isAnswered[i] = false
+                            }
+                            else{
+                                userdataset.isAnswered[i] = true
+                            }
+                        }
+                        self.UserQuestionArray = userdataset;
+                        Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
+                            ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
+                            .responseJSON {
+                                response in
+                                var isdelete = response.result.value
+                                
+                                if(isdelete != nil){
+                                    self.performSegueWithIdentifier("toBingoGameView", sender: self)
+                                }else{
+                                    self.presentViewController(errorAlert, animated: true, completion: nil)
+                                }
+                        }
+                    })
+                    savaAlert.addAction(readrecord)
+                    // if doesn't want to read save record then delete the record and restart a new game
+                    savaAlert.addAction(UIAlertAction(title: "否", style: UIAlertActionStyle.Default, handler: {
+                        action in
+                        Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
+                            ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
+                            .responseJSON {
+                                response in
+                                var isdelete = response.result.value
+                                
+                                if(isdelete != nil){
+                                    //read record data
+                                    Alamofire.request(.GET, "http://bingo.villager.website/exams/output").responseJSON {response in
+                                        var result = response.result.value
+                                        if (result != nil){
+                                            
+                                            for var i in 0..<result!.count{
+                                                userdataset.id[i] = result![i]["id"] as! Int
+                                                userdataset.Question[i] = result![i]["question"] as! String
+                                                userdataset.Answer[i] = result![i]["answer"] as! String
+                                                userdataset.Tip[i] = result![i]["tips"] as! String
+                                                
+                                            }
+                                            
+                                            self.UserQuestionArray = userdataset;
+                                            
+                                            self.performSegueWithIdentifier("toBingoGameView", sender: self)
+                                        }
+                                        else{
+                                            self.presentViewController(errorAlert, animated: true, completion: nil)
+                                        }
+                                    }
+                                }
+                                else{
+                                    var ErrorAddScoreAlert:UIAlertController = UIAlertController(title: "連線失敗", message:"請確認您已連上線" , preferredStyle: UIAlertControllerStyle.Alert)
+                                    ErrorAddScoreAlert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
+                                    self.presentViewController(ErrorAddScoreAlert, animated: true, completion: nil)
+                                }
+                        }
+                    }))
+                    self.presentViewController(savaAlert, animated: true, completion: nil)
                 }
                 else{
                     Alamofire.request(.GET, "http://bingo.villager.website/exams/output").responseJSON {response in
                         var result = response.result.value
                         if (result != nil){
+                            
                             for var i in 0..<result!.count{
                                 userdataset.id[i] = result![i]["id"] as! Int
                                 userdataset.Question[i] = result![i]["question"] as! String
                                 userdataset.Answer[i] = result![i]["answer"] as! String
                                 userdataset.Tip[i] = result![i]["tips"] as! String
-                       
+                                
                             }
-                        
+                            
                             self.UserQuestionArray = userdataset;
-                        
                             self.performSegueWithIdentifier("toBingoGameView", sender: self)
                         }
                         else{
-                            var errorAlert:UIAlertController = UIAlertController(title: "Error", message:  "系統忙碌中" , preferredStyle: UIAlertControllerStyle.Alert)
-                            errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(errorAlert, animated: true, completion: nil)
                         }
                     }
-
+                    
                 }
-            
         }
     }
 
@@ -106,7 +164,7 @@ class GameViewController: UIViewController {
                 
                 var result = response.result.value
                 //use UIAlertcontroller show result
-                print(result)
+                
                 if(result != nil && result?.count != 0){
                     var QuestionArray = [String]()
                     var AnswerArray = [String]()
@@ -133,7 +191,6 @@ class GameViewController: UIViewController {
                 }
             }
         })
-    
         
         SearchAlert.addAction(submit)
         presentViewController(SearchAlert, animated: true, completion: nil)
@@ -159,7 +216,7 @@ class GameViewController: UIViewController {
                 Alamofire.request(.GET, "http://bingo.villager.website/exams/search",parameters:["user_id": Teacher_id ]).responseJSON {response in
                         var result = response.result.value
                         //use UIAlertcontroller show result
-                        print()
+                 
                         if(result != nil && result!["id"]!!.count != 0){
                             RoomidArray = result?.objectForKey("id") as! [Int]
                             RoomnameArray = result?.objectForKey("name") as! [String]
@@ -223,37 +280,6 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func testBtn(sender: AnyObject) {
-//        print(self.Userid)
-////        讀存檔題目ＯＫ
-//        Alamofire.request(.GET , "http://bingo.villager.website/game_records/print_record", parameters:["user_id": self.Userid])
-//            .responseJSON {
-//                response in
-//                var token = response.result.value
-//                print("start")
-//                print(token!["exam"])
-//                
-//                print("end")
-//                print(token!["exam"]!![0]["question"])
-//        }
-////        ==家分數ＯＫ
-//        var score:Int = 20
-//        Alamofire.request(.POST , "http://bingo.villager.website/users/add_score", parameters:["user": ["user_id" : self.Userid, "score" : score]])
-//            .responseJSON {
-//                response in
-//                var token = response.result.value
-//                print(token)
-//                print("end")
-//                
-//       }
-//        var score:Int = 20
-//        Alamofire.request(.GET , "http://bingo.villager.website/users/check_score", parameters:["user": ["user_id" : self.Userid ]])
-//            .responseJSON {
-//                response in
-//                var token = response.result.value
-//                print(token)
-//                print("end")
-//        }
-
     }
 }
 

@@ -19,6 +19,8 @@ class GameMainViewController: UIViewController {
     
     @IBOutlet weak var TeacherSetTheme: UIButton!
   
+    @IBOutlet weak var DescribeBtn: UIButton!
+    @IBOutlet weak var PersonnelinfoBtn: UIButton!
     @IBOutlet weak var gamemainview_background: UIImageView!
     
     @IBOutlet weak var NextPageBtn: UIButton!
@@ -74,6 +76,24 @@ class GameMainViewController: UIViewController {
         }
         
     }
+    @IBAction func PersonnelinfoBtn_clicked(sender: AnyObject) {
+        var id:String = ""
+        if(self.Identity == "student"){
+            let InfoAlert = UIAlertController(title: "個人資料", message: "同學您好\n您的學生編號為:\(Userid)\n權限類別：學生", preferredStyle: UIAlertControllerStyle.Alert)
+            InfoAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(InfoAlert, animated: true, completion: nil)
+        }
+        else{
+            let InfoAlert = UIAlertController(title: "個人資料", message: "老師您好\n您的老師編號:\(Userid)\n權限類別：老師", preferredStyle: UIAlertControllerStyle.Alert)
+            InfoAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(InfoAlert, animated: true, completion: nil)
+        }
+    }
     @IBAction func testBtn_clicked(sender: AnyObject) {
+    }
+    @IBAction func DescribeBtn_clicked(sender: AnyObject) {
+        let InfoAlert = UIAlertController(title: "關於我們", message: "產品開發團隊：Broccoli\n產品簡介：一個會依照學生答題狀況自動調整題目難度的APP\n幫助中小學生更有效率的學習\n", preferredStyle: UIAlertControllerStyle.Alert)
+        InfoAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(InfoAlert, animated: true, completion: nil)
     }
 }

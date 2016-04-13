@@ -410,6 +410,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_smallicon" translatesAutoresizingMaskIntoConstraints="NO" id="LXo-nC-hlS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVB-vd-3UQ">
                                 <rect key="frame" x="20" y="65" width="100" height="46"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -468,7 +471,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-xI-hq4">
                                 <rect key="frame" x="114" y="457" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="說明" backgroundImage="orangebtn_long">
+                                <state key="normal" title="關於" backgroundImage="orangebtn_long">
                                     <color key="titleColor" red="1" green="0.29803921570000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -476,11 +479,14 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="DescribeBtn_clicked:" destination="Xr0-MC-nXg" eventType="touchUpInside" id="M0X-13-KP5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLB-bd-89k">
                                 <rect key="frame" x="115" y="405" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="設定" backgroundImage="yellowbtn_long">
+                                <state key="normal" title="個人資料" backgroundImage="yellowbtn_long">
                                     <color key="titleColor" red="1" green="0.29803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -488,14 +494,16 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="PersonnelinfoBtn_clicked:" destination="Xr0-MC-nXg" eventType="touchUpInside" id="m7B-mT-4Q1"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_smallicon" translatesAutoresizingMaskIntoConstraints="NO" id="LXo-nC-hlS">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
                         </subviews>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="DescribeBtn" destination="Jna-xI-hq4" id="10d-9r-ncE"/>
+                        <outlet property="PersonnelinfoBtn" destination="qLB-bd-89k" id="nro-Hf-5Z7"/>
                         <outlet property="TeacherSetTheme" destination="Z2Y-oY-yF1" id="K4K-YC-gQn"/>
                         <outlet property="Testlabel" destination="SVB-vd-3UQ" id="lZw-5d-ix7"/>
                         <outlet property="gamemainview_background" destination="LXo-nC-hlS" id="7hn-Kb-QE2"/>
@@ -636,7 +644,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Jy1-ih-H5b"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aYB-zn-9Ve">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_smallicon" translatesAutoresizingMaskIntoConstraints="NO" id="YTj-oT-a9R">
