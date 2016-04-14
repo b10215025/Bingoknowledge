@@ -16,6 +16,9 @@ class LoginViewController: UIViewController {
     var Identity:String = ""
     
     
+    @IBOutlet weak var LoginBtn: UIButton!
+    @IBOutlet weak var RegisterBtn: UIButton!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var background_image: UIImageView!
     @IBOutlet weak var remain: checkbox!
     //    @IBOutlet weak var check: checkbox!
@@ -26,7 +29,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var Accounttxt: UITextField!
     @IBOutlet weak var Passwordtxt: UITextField!
     @IBOutlet weak var Login: UIButton!
-    @IBOutlet weak var RegisterBtn: UIButton!
+    
+    
     
 
     
@@ -51,27 +55,46 @@ class LoginViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.Default, handler: nil))
         
         //implement login
-        
+        self.activity.startAnimating()
+        LoginBtn.enabled = false
+        RegisterBtn.enabled = false
         Alamofire.request(.POST, "http://bingo.villager.website/users/login", parameters:
             ["user":["account": Accounttxt.text!, "password": Passwordtxt.text!]])
             .responseJSON {
                 response in
                 var token = response.result.value
+                
                 if((token) != nil ){
                     self.Userid = token?.objectForKey("user_id") as! Int
                     if(self.Userid != 0){
+                        //stop activity and unlock screem
+
                         self.Identity = token!["identity"] as! String
+                        self.activity.stopAnimating()
+                        self.LoginBtn.enabled = true
+                        self.RegisterBtn.enabled = true
                         self.performSegueWithIdentifier("toGameMainView", sender: self)
+                        
                     }
                     else{
+                        //stop activity and unlock screem
+                        self.activity.stopAnimating()
+                        self.LoginBtn.enabled = true
+                        self.RegisterBtn.enabled = true
                         self.presentViewController(alertController, animated: true, completion: nil)
                     }
                 }else{
+                    //stop activity and unlock screem
+
+                    self.activity.stopAnimating()
+                    self.LoginBtn.enabled = true
+                    self.RegisterBtn.enabled = true
                     let connecttdController = UIAlertController(title: "連線失敗", message: "請確認網路是否已連線", preferredStyle: UIAlertControllerStyle.Alert)
                     connecttdController.addAction(UIAlertAction(title: "確定", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(connecttdController, animated: true, completion: nil)
                 }
         }
+    
 
     }
    

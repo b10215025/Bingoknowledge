@@ -20,6 +20,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     var totolscore:Int = 0
     
     
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var Userid_Label: UILabel!
     @IBOutlet weak var testBtn: UIButton!
     @IBOutlet var QuestionBtnArray: [UIButton]!
@@ -64,7 +65,8 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         // if bingo then addscore and to ResultviewPage
         if isBingo(UserQuestionSet) {
             //do sth
-            
+            self.activity.startAnimating()
+            self.BingocheckBtn.enabled = false
             Alamofire.request(.POST , "http://bingo.villager.website/users/add_score", parameters:["user": ["user_id" : self.Userid, "score" : score]])
                 .responseJSON {
                     response in
@@ -79,10 +81,15 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
                             var result = response.result.value
                             
                             if(result != nil){
+                                //stop activity and unlock screem
+                                self.activity.stopAnimating()
+                                self.BingocheckBtn.enabled = true
                                 self.performSegueWithIdentifier("toResultView", sender: self)
-                                
                             }
                             else{
+                                //stop activity and unlock screem
+                                self.activity.stopAnimating()
+                                self.BingocheckBtn.enabled = true
                                 var ErrorAddScoreAlert:UIAlertController = UIAlertController(title: "連線失敗", message:"請確認您已連上線" , preferredStyle: UIAlertControllerStyle.Alert)
                                 ErrorAddScoreAlert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
                                 self.presentViewController(ErrorAddScoreAlert, animated: true, completion: nil)
@@ -92,7 +99,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         }
         else{
             //do sth else
-             self.presentViewController(BingoAlert, animated: true, completion: nil)
+            self.presentViewController(BingoAlert, animated: true, completion: nil)
         }
     }
     //Question Clicked
@@ -184,36 +191,36 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
     }
     //back action singlegame provide save fuction but onlinegame
     func back(sender: UIBarButtonItem) {
-        var backAlert:UIAlertController = UIAlertController(title: "離開當前頁面", message:"是否存檔" , preferredStyle: UIAlertControllerStyle.Alert)
-        let SaveAction = UIAlertAction(title: "存檔", style: .Destructive, handler: {
+        var backAlert:UIAlertController = UIAlertController(title: "離開當前頁面", message:"是否存檔？" , preferredStyle: UIAlertControllerStyle.Alert)
+        let SaveAction = UIAlertAction(title: "是，存檔", style: .Destructive, handler: {
             action in
             Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
-                ["game_record": [ "exam" : self.UserQuestionSet.id ,"situation" : self.UserQuestionSet.isAnswered , "user_id" : self.Userid ]])
+                ["game_record": [ "exam" : self.UserQuestionSet.id ,"situation" : self.UserQuestionSet.isAnswered , "user_id" : self.Userid ,"score" : self.score]])
                 .responseJSON {
                     response in
                     var result = response.result.value
-                    if(result != nil){
-                         self.navigationController?.popViewControllerAnimated(true)
-                    }
-            }
-        })
-        let ExitAction = UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: { action in
-            Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
-                ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
-                .responseJSON {
-                    response in
-                    var result = response.result.value
-            
                     if(result != nil){
                         self.navigationController?.popViewControllerAnimated(true)
                     }
-                    
             }
-
+        })
+        let ExitAction = UIAlertAction(title: "否，離開", style: UIAlertActionStyle.Default, handler: { action in
+//            Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
+//                ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
+//                .responseJSON {
+//                    response in
+//                    var result = response.result.value
+//            
+//                    if(result != nil){
+//                        self.navigationController?.popViewControllerAnimated(true)
+//                    }
+            
+//            }
+            self.navigationController?.popViewControllerAnimated(true)
         })
         backAlert.addAction(SaveAction)
         backAlert.addAction(ExitAction)
-
+        backAlert.addAction(UIAlertAction(title: "返回", style: UIAlertActionStyle.Default , handler: nil))
         //***singlegame provide save fuction but onlinegame
         if(gameModel == 0){
             presentViewController(backAlert, animated: true, completion: nil)

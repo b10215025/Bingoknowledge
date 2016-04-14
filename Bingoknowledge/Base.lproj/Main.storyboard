@@ -99,6 +99,10 @@
                                     <action selector="CheckLoginData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o10-z0-30K"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="8JJ-sY-ezR">
+                                <rect key="frame" x="194" y="456" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="ArA-Vu-Ti7"/>
@@ -106,8 +110,11 @@
                     <connections>
                         <outlet property="Account" destination="T3M-IS-63V" id="lHX-VW-gEc"/>
                         <outlet property="Accounttxt" destination="y2d-T9-Q3C" id="Ly7-E8-6VC"/>
+                        <outlet property="LoginBtn" destination="N4Q-Kg-8eo" id="fu1-0q-8Ds"/>
                         <outlet property="Password" destination="mAK-Ig-Oi8" id="3En-cv-ah0"/>
                         <outlet property="Passwordtxt" destination="pur-Ec-hDS" id="5yR-Ll-4Jv"/>
+                        <outlet property="RegisterBtn" destination="Cp8-Xv-KfU" id="NZF-iy-bLY"/>
+                        <outlet property="activity" destination="8JJ-sY-ezR" id="9U9-CG-JMR"/>
                         <outlet property="background_image" destination="r5n-kA-Wvj" id="mrs-YN-nvL"/>
                         <outlet property="remain" destination="Cl7-id-Vvm" id="TSz-Jf-MGN"/>
                         <segue destination="Xr0-MC-nXg" kind="show" identifier="toGameMainView" id="496-cS-Fej"/>
@@ -249,6 +256,10 @@
                                     <action selector="backgroundtap:" destination="YIh-er-4ff" eventType="touchDown" id="OTa-Nk-jNB"/>
                                 </connections>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Po2-Sj-LoE">
+                                <rect key="frame" x="176" y="521" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -259,6 +270,8 @@
                         <outlet property="Identity_Teacher" destination="c48-xd-Dgx" id="fMV-sd-AHl"/>
                         <outlet property="Password_txt" destination="CnV-wB-SoP" id="WB6-Tj-hb5"/>
                         <outlet property="Passwordagain_txt" destination="DqD-s1-qTn" id="5ER-cI-TOj"/>
+                        <outlet property="RegistersubmitBtn" destination="bKD-qd-4jh" id="ROq-1V-iTx"/>
+                        <outlet property="activity" destination="Po2-Sj-LoE" id="D2w-Hm-6ql"/>
                         <outlet property="birthday_txt" destination="LWy-w6-Cdg" id="0G6-hK-a6B"/>
                         <outlet property="register_background" destination="4My-db-oDr" id="OFD-ES-kG4"/>
                     </connections>
@@ -282,13 +295,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_green" translatesAutoresizingMaskIntoConstraints="NO" id="tB6-La-eBf">
                                 <rect key="frame" x="0.0" y="13" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangetextview" translatesAutoresizingMaskIntoConstraints="NO" id="rFR-eS-J5Y">
-                                <rect key="frame" x="80" y="427" width="221" height="33"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangetextfield2" translatesAutoresizingMaskIntoConstraints="NO" id="rFR-eS-J5Y">
+                                <rect key="frame" x="81" y="427" width="221" height="33"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowtextview" translatesAutoresizingMaskIntoConstraints="NO" id="aGi-bH-Qfh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowtextfield2" translatesAutoresizingMaskIntoConstraints="NO" id="aGi-bH-Qfh">
                                 <rect key="frame" x="80" y="511" width="221" height="33"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowtextview" translatesAutoresizingMaskIntoConstraints="NO" id="sbQ-34-m9A">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowtextfield2" translatesAutoresizingMaskIntoConstraints="NO" id="sbQ-34-m9A">
                                 <rect key="frame" x="81" y="341" width="221" height="33"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOy-LF-XNU">
@@ -579,13 +592,6 @@
                                     <action selector="SearchRankBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="b28-UZ-tD2"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L6t-Ne-5Il">
-                                <rect key="frame" x="129" y="527" width="30" height="30"/>
-                                <state key="normal" title="test"/>
-                                <connections>
-                                    <action selector="testBtn:" destination="qpD-yn-NaG" eventType="touchUpInside" id="mp8-NX-DYM"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-MZ-FQo">
                                 <rect key="frame" x="120" y="379" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -617,6 +623,10 @@
                                     <action selector="SearchBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="hhj-mw-9hc"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Lpl-ny-W4J">
+                                <rect key="frame" x="186" y="358" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="hco-v4-aR4"/>
@@ -629,6 +639,7 @@
                         <outlet property="SearchRankBtn" destination="HOZ-Au-7C8" id="mcQ-qJ-zA1"/>
                         <outlet property="SingleGameBtn" destination="b4g-Op-yQr" id="06p-eg-O6H"/>
                         <outlet property="Userid_label" destination="BMN-aE-vIr" id="eQf-DB-8hN"/>
+                        <outlet property="activity" destination="Lpl-ny-W4J" id="aP9-EF-O0s"/>
                         <segue destination="oPP-Hp-Fe0" kind="show" identifier="toBingoGameView" id="fP7-Q0-7xt"/>
                     </connections>
                 </viewController>
@@ -1048,6 +1059,10 @@
                                     <action selector="bingoBtnClicked:" destination="oPP-Hp-Fe0" eventType="touchUpInside" id="K71-gS-bhD"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="hj5-QR-fzH">
+                                <rect key="frame" x="177" y="530" width="20" height="20"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1056,6 +1071,7 @@
                     <connections>
                         <outlet property="BingocheckBtn" destination="oJI-uT-aH4" id="KYh-Yx-zdp"/>
                         <outlet property="Userid_Label" destination="eiH-4J-zpl" id="bij-Ru-oDq"/>
+                        <outlet property="activity" destination="hj5-QR-fzH" id="chy-hL-8Ed"/>
                         <outlet property="bingo_background" destination="rLd-9s-sA6" id="D9C-Hf-OBp"/>
                         <outletCollection property="QuestionBtnArray" destination="SSH-Rj-YET" collectionClass="NSMutableArray" id="4wt-St-OcH"/>
                         <outletCollection property="QuestionBtnArray" destination="ia0-tl-PAk" collectionClass="NSMutableArray" id="lNC-p1-GQK"/>
@@ -1114,21 +1130,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpM-13-fIv">
-                                <rect key="frame" x="89" y="554" width="98" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                <state key="normal" title="提示" backgroundImage="greenbtn">
-                                    <color key="titleColor" red="0.094117647060000004" green="0.45882352939999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="HintBtn_clicked:" destination="DIz-yJ-Uvl" eventType="touchUpInside" id="9Ob-5z-NXA"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="answer_icon" translatesAutoresizingMaskIntoConstraints="NO" id="B52-fP-ezh">
                                 <rect key="frame" x="170" y="404" width="40" height="40"/>
                             </imageView>
@@ -1151,7 +1152,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPp-TK-bYG">
                                 <rect key="frame" x="208" y="554" width="98" height="36"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <state key="normal" title="送出" backgroundImage="greenbtn">
                                     <color key="titleColor" red="0.094117647060000004" green="0.45882352939999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -1171,6 +1172,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpM-13-fIv">
+                                <rect key="frame" x="89" y="554" width="98" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="提示" backgroundImage="greenbtn">
+                                    <color key="titleColor" red="0.094117647060000004" green="0.45882352939999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="HintBtn_clicked:" destination="DIz-yJ-Uvl" eventType="touchUpInside" id="9Ob-5z-NXA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <variation key="default">
                             <mask key="subviews">
@@ -1203,12 +1219,13 @@
         <image name="background_smallicon" width="1563" height="2779"/>
         <image name="before_icon" width="143" height="165"/>
         <image name="gamebackground" width="1017" height="1017"/>
-        <image name="greenbtn" width="411" height="217"/>
+        <image name="greenbtn" width="401" height="138"/>
         <image name="greenbtn_long" width="819" height="139"/>
         <image name="line" width="995" height="56"/>
         <image name="next_icon" width="143" height="165"/>
         <image name="orangebtn_long" width="642" height="134"/>
         <image name="orangetextfield" width="498" height="127"/>
+        <image name="orangetextfield2" width="642" height="134"/>
         <image name="orangetextview" width="912" height="273"/>
         <image name="question_icon" width="170" height="168"/>
         <image name="tip_icon" width="96" height="96"/>
@@ -1216,9 +1233,10 @@
         <image name="unshot_yellow" width="171" height="171"/>
         <image name="yellowbtn_long" width="642" height="134"/>
         <image name="yellowtextfield" width="498" height="127"/>
+        <image name="yellowtextfield2" width="642" height="134"/>
         <image name="yellowtextview" width="912" height="273"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M8L-Pr-TZT"/>
+        <segue reference="496-cS-Fej"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,11 +14,13 @@ class RegisterViewController: UIViewController {
     var testset:QuestionSet = QuestionSet.init()
     
     
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var birthday_txt: UITextField!
     @IBOutlet weak var Passwordagain_txt: UITextField!
     @IBOutlet weak var Password_txt: UITextField!
     @IBOutlet weak var Account_txt: UITextField!
    
+    @IBOutlet weak var RegistersubmitBtn: UIButton!
     
     @IBOutlet weak var register_background: UIImageView!
 
@@ -48,7 +50,7 @@ class RegisterViewController: UIViewController {
         var token:Bool = false
         var Identity:String = ""
         var qualified:Bool = true
-        
+ 
         //Define AlertController
         let RegisterAlert = UIAlertController(title: "警告", message: "帳號已有人使用", preferredStyle: UIAlertControllerStyle.Alert)
         RegisterAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
@@ -87,20 +89,40 @@ class RegisterViewController: UIViewController {
         
         //adding account to Database
         if(qualified){
+            self.activity.startAnimating()
+            self.RegistersubmitBtn.enabled = false
+            self.ClearBtn.enabled = false
+
             Alamofire.request(.POST, "http://bingo.villager.website/users", parameters:
                 ["user":["account": Account_txt.text! , "password": Password_txt.text! , "birthday": birthday_txt.text! , "identity": Identity]])
                 .responseJSON { response in
-                    print(token)
-                    token = response.result.value as! Bool
-                    if(token){
-//                        self.performSegueWithIdentifier("returnLoginView", sender: self)
-//                        let ctrl = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")  as! LoginViewController
-//                        self.presentViewController(ctrl, animated: true, completion: nil)
-                        if let navController = self.navigationController {
-                            navController.popViewControllerAnimated(true)
+                    var result = response.result.value
+                    if((result) != nil){
+                        token = result as! Bool
+                        print(token)
+                        if(token){
+                            if let navController = self.navigationController {
+                                self.activity.stopAnimating()
+                                self.RegistersubmitBtn.enabled = true
+                                self.ClearBtn.enabled = true
+                                navController.popViewControllerAnimated(true)
+                            }
                         }
+                        self.activity.stopAnimating()
+                        self.RegistersubmitBtn.enabled = true
+                        self.ClearBtn.enabled = true
+                        self.presentViewController(RegisterAlert, animated: true, completion: nil)
+                    }else{
+                        self.activity.stopAnimating()
+                        self.RegistersubmitBtn.enabled = true
+                        self.ClearBtn.enabled = true
+                        let connecttdController = UIAlertController(title: "連線失敗", message: "請確認網路是否已連線", preferredStyle: UIAlertControllerStyle.Alert)
+                        connecttdController.addAction(UIAlertAction(title: "確定", style: UIAlertActionStyle.Default, handler: nil))
+                        self.presentViewController(connecttdController, animated: true, completion: nil)
+
                     }
-                    self.presentViewController(RegisterAlert, animated: true, completion: nil)
+                    
+                    
             }
         }
     }

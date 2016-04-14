@@ -15,7 +15,8 @@ class GameViewController: UIViewController {
     //gamemodel is used to identity singlegame or onlinegame
     var Gamemodel:Int = 0
     var Userid = 0
-    
+    var recordscore:Int = 0
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var Gameview_background: UIImageView!
     @IBOutlet weak var SingleGameBtn: UIButton!
     @IBOutlet weak var OnlineGameBtn: UIButton!
@@ -39,8 +40,16 @@ class GameViewController: UIViewController {
     @IBAction func SingleGameBtn_clicked(sender: AnyObject) {
         // --load Question from server
         var userdataset:QuestionSet = QuestionSet.init()
+        self.Gamemodel = 0
         var errorAlert:UIAlertController = UIAlertController(title: "連線失敗", message:  "請確認您已連上線" , preferredStyle: UIAlertControllerStyle.Alert)
         errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
+        //start activity and lock screem
+        activity.startAnimating()
+        self.SingleGameBtn.enabled = false
+        self.OnlineGameBtn.enabled = false
+        self.SearchRankBtn.enabled = false
+        self.SearchBtn.enabled = false
+        self.ReturnBtn.enabled = false
         
         Alamofire.request(.GET, "http://bingo.villager.website/game_records/print_record",parameters: ["user_id" : self.Userid] ).responseJSON {response in
                 var result = response.result.value
@@ -48,6 +57,8 @@ class GameViewController: UIViewController {
                 if((result) != nil){
                     var questiondata = result!["exam"] as! NSArray
                     var answered  = result!["situation"] as! NSArray
+                    // read record tmp score
+                    self.recordscore = result!["score"] as! Int
                     
                     var  savaAlert:UIAlertController = UIAlertController(title: "系統訊息", message: "系統內有您的存檔紀錄，是否讀取存檔？", preferredStyle: UIAlertControllerStyle.Alert)
                     let readrecord = UIAlertAction(title: "是", style: UIAlertActionStyle.Default , handler: {
@@ -66,8 +77,6 @@ class GameViewController: UIViewController {
                             }
                         }
                         self.UserQuestionArray = userdataset;
-                        
-                        print(self.UserQuestionArray)
                         //delete record
                         Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
                             ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
@@ -76,8 +85,23 @@ class GameViewController: UIViewController {
                                 var isdelete = response.result.value
                                 
                                 if(isdelete != nil){
+                                    //stop activity and unlock screem
+                                    self.activity.stopAnimating()
+                                    self.SingleGameBtn.enabled = true
+                                    self.OnlineGameBtn.enabled = true
+                                    self.SearchRankBtn.enabled = true
+                                    self.SearchBtn.enabled = true
+                                    self.ReturnBtn.enabled = true
                                     self.performSegueWithIdentifier("toBingoGameView", sender: self)
                                 }else{
+                                    //stop activity and unlock screem
+                                    self.activity.stopAnimating()
+                                    self.SingleGameBtn.enabled = true
+                                    self.OnlineGameBtn.enabled = true
+                                    self.SearchRankBtn.enabled = true
+                                    self.SearchBtn.enabled = true
+                                    self.ReturnBtn.enabled = true
+
                                     self.presentViewController(errorAlert, animated: true, completion: nil)
                                 }
                         }
@@ -105,23 +129,48 @@ class GameViewController: UIViewController {
                                                 userdataset.Tip[i] = result![i]["tips"] as! String
                                                 userdataset.level[i] = questiondata[i]["level"] as! Int
                                             }
-                                            
+                                            //stop activity and unlock screem
                                             self.UserQuestionArray = userdataset;
-                                            
+                                            self.activity.stopAnimating()
+                                            self.SingleGameBtn.enabled = true
+                                            self.OnlineGameBtn.enabled = true
+                                            self.SearchRankBtn.enabled = true
+                                            self.SearchBtn.enabled = true
+                                            self.ReturnBtn.enabled = true
+
                                             self.performSegueWithIdentifier("toBingoGameView", sender: self)
                                         }
                                         else{
+                                            //stop activity and unlock screem
+                                            self.activity.stopAnimating()
+                                            self.SingleGameBtn.enabled = true
+                                            self.OnlineGameBtn.enabled = true
+                                            self.SearchRankBtn.enabled = true
+                                            self.SearchBtn.enabled = true
+                                            self.ReturnBtn.enabled = true
+
+                                            
                                             self.presentViewController(errorAlert, animated: true, completion: nil)
                                         }
                                     }
                                 }
                                 else{
+                                    //stop activity and unlock screem
+                                    self.activity.stopAnimating()
+                                    self.SingleGameBtn.enabled = true
+                                    self.OnlineGameBtn.enabled = true
+                                    self.SearchRankBtn.enabled = true
+                                    self.SearchBtn.enabled = true
+                                    self.ReturnBtn.enabled = true
+
+                                    
                                     var ErrorAddScoreAlert:UIAlertController = UIAlertController(title: "連線失敗", message:"請確認您已連上線" , preferredStyle: UIAlertControllerStyle.Alert)
                                     ErrorAddScoreAlert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
                                     self.presentViewController(ErrorAddScoreAlert, animated: true, completion: nil)
                                 }
                         }
                     }))
+                
                     self.presentViewController(savaAlert, animated: true, completion: nil)
                 }
                 else{
@@ -136,11 +185,27 @@ class GameViewController: UIViewController {
                                 userdataset.Tip[i] = result![i]["tips"] as! String
                                 userdataset.level[i] = result![i]["level"] as! Int
                             }
+                            //stop activity and unlock screem
+                            self.activity.stopAnimating()
+                            self.SingleGameBtn.enabled = true
+                            self.OnlineGameBtn.enabled = true
+                            self.SearchRankBtn.enabled = true
+                            self.SearchBtn.enabled = true
+                            self.ReturnBtn.enabled = true
+
                             
                             self.UserQuestionArray = userdataset;
                             self.performSegueWithIdentifier("toBingoGameView", sender: self)
                         }
                         else{
+                            //stop activity and unlock screem
+                            self.activity.stopAnimating()
+                            self.SingleGameBtn.enabled = true
+                            self.OnlineGameBtn.enabled = true
+                            self.SearchRankBtn.enabled = true
+                            self.SearchBtn.enabled = true
+                            self.ReturnBtn.enabled = true
+
                             self.presentViewController(errorAlert, animated: true, completion: nil)
                         }
                     }
@@ -151,9 +216,17 @@ class GameViewController: UIViewController {
 
     //Online function
     @IBAction func OnlineGameBtn_clicked(sender: AnyObject) {
-//        var room_id = 0
+
         self.Gamemodel = 1
         var TestQuestionSet:QuestionSet = QuestionSet.init()
+        //start activity and lock screem
+        activity.startAnimating()
+        self.SingleGameBtn.enabled = false
+        self.OnlineGameBtn.enabled = false
+        self.SearchRankBtn.enabled = false
+        self.SearchBtn.enabled = false
+        self.ReturnBtn.enabled = false
+
         
         var SearchAlert:UIAlertController = UIAlertController(title: "線上模式", message:"請輸入題組代號" , preferredStyle: UIAlertControllerStyle.Alert)
         SearchAlert.addTextFieldWithConfigurationHandler {
@@ -175,7 +248,7 @@ class GameViewController: UIViewController {
                     var AnswerArray = [String]()
                     var TipArray = [String]()
                     var idArray = [String]()
-                    print(result)
+                    
                     QuestionArray = (result?.objectForKey("question"))! as! [String]
                     AnswerArray = (result?.objectForKey("answer"))! as! [String]
                     TipArray = (result?.objectForKey("tips"))! as! [String]
@@ -185,18 +258,43 @@ class GameViewController: UIViewController {
                         TestQuestionSet.Answer[i] = AnswerArray[i]
                         TestQuestionSet.Tip[i] = TipArray[i]
                     }
+                    //stop activity and unlock screem
                     self.UserQuestionArray = TestQuestionSet
-                    print(self.UserQuestionArray)
+                    self.activity.stopAnimating()
+                    self.SingleGameBtn.enabled = true
+                    self.OnlineGameBtn.enabled = true
+                    self.SearchRankBtn.enabled = true
+                    self.SearchBtn.enabled = true
+                    self.ReturnBtn.enabled = true
+
                     self.performSegueWithIdentifier("toBingoGameView", sender: self)
                 }
                 else{
+                    //stop activity and unlock screem
+                    self.activity.stopAnimating()
+                    self.SingleGameBtn.enabled = true
+                    self.OnlineGameBtn.enabled = true
+                    self.SearchRankBtn.enabled = true
+                    self.SearchBtn.enabled = true
+                    self.ReturnBtn.enabled = true
+
                     var errorAlert:UIAlertController = UIAlertController(title: "查詢失敗", message:  "系統查無此題組或未連上網路" , preferredStyle: UIAlertControllerStyle.Alert)
                     errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(errorAlert, animated: true, completion: nil)
                 }
             }
         })
-        
+        SearchAlert.addAction(UIAlertAction(title: "返回", style: .Default, handler:{
+            action in
+            //stop activity and unlock screem
+            self.activity.stopAnimating()
+            self.SingleGameBtn.enabled = true
+            self.OnlineGameBtn.enabled = true
+            self.SearchRankBtn.enabled = true
+            self.SearchBtn.enabled = true
+            self.ReturnBtn.enabled = true
+        }))
+
         SearchAlert.addAction(submit)
         presentViewController(SearchAlert, animated: true, completion: nil)
         
@@ -212,6 +310,14 @@ class GameViewController: UIViewController {
             (textField: UITextField! ) -> Void in
             textField.placeholder = "教師ID"
         }
+         //start activity and lock screem
+        activity.startAnimating()
+        self.SingleGameBtn.enabled = false
+        self.OnlineGameBtn.enabled = false
+        self.SearchRankBtn.enabled = false
+        self.SearchBtn.enabled = false
+        self.ReturnBtn.enabled = false
+        
         //request sever and show result after user enter teacherID
         let submit = UIAlertAction(title: "查詢", style: UIAlertActionStyle.Default , handler: {
             action in
@@ -230,15 +336,39 @@ class GameViewController: UIViewController {
                             }
                             var ShowAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "教師編號:\(Teacher_id)已創建\(Int((result!["id"]?!.count)!))組題組\n\(result_print)如想進入題組請記下題組代號\n前往線上模式輸入編號即可進入！" , preferredStyle: UIAlertControllerStyle.Alert)
                             ShowAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
+                            //stop activity and unlock screem
+                            self.activity.stopAnimating()
+                            self.SingleGameBtn.enabled = true
+                            self.OnlineGameBtn.enabled = true
+                            self.SearchRankBtn.enabled = true
+                            self.SearchBtn.enabled = true
+                            self.ReturnBtn.enabled = true
                             self.presentViewController(ShowAlert, animated: true, completion: nil)
                         }
                         else{
+                            //stop activity and unlock screem
+                            self.activity.stopAnimating()
+                            self.SingleGameBtn.enabled = true
+                            self.OnlineGameBtn.enabled = true
+                            self.SearchRankBtn.enabled = true
+                            self.SearchBtn.enabled = true
+                            self.ReturnBtn.enabled = true
+                            
                             var errorAlert:UIAlertController = UIAlertController(title: "查無匹配結果", message:  "該位教師尚未創建任何題組或系統內無此教師資訊或裝置目前未連上網路" , preferredStyle: UIAlertControllerStyle.Alert)
                             errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(errorAlert, animated: true, completion: nil)
                         }
                 }
         })
+        SearchAlert.addAction(UIAlertAction(title: "返回", style: .Default, handler: {
+            action in
+            //stop activity and unlock screem
+            self.activity.stopAnimating()
+            self.SingleGameBtn.enabled = true
+            self.OnlineGameBtn.enabled = true
+            self.SearchRankBtn.enabled = true
+            self.SearchBtn.enabled = true
+            self.ReturnBtn.enabled = true}))
         SearchAlert.addAction(submit)
         presentViewController(SearchAlert, animated: true, completion: nil)
     }
@@ -249,7 +379,14 @@ class GameViewController: UIViewController {
         var print_result : String = "------top 20------\n"
         var erroralert:UIAlertController = UIAlertController(title: "排行榜", message:"\(print_result)" , preferredStyle: UIAlertControllerStyle.Alert)
         erroralert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
-      
+     
+        //start activity and lock screem
+        activity.startAnimating()
+        self.SingleGameBtn.enabled = false
+        self.OnlineGameBtn.enabled = false
+        self.SearchRankBtn.enabled = false
+        self.SearchBtn.enabled = false
+        self.ReturnBtn.enabled = false
         Alamofire.request(.GET, "http://bingo.villager.website/users/ranking" ).responseJSON {response in
             var result = response.result.value
 
@@ -264,10 +401,25 @@ class GameViewController: UIViewController {
                 }
                 var RankAlert:UIAlertController = UIAlertController(title: "排行榜", message:"\(print_result)" , preferredStyle: UIAlertControllerStyle.Alert)
                 RankAlert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
+                
+                //stop activity and unlock screem
+                self.activity.stopAnimating()
+                self.SingleGameBtn.enabled = true
+                self.OnlineGameBtn.enabled = true
+                self.SearchRankBtn.enabled = true
+                self.SearchBtn.enabled = true
+                self.ReturnBtn.enabled = true
                 self.presentViewController(RankAlert, animated: true, completion: nil)
             }
             else{
-              self.presentViewController(erroralert, animated: true, completion: nil)
+                //stop activity and unlock screem
+                self.activity.stopAnimating()
+                self.SingleGameBtn.enabled = true
+                self.OnlineGameBtn.enabled = true
+                self.SearchRankBtn.enabled = true
+                self.SearchBtn.enabled = true
+                self.ReturnBtn.enabled = true
+                self.presentViewController(erroralert, animated: true, completion: nil)
             }
             
         }
@@ -285,6 +437,7 @@ class GameViewController: UIViewController {
             destinationController.UserQuestionSet = self.UserQuestionArray
             destinationController.Userid = self.Userid
             destinationController.gameModel = self.Gamemodel
+            destinationController.score = self.recordscore
         }
     }
     
@@ -294,8 +447,7 @@ class GameViewController: UIViewController {
         }
 
     }
-    @IBAction func testBtn(sender: AnyObject) {
-    }
+    
 }
 
 
