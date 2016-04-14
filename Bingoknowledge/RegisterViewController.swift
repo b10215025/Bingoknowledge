@@ -9,11 +9,12 @@
 import UIKit
 import Alamofire
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController,UITextFieldDelegate {
 
     var testset:QuestionSet = QuestionSet.init()
     
     
+    @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var birthday_txt: UITextField!
     @IBOutlet weak var Passwordagain_txt: UITextField!
@@ -45,6 +46,18 @@ class RegisterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        ScrollView.setContentOffset(CGPointMake(0, 120), animated: true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        ScrollView.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        ScrollView.setContentOffset(CGPointMake(0, 0), animated: true)
+    }
+    
     // Register Action
     @IBAction func RegisterBtn_clicked(sender: AnyObject) {
         var token:Bool = false

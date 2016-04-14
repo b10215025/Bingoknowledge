@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
     var Userid = 0
     var Identity:String = ""
     
@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var Login: UIButton!
     
     
+    @IBOutlet weak var scollview: UIScrollView!
     
 
     
@@ -45,6 +46,9 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        scollview.setContentOffset(CGPointMake(0, 200), animated: true)
     }
     
     // login function

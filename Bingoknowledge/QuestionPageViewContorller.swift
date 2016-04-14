@@ -14,7 +14,7 @@ protocol Myprotocol {
 
 
 
-class QuestionPageViewContorller: UIViewController {
+class QuestionPageViewContorller: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var Question_background: UIImageView!
     var QuestionArray:QuestionSet = QuestionSet.init()
@@ -22,6 +22,8 @@ class QuestionPageViewContorller: UIViewController {
     var myBoolVar = false
     var delegate : Myprotocol?
     
+    
+    @IBOutlet weak var scrollview: UIScrollView!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var Question_Label: UILabel!
     @IBOutlet weak var SubmitBtn: UIButton!
@@ -33,22 +35,34 @@ class QuestionPageViewContorller: UIViewController {
     @IBOutlet weak var Answer_Label: UILabel!
     @IBOutlet weak var Tip_Label: UILabel!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         //      Do any additional setup after loading the view.
         view.sendSubviewToBack(Question_background)
+
         
-        Question_txt.text = QuestionArray.Question[QuestionNumber]
-        Question_txt.textColor = UIColor.orangeColor()
-        Question_txt.layer.cornerRadius = CGFloat(Float(15.0))
-        Qnumber.text = "\(QuestionNumber)"
+        self.Question_txt.text = QuestionArray.Question[QuestionNumber]
+        self.Question_txt.textColor = UIColor.orangeColor()
+        self.Question_txt.layer.cornerRadius = CGFloat(Float(15.0))
+        self.Qnumber.text = "\(QuestionNumber)"
+        
+        
         //if tap background then dismisskeyboard
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
 
     }
-    
-    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        scrollview.setContentOffset(CGPointMake(0, 120), animated: true)
+    }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        scrollview.setContentOffset(CGPointMake(0, 0), animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
