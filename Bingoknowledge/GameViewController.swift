@@ -22,6 +22,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var Userid_label: UILabel!
     @IBOutlet weak var SearchBtn: UIButton!
     
+    @IBOutlet weak var ReturnBtn: UIButton!
     @IBOutlet weak var SearchRankBtn: UIButton!
        override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,7 @@ class GameViewController: UIViewController {
     @IBAction func SingleGameBtn_clicked(sender: AnyObject) {
         // --load Question from server
         var userdataset:QuestionSet = QuestionSet.init()
-        var errorAlert:UIAlertController = UIAlertController(title: "Error", message:  "系統忙碌中" , preferredStyle: UIAlertControllerStyle.Alert)
+        var errorAlert:UIAlertController = UIAlertController(title: "連線失敗", message:  "請確認您已連上線" , preferredStyle: UIAlertControllerStyle.Alert)
         errorAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
         
         Alamofire.request(.GET, "http://bingo.villager.website/game_records/print_record",parameters: ["user_id" : self.Userid] ).responseJSON {response in
@@ -56,6 +57,7 @@ class GameViewController: UIViewController {
                             userdataset.Question[i] = questiondata[i]["question"] as! String
                             userdataset.Answer[i] = questiondata[i]["answer"] as! String
                             userdataset.Tip[i] = questiondata[i]["tips"] as! String
+                            userdataset.level[i] = questiondata[i]["level"] as! Int
                             if(answered[i] as! String == "0"){
                                 userdataset.isAnswered[i] = false
                             }
@@ -64,6 +66,9 @@ class GameViewController: UIViewController {
                             }
                         }
                         self.UserQuestionArray = userdataset;
+                        
+                        print(self.UserQuestionArray)
+                        //delete record
                         Alamofire.request(.POST, "http://bingo.villager.website/game_records", parameters:
                             ["game_record": [  "user_id" : self.Userid , "delete" : true ]])
                             .responseJSON {
@@ -98,7 +103,7 @@ class GameViewController: UIViewController {
                                                 userdataset.Question[i] = result![i]["question"] as! String
                                                 userdataset.Answer[i] = result![i]["answer"] as! String
                                                 userdataset.Tip[i] = result![i]["tips"] as! String
-                                                
+                                                userdataset.level[i] = questiondata[i]["level"] as! Int
                                             }
                                             
                                             self.UserQuestionArray = userdataset;
@@ -129,7 +134,7 @@ class GameViewController: UIViewController {
                                 userdataset.Question[i] = result![i]["question"] as! String
                                 userdataset.Answer[i] = result![i]["answer"] as! String
                                 userdataset.Tip[i] = result![i]["tips"] as! String
-                                
+                                userdataset.level[i] = result![i]["level"] as! Int
                             }
                             
                             self.UserQuestionArray = userdataset;
@@ -185,7 +190,7 @@ class GameViewController: UIViewController {
                     self.performSegueWithIdentifier("toBingoGameView", sender: self)
                 }
                 else{
-                    var errorAlert:UIAlertController = UIAlertController(title: "查詢結果", message:  "系統查無此題組" , preferredStyle: UIAlertControllerStyle.Alert)
+                    var errorAlert:UIAlertController = UIAlertController(title: "查詢失敗", message:  "系統查無此題組或未連上網路" , preferredStyle: UIAlertControllerStyle.Alert)
                     errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(errorAlert, animated: true, completion: nil)
                 }
@@ -228,7 +233,7 @@ class GameViewController: UIViewController {
                             self.presentViewController(ShowAlert, animated: true, completion: nil)
                         }
                         else{
-                            var errorAlert:UIAlertController = UIAlertController(title: "查無匹配結果", message:  "該位教師尚未創建任何題組或系統內無此教師資訊" , preferredStyle: UIAlertControllerStyle.Alert)
+                            var errorAlert:UIAlertController = UIAlertController(title: "查無匹配結果", message:  "該位教師尚未創建任何題組或系統內無此教師資訊或裝置目前未連上網路" , preferredStyle: UIAlertControllerStyle.Alert)
                             errorAlert.addAction(UIAlertAction(title: "離開", style: UIAlertActionStyle.Default, handler: nil))
                             self.presentViewController(errorAlert, animated: true, completion: nil)
                         }
@@ -242,7 +247,9 @@ class GameViewController: UIViewController {
         var Account = [String]()
         var Score = [Int]()
         var print_result : String = "------top 20------\n"
-
+        var erroralert:UIAlertController = UIAlertController(title: "排行榜", message:"\(print_result)" , preferredStyle: UIAlertControllerStyle.Alert)
+        erroralert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
+      
         Alamofire.request(.GET, "http://bingo.villager.website/users/ranking" ).responseJSON {response in
             var result = response.result.value
 
@@ -258,7 +265,9 @@ class GameViewController: UIViewController {
                 var RankAlert:UIAlertController = UIAlertController(title: "排行榜", message:"\(print_result)" , preferredStyle: UIAlertControllerStyle.Alert)
                 RankAlert.addAction(UIAlertAction(title: "確認", style: .Default, handler: nil))
                 self.presentViewController(RankAlert, animated: true, completion: nil)
-                
+            }
+            else{
+              self.presentViewController(erroralert, animated: true, completion: nil)
             }
             
         }
@@ -279,6 +288,12 @@ class GameViewController: UIViewController {
         }
     }
     
+    @IBAction func ReturnBtn_clicked(sender: AnyObject) {
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+        }
+
+    }
     @IBAction func testBtn(sender: AnyObject) {
     }
 }

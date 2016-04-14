@@ -280,7 +280,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_green" translatesAutoresizingMaskIntoConstraints="NO" id="tB6-La-eBf">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="13" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="orangetextview" translatesAutoresizingMaskIntoConstraints="NO" id="rFR-eS-J5Y">
                                 <rect key="frame" x="80" y="427" width="221" height="33"/>
@@ -291,12 +291,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yellowtextview" translatesAutoresizingMaskIntoConstraints="NO" id="sbQ-34-m9A">
                                 <rect key="frame" x="81" y="341" width="221" height="33"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="出題系統" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S4d-lH-Pjp">
-                                <rect key="frame" x="115" y="226" width="144" height="40"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOy-LF-XNU">
                                 <rect key="frame" x="87" y="569" width="37" height="41"/>
                                 <state key="normal" image="before_icon">
@@ -316,7 +310,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="第一題" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUp-n3-k3u">
-                                <rect key="frame" x="173" y="310" width="108" height="21"/>
+                                <rect key="frame" x="173" y="310" width="64" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -372,7 +366,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E9T-9M-fug">
-                                <rect key="frame" x="81" y="420" width="226" height="40"/>
+                                <rect key="frame" x="81" y="424" width="226" height="40"/>
                                 <color key="textColor" red="1" green="0.29803921570000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -391,12 +385,11 @@
                         <outlet property="SubmitBtn" destination="4WR-3h-ZLk" id="Sp0-HZ-RJd"/>
                         <outlet property="Tip_label" destination="Ei5-f0-Opd" id="PfL-oQ-x7w"/>
                         <outlet property="Tip_txt" destination="7IR-4v-ivI" id="xZp-mD-W1t"/>
-                        <outlet property="Title_label" destination="S4d-lH-Pjp" id="e4n-b4-wgp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y0D-GG-ViD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="430.5" y="1078.5"/>
+            <point key="canvasLocation" x="376.5" y="1130.5"/>
         </scene>
         <!--Game Main View Controller-->
         <scene sceneID="gwJ-8C-HDy">
@@ -410,7 +403,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_smallicon" translatesAutoresizingMaskIntoConstraints="NO" id="LXo-nC-hlS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_red" translatesAutoresizingMaskIntoConstraints="NO" id="LXo-nC-hlS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVB-vd-3UQ">
@@ -426,20 +419,8 @@
                                     <action selector="testBtn_clicked:" destination="Xr0-MC-nXg" eventType="touchUpInside" id="hHu-LL-Ety"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybb-aF-9Vz">
-                                <rect key="frame" x="94" y="555" width="197" height="34"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                <state key="normal" title="登出" backgroundImage="greenbtn_long">
-                                    <color key="titleColor" red="0.094117647060000004" green="0.45882352939999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Y-oY-yF1">
-                                <rect key="frame" x="115" y="350" width="153" height="33"/>
+                                <rect key="frame" x="120" y="379" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="老師專區" backgroundImage="orangebtn_long">
                                     <color key="titleColor" red="1" green="0.29803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -454,7 +435,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1n-T5-Sbd">
-                                <rect key="frame" x="114" y="299" width="153" height="33"/>
+                                <rect key="frame" x="120" y="325" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="開始遊戲" backgroundImage="yellowbtn_long">
                                     <color key="titleColor" red="1" green="0.29803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -469,7 +450,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-xI-hq4">
-                                <rect key="frame" x="114" y="457" width="153" height="33"/>
+                                <rect key="frame" x="120" y="484" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="關於" backgroundImage="orangebtn_long">
                                     <color key="titleColor" red="1" green="0.29803921570000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -484,7 +465,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qLB-bd-89k">
-                                <rect key="frame" x="115" y="405" width="153" height="33"/>
+                                <rect key="frame" x="120" y="432" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="個人資料" backgroundImage="yellowbtn_long">
                                     <color key="titleColor" red="1" green="0.29803921568627451" blue="0.2196078431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -498,11 +479,27 @@
                                     <action selector="PersonnelinfoBtn_clicked:" destination="Xr0-MC-nXg" eventType="touchUpInside" id="m7B-mT-4Q1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybb-aF-9Vz">
+                                <rect key="frame" x="97" y="555" width="197" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <state key="normal" title="登出" backgroundImage="greenbtn_long">
+                                    <color key="titleColor" red="0.094117647060000004" green="0.45882352939999999" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="LogoutBtn_clicked:" destination="Xr0-MC-nXg" eventType="touchUpInside" id="Bud-Po-WOS"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="DescribeBtn" destination="Jna-xI-hq4" id="10d-9r-ncE"/>
+                        <outlet property="Logout_btn" destination="ybb-aF-9Vz" id="6lY-9f-ipK"/>
                         <outlet property="PersonnelinfoBtn" destination="qLB-bd-89k" id="nro-Hf-5Z7"/>
                         <outlet property="TeacherSetTheme" destination="Z2Y-oY-yF1" id="K4K-YC-gQn"/>
                         <outlet property="Testlabel" destination="SVB-vd-3UQ" id="lZw-5d-ix7"/>
@@ -527,7 +524,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_smallicon" translatesAutoresizingMaskIntoConstraints="NO" id="NeM-sy-lsr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_red" translatesAutoresizingMaskIntoConstraints="NO" id="NeM-sy-lsr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMN-aE-vIr">
@@ -537,7 +534,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4g-Op-yQr">
-                                <rect key="frame" x="114" y="299" width="153" height="33"/>
+                                <rect key="frame" x="120" y="324" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="單人模式" backgroundImage="yellowbtn_long">
                                     <color key="titleColor" red="1" green="0.29803921570000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -553,7 +550,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iUU-Ap-tQi">
-                                <rect key="frame" x="94" y="555" width="197" height="34"/>
+                                <rect key="frame" x="98" y="555" width="197" height="34"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <state key="normal" title="回到主選單" backgroundImage="greenbtn_long">
                                     <color key="titleColor" red="0.094117647058823528" green="0.45882352941176469" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
@@ -563,9 +560,12 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ReturnBtn_clicked:" destination="qpD-yn-NaG" eventType="touchUpInside" id="mFq-0i-d4S"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOZ-Au-7C8">
-                                <rect key="frame" x="114" y="457" width="153" height="33"/>
+                                <rect key="frame" x="120" y="483" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="線上排行榜" backgroundImage="orangebtn_long">
                                     <color key="titleColor" red="0.96078431369999995" green="0.35244141909999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -587,7 +587,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9h-MZ-FQo">
-                                <rect key="frame" x="115" y="350" width="153" height="33"/>
+                                <rect key="frame" x="120" y="379" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="線上模式" backgroundImage="orangebtn_long">
                                     <color key="titleColor" red="1" green="0.29803921570000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -602,7 +602,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDS-NV-CRc">
-                                <rect key="frame" x="115" y="405" width="153" height="33"/>
+                                <rect key="frame" x="120" y="432" width="153" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="查詢題組" backgroundImage="yellowbtn_long">
                                     <color key="titleColor" red="1" green="0.29803921570000003" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -624,6 +624,7 @@
                     <connections>
                         <outlet property="Gameview_background" destination="NeM-sy-lsr" id="CTZ-GU-pk0"/>
                         <outlet property="OnlineGameBtn" destination="Z9h-MZ-FQo" id="5dJ-v2-MeX"/>
+                        <outlet property="ReturnBtn" destination="iUU-Ap-tQi" id="8Fg-gd-CA7"/>
                         <outlet property="SearchBtn" destination="BDS-NV-CRc" id="Kal-qb-9bU"/>
                         <outlet property="SearchRankBtn" destination="HOZ-Au-7C8" id="mcQ-qJ-zA1"/>
                         <outlet property="SingleGameBtn" destination="b4g-Op-yQr" id="06p-eg-O6H"/>
@@ -644,7 +645,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Jy1-ih-H5b"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aYB-zn-9Ve">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_smallicon" translatesAutoresizingMaskIntoConstraints="NO" id="YTj-oT-a9R">
@@ -724,6 +725,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1137254902" green="0.77647058820000003" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="result_background" destination="YTj-oT-a9R" id="PGF-sE-BY8"/>
                         <outlet property="returnGameMainView" destination="PTK-Wt-Zuc" id="rWd-6m-hnd"/>
@@ -1166,7 +1168,7 @@
                                 <rect key="frame" x="80" y="310" width="230" height="70"/>
                                 <color key="tintColor" red="0.96078431369999995" green="0.35244141909999999" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -1196,7 +1198,8 @@
         <image name="Congratulations" width="866" height="777"/>
         <image name="answer_icon" width="163" height="168"/>
         <image name="background_bigicon" width="1563" height="2779"/>
-        <image name="background_green" width="1563" height="2779"/>
+        <image name="background_green" width="1562" height="2779"/>
+        <image name="background_red" width="1563" height="2779"/>
         <image name="background_smallicon" width="1563" height="2779"/>
         <image name="before_icon" width="143" height="165"/>
         <image name="gamebackground" width="1017" height="1017"/>

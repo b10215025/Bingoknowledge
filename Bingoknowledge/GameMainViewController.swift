@@ -17,6 +17,7 @@ class GameMainViewController: UIViewController {
     
     @IBOutlet weak var back: UIButton!
     
+    @IBOutlet weak var Logout_btn: UIButton!
     @IBOutlet weak var TeacherSetTheme: UIButton!
   
     @IBOutlet weak var DescribeBtn: UIButton!
@@ -84,7 +85,7 @@ class GameMainViewController: UIViewController {
             self.presentViewController(InfoAlert, animated: true, completion: nil)
         }
         else{
-            let InfoAlert = UIAlertController(title: "個人資料", message: "老師您好\n您的老師編號:\(Userid)\n權限類別：老師", preferredStyle: UIAlertControllerStyle.Alert)
+            let InfoAlert = UIAlertController(title: "個人資料", message: "老師您好\n您的教師編號為\(Userid)\n權限類別：老師", preferredStyle: UIAlertControllerStyle.Alert)
             InfoAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(InfoAlert, animated: true, completion: nil)
         }
@@ -95,5 +96,10 @@ class GameMainViewController: UIViewController {
         let InfoAlert = UIAlertController(title: "關於我們", message: "產品開發團隊：Broccoli\n產品簡介：一個會依照學生答題狀況自動調整題目難度的APP\n幫助中小學生更有效率的學習\n", preferredStyle: UIAlertControllerStyle.Alert)
         InfoAlert.addAction(UIAlertAction(title: "確認", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(InfoAlert, animated: true, completion: nil)
+    }
+    @IBAction func LogoutBtn_clicked(sender: AnyObject) {
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+        }
     }
 }

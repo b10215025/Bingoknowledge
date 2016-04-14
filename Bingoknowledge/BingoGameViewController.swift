@@ -46,7 +46,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
                 }
             }
         }
-        
+
     }
     
  
@@ -64,7 +64,7 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
         // if bingo then addscore and to ResultviewPage
         if isBingo(UserQuestionSet) {
             //do sth
-            self.score  = 15
+            
             Alamofire.request(.POST , "http://bingo.villager.website/users/add_score", parameters:["user": ["user_id" : self.Userid, "score" : score]])
                 .responseJSON {
                     response in
@@ -127,6 +127,10 @@ class BingoGameViewContorller: UIViewController ,Myprotocol{
             self.QuestionBtnArray[QuestionNum].setImage(UIImage(named: "shot_yellow"), forState: .Normal)
 
         }
+        if(self.score < 21 && gameModel == 0){
+            self.score = self.score + self.UserQuestionSet.level[QuestionNum]
+        }
+        
     }
     
  
